@@ -320,6 +320,7 @@ namespace KararVeDonguOrnekleri
             //} while (Console.ReadKey().Key != ConsoleKey.Escape);
             #endregion
 
+            //cemdos
         }
     }
 }

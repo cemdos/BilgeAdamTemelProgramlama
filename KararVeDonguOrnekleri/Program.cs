@@ -321,6 +321,7 @@ namespace KararVeDonguOrnekleri
             #endregion
 
             //cemdos
+            //Bu satır evren tarafından yazıldı.
         }
     }
 }

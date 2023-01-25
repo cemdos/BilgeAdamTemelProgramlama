@@ -320,9 +320,33 @@ namespace KararVeDonguOrnekleri
             //} while (Console.ReadKey().Key != ConsoleKey.Escape);
             #endregion
 
-            //cemdos
-            //Bu satır evren tarafından yazıldı.
-            //Cemdos yeni gelistirme
+            #region 17. Örnek
+            //string ages = "";
+            //for (int i = 1; i <= 6; i++)
+            //{
+            //    Console.Write("{0}. Öğrencinin yaşı = ",i);
+            //    byte age = byte.Parse(Console.ReadLine());
+            //    if (age > 31)
+            //    {
+            //        Console.WriteLine("Geçersiz yaş");
+            //        i--;
+            //    }
+            //    int remainder;
+            //    string ageResult = "";
+            //    while (age >= 2)
+            //    {
+            //        remainder = age % 2;
+            //        ageResult = ageResult.Insert(0, remainder.ToString());
+            //        age /= 2;
+            //    }
+            //    ageResult = ageResult.Insert(0, age.ToString());
+            //    ageResult = ageResult.PadLeft(5, '0');
+            //    ages = ages.Insert(0, ageResult);
+            //}
+            //ages = ages.PadLeft(32, '0');
+            //Console.WriteLine(ages);
+            #endregion
+
         }
     }
 }

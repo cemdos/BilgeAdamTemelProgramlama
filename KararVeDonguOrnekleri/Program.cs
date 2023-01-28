@@ -134,28 +134,28 @@ namespace KararVeDonguOrnekleri
             //    Console.Write("* ");
             #endregion
 
-            #region 8. Örnek
-            //do
-            //{
-            //    Console.Clear();
-            //    Random random = new Random();
-            //    for (char letter = 'A'; letter <= 'G'; letter++)
-            //    {
-            //        string metin = $"{letter} :";
-            //        for (int i = 0; i < 6; i++)
-            //        {
-            //            int rand = random.Next(1, 50);
-            //            string value = rand.ToString().PadLeft(2, '0');
-            //            if (!metin.Contains(value))
-            //                metin += $" {value}";
-            //            else
-            //                i--;
-            //        }
-            //        Console.WriteLine(metin);
-            //    }
-            //    Console.WriteLine("Devam etmek için herahangi bir tuşa basın..");
+            #region 8. Örnek - Sayısal Loto Rastgele Kupon
+            do
+            {
+                Console.Clear();
+                Random random = new Random();
+                for (char letter = 'A'; letter <= 'G'; letter++)
+                {
+                    string metin = $"{letter} :";
+                    for (int i = 0; i < 6; i++)
+                    {
+                        int rand = random.Next(1, 50);
+                        string value = rand.ToString().PadLeft(2, '0');
+                        if (!metin.Contains(value))
+                            metin += $" {value}";
+                        else
+                            i--;
+                    }
+                    Console.WriteLine(metin);
+                }
+                Console.WriteLine("Devam etmek için herahangi bir tuşa basın..");
 
-            //} while (Console.ReadKey().Key != ConsoleKey.Escape);
+            } while (Console.ReadKey().Key != ConsoleKey.Escape);
             #endregion
 
             #region 9. Örnek
@@ -345,6 +345,61 @@ namespace KararVeDonguOrnekleri
             //}
             //ages = ages.PadLeft(32, '0');
             //Console.WriteLine(ages);
+            #endregion
+
+            #region 18. Örnek - Mod Sayacı
+
+            //for (int i = 1; i < 4; i++) //Yüzler basamagı icin dönecek
+            //    for (int j = 0; j < 4; j++) // Onlar Basamagı icin dönecek
+            //        for (int k = 0; k < 4; k++) //Birler Basamagı
+            //            Console.WriteLine("{0}{1}{2}",i,j,k);
+
+            #endregion
+
+            #region 19. Örnek - İşaretli ve Ondalıklı olan sayıların binary sisteme mapping işlemi
+            //while (true)
+            //{
+            //    float sayi;
+            //    Console.Write("Sayı Giriniz = ");
+            //    sayi = float.Parse(Console.ReadLine());
+
+            //    int tamsayi, ondalikSayi = 0;
+            //    string sonuc = "";
+            //    bool NegatifMi = sayi < 0;
+
+            //    sayi = NegatifMi ? sayi * (-1) : sayi;
+            //    tamsayi = (int)sayi;
+            //    if (sayi.ToString().Contains(","))
+            //    {
+            //        string ondalikSayiString = sayi.ToString().Split(',')[1];
+            //        ondalikSayiString = ondalikSayiString.PadRight(3, '0');
+            //        ondalikSayi = int.Parse(ondalikSayiString);
+            //    }                
+
+            //    while (tamsayi >= 2)
+            //    {
+            //        int kalan;
+            //        kalan = tamsayi % 2;
+            //        sonuc = sonuc.Insert(0, kalan.ToString());
+            //        tamsayi /= 2;
+            //    }
+            //    sonuc = sonuc.Insert(0, tamsayi.ToString());
+            //    sonuc = " " + sonuc.PadLeft(8, '0');
+
+            //    while (ondalikSayi >= 2)
+            //    {
+            //        int kalan;
+            //        kalan = ondalikSayi % 2;
+            //        sonuc = sonuc.Insert(0, kalan.ToString());
+            //        ondalikSayi /= 2;
+            //    }
+            //    sonuc = sonuc.Insert(0, ondalikSayi.ToString());
+            //    sonuc = " " + sonuc.PadLeft(17, '0');
+            //    sonuc = sonuc.Insert(0, (NegatifMi ? "1" : "0"));
+
+            //    Console.WriteLine("Sonuc=" + sonuc);
+            //}
+
             #endregion
 
         }

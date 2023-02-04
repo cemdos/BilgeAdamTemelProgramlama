@@ -82,6 +82,7 @@ namespace Diziler
 
             ArrayList sayilar = new ArrayList();
             //Evde yaptığım geliştirme
+            //İş yerinde bu kodu yazdım 
         }
     }
 }

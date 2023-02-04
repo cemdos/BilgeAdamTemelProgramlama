@@ -81,7 +81,7 @@ namespace Diziler
             #endregion
 
             ArrayList sayilar = new ArrayList();
-
+            //İş yerinde bu kodu yazdım 
         }
     }
 }

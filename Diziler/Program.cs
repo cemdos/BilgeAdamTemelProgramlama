@@ -80,9 +80,150 @@ namespace Diziler
 
             #endregion
 
-            ArrayList sayilar = new ArrayList();
-            //Evde yaptığım geliştirme
-            //İş yerinde bu kodu yazdım 
+            #region 4. Örnek - Klavyeden girilen tüm degerleri 0'a basana kadar dizi icerisine atan prog.
+
+            //ArrayList dizi = new ArrayList();
+            //string veri;
+            //do
+            //{
+            //    Console.Write("Veri Giriniz = ");
+            //    veri = Console.ReadLine();
+            //    dizi.Add(veri);
+            //} while (veri != "0");
+
+            //Console.WriteLine("Diziye atılan veriler");
+            //foreach (var item in dizi)
+            //{
+            //    Console.WriteLine(item);
+            //}
+            #endregion
+
+            #region 5.Örnek - Rastgele üretilen 20 sayıdan tek olanlar tek diziye cift olanları cift diziye aktaran prg
+            //ArrayList tekSayilar = new ArrayList();
+            //ArrayList ciftSayilar = new ArrayList();
+            //Random rnd = new Random();
+
+            //for (int i = 0; i < 20; i++)
+            //{
+            //    int sayi = rnd.Next(0,50);
+            //    if (sayi % 2 == 0) // Cifttir
+            //        ciftSayilar.Add(sayi);
+            //    else
+            //        tekSayilar.Add(sayi);
+            //}
+
+            //Console.WriteLine("Tek Sayılar");
+            //foreach (var item in tekSayilar)
+            //    Console.WriteLine(item);
+            //Console.WriteLine("Cift Sayılar");
+            //foreach (var item in ciftSayilar)
+            //    Console.WriteLine(item);
+            //Console.WriteLine("Cift Dizisinin 2 elemanı = " + ciftSayilar[1]);
+
+            #endregion
+
+            #region 6. Örnek - Stack Mantıgı
+            //Stack yigin = new Stack();
+            //yigin.Push("1");
+            //yigin.Push("2");
+            //yigin.Push("3");
+            //int elamanSayisi = yigin.Count;
+
+            //for (int i = 0; i < elamanSayisi; i++)
+            //{
+            //    Console.WriteLine(yigin.Pop());
+            //}
+            #endregion
+
+            #region 7. Örnek Queue Mantıgı
+            //Queue<string> kuyruk = new Queue<string>();
+            //kuyruk.Enqueue("ali");
+            //kuyruk.Enqueue("veli");
+            //kuyruk.Enqueue("ahmet");
+            //kuyruk.Enqueue("ayşe");
+
+            //Console.WriteLine(kuyruk.Dequeue());
+            //Console.WriteLine(kuyruk.Dequeue());
+            //Console.WriteLine(kuyruk.Dequeue());
+            //Console.WriteLine(kuyruk.Dequeue());
+            //Console.WriteLine(kuyruk.Dequeue()); // Burayı calıstırmaz cünkü kuyruk bosaldı
+            #endregion
+
+            #region 8. Örnek - LIST mantığı
+            //List<int> sayilar = new List<int>();
+            //sayilar.Add(25);
+            //sayilar.Add(50);
+            //sayilar.Add(60);
+
+            //Console.WriteLine(sayilar[0]);
+            //Console.WriteLine(sayilar[1]);
+            //Console.WriteLine(sayilar[2]);
+            #endregion
+
+            #region 9.Örnek - Object ifadelerin aritmetiksel ve karsılastırma islemlerinde kullanımı
+            //ArrayList dizi = new ArrayList();
+            //dizi.Add(Console.ReadLine());
+            //dizi.Add(Console.ReadLine());
+            ////Burada nereye düser incelenmeli ?
+            //if (dizi[0] == dizi[1])
+            //    Console.WriteLine("Esittir");
+            //else
+            //    Console.WriteLine("Esit Degildir");
+            #endregion
+
+            #region 10. ÖRnek - SortedList Mantıgı
+            //SortedList TRSozluk = new SortedList();
+            //SortedList ENSozluk = new SortedList();
+            //SortedList seciliSozluk = new SortedList();
+
+            //TRSozluk.Add("headerText", "Hoşgeldiniz");
+            //TRSozluk.Add("Text2", "muz");
+            //TRSozluk.Add("Text1", "elma");
+
+
+            //ENSozluk.Add("headerText", "Welcome");
+            //ENSozluk.Add("Text2", "Banana");
+            //ENSozluk.Add("Text1", "Apple");
+
+
+            //Console.Write("Dil Seçiniz (en/tr):");
+            //string dil = Console.ReadLine();
+            //switch (dil.ToUpper())
+            //{
+            //    case "TR": seciliSozluk = TRSozluk; break;
+            //    case "EN": seciliSozluk = ENSozluk; break;
+            //}
+
+            //Console.WriteLine(seciliSozluk["headerText"]);
+
+
+            #endregion
+
+            #region 11. Örnek - Dictionary Mantığı
+            var TRSozluk = new Dictionary<string,string>();
+            var ENSozluk = new Dictionary<string, string>();
+            var seciliSozluk = new Dictionary<string, string>();
+
+            TRSozluk.Add("headerText", "Hoşgeldiniz");
+            TRSozluk.Add("Text2", "muz");
+            TRSozluk.Add("Text1", "elma");
+
+
+            ENSozluk.Add("headerText", "Welcome");
+            ENSozluk.Add("Text2", "Banana");
+            ENSozluk.Add("Text1", "Apple");
+
+
+            Console.Write("Dil Seçiniz (en/tr):");
+            string dil = Console.ReadLine();
+            switch (dil.ToUpper())
+            {
+                case "TR": seciliSozluk = TRSozluk; break;
+                case "EN": seciliSozluk = ENSozluk; break;
+            }
+
+            Console.WriteLine(seciliSozluk["headerText"]);
+            #endregion
         }
     }
 }

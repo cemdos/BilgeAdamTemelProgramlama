@@ -200,30 +200,119 @@ namespace Diziler
             #endregion
 
             #region 11. Örnek - Dictionary Mantığı
-            var TRSozluk = new Dictionary<string,string>();
-            var ENSozluk = new Dictionary<string, string>();
-            var seciliSozluk = new Dictionary<string, string>();
+            //var TRSozluk = new Dictionary<string,string>();
+            //var ENSozluk = new Dictionary<string, string>();
+            //var seciliSozluk = new Dictionary<string, string>();
 
-            TRSozluk.Add("headerText", "Hoşgeldiniz");
-            TRSozluk.Add("Text2", "muz");
-            TRSozluk.Add("Text1", "elma");
-
-
-            ENSozluk.Add("headerText", "Welcome");
-            ENSozluk.Add("Text2", "Banana");
-            ENSozluk.Add("Text1", "Apple");
+            //TRSozluk.Add("headerText", "Hoşgeldiniz");
+            //TRSozluk.Add("Text2", "muz");
+            //TRSozluk.Add("Text1", "elma");
 
 
-            Console.Write("Dil Seçiniz (en/tr):");
-            string dil = Console.ReadLine();
-            switch (dil.ToUpper())
+            //ENSozluk.Add("headerText", "Welcome");
+            //ENSozluk.Add("Text2", "Banana");
+            //ENSozluk.Add("Text1", "Apple");
+
+
+            //Console.Write("Dil Seçiniz (en/tr):");
+            //string dil = Console.ReadLine();
+            //switch (dil.ToUpper())
+            //{
+            //    case "TR": seciliSozluk = TRSozluk; break;
+            //    case "EN": seciliSozluk = ENSozluk; break;
+            //}
+
+            //Console.WriteLine(seciliSozluk["headerText"]);
+            #endregion
+
+            #region 3 Boyutlu Dizi
+            //string[,,] veriler = { // 1. Boyut
+            //                      { //2. Boyut
+            //                        {"45","60" },{"45","60" }//3. Boyut
+            //                      },
+            //                      {
+            //                        {"45","60" },{"45","60" }
+            //                      },
+            //                      {
+            //                        {"45","60" },{"45","60" }
+            //                      }
+            //                    };
+            #endregion
+
+            #region CiftBoyutlu static Diziler
+            //string[,] veriler = new string[2, 6];
+            //Random rnd = new Random();
+            //for (int i = 0; i < veriler.GetLength(0); i++) // satırlar icin
+            //{
+            //    Console.Write("Adınız = ");
+            //    veriler[i, 0] = Console.ReadLine();
+            //    Console.Write("Soyadınız = ");
+            //    veriler[i, 1] = Console.ReadLine();
+            //    veriler[i, 2] = rnd.Next(101).ToString();
+            //    veriler[i, 3] = rnd.Next(101).ToString();
+            //    veriler[i, 4] = (int.Parse(veriler[i, 2]) * 0.4 + int.Parse(veriler[i, 3]) * 0.6).ToString();
+            //    veriler[i, 5] = double.Parse(veriler[i, 4]) <= 60 ? "Kaldı" : "Geçti";
+            //}
+
+            //Console.WriteLine("Öğrenci Listesi");
+            //Console.WriteLine("".PadLeft(50, '-'));
+            //Console.WriteLine("{0,-10}{1,-10}{2,-10}{3,-10}{4,-10}{5,-10}",
+            //                    "Adı",
+            //                    "Soyadı",
+            //                    "Vize",
+            //                    "Final",
+            //                    "Ortalama",
+            //                    "Durum");
+            //for (int satirIndis = 0; satirIndis < veriler.GetLength(0); satirIndis++) // Satırlar icin
+            //{
+            //    for (int sutunIndis = 0; sutunIndis < veriler.GetLength(1); sutunIndis++) //Sütunlar için
+            //    {
+            //        Console.Write("{0,-10}", veriler[satirIndis, sutunIndis]);
+            //    }
+            //    Console.WriteLine();
+            //}
+            #endregion
+
+
+            #region İçİçe Diziler
+            List<string[]> veriler = new List<string[]>();
+            Random rnd = new Random();
+            while(true)
             {
-                case "TR": seciliSozluk = TRSozluk; break;
-                case "EN": seciliSozluk = ENSozluk; break;
+                string[] altVeri = new string[6];
+                Console.Write("Adınız = ");
+                altVeri[0] = Console.ReadLine();
+                if (altVeri[0] == "0")
+                    break;
+
+                Console.Write("Soyadınız = ");
+                altVeri[1] = Console.ReadLine();
+                altVeri[2] = rnd.Next(101).ToString();
+                altVeri[3] = rnd.Next(101).ToString();
+                altVeri[4] = (int.Parse(altVeri[2]) * 0.4 + int.Parse(altVeri[3]) * 0.6).ToString();
+                altVeri[5] = double.Parse(altVeri[4]) <= 60 ? "Kaldı" : "Geçti";
+                veriler.Add(altVeri);
             }
 
-            Console.WriteLine(seciliSozluk["headerText"]);
+            Console.WriteLine("Öğrenci Listesi");
+            Console.WriteLine("".PadLeft(50, '-'));
+            Console.WriteLine("{0,-10}{1,-10}{2,-10}{3,-10}{4,-10}{5,-10}",
+                                "Adı",
+                                "Soyadı",
+                                "Vize",
+                                "Final",
+                                "Ortalama",
+                                "Durum");
+            for (int satirIndis = 0; satirIndis < veriler.Count; satirIndis++) // Satırlar icin
+            {
+                for (int sutunIndis = 0; sutunIndis < veriler[satirIndis].Length; sutunIndis++) //Sütunlar için
+                {
+                    Console.Write("{0,-10}", veriler[satirIndis][sutunIndis]);
+                }
+                Console.WriteLine();
+            }
             #endregion
+
         }
     }
 }

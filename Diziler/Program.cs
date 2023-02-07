@@ -225,7 +225,7 @@ namespace Diziler
             //Console.WriteLine(seciliSozluk["headerText"]);
             #endregion
 
-            #region 3 Boyutlu Dizi
+            #region 12. Örnek - 3 Boyutlu Dizi
             //string[,,] veriler = { // 1. Boyut
             //                      { //2. Boyut
             //                        {"45","60" },{"45","60" }//3. Boyut
@@ -239,7 +239,7 @@ namespace Diziler
             //                    };
             #endregion
 
-            #region CiftBoyutlu static Diziler
+            #region 13. Örnek - CiftBoyutlu static Diziler
             //string[,] veriler = new string[2, 6];
             //Random rnd = new Random();
             //for (int i = 0; i < veriler.GetLength(0); i++) // satırlar icin
@@ -273,20 +273,61 @@ namespace Diziler
             //}
             #endregion
 
+            #region 14. Örnek - İçİçe Diziler
+            //List<string[]> veriler = new List<string[]>();
+            //Random rnd = new Random();
+            //while (true)
+            //{
+            //    string[] altVeri = new string[6];
+            //    Console.Write("Adınız = ");
+            //    altVeri[0] = Console.ReadLine();
+            //    if (altVeri[0] == "0")
+            //        break;
 
-            #region İçİçe Diziler
+            //    Console.Write("Soyadınız = ");
+            //    altVeri[1] = Console.ReadLine();
+            //    altVeri[2] = rnd.Next(101).ToString();
+            //    altVeri[3] = rnd.Next(101).ToString();
+            //    altVeri[4] = (int.Parse(altVeri[2]) * 0.4 + int.Parse(altVeri[3]) * 0.6).ToString();
+            //    altVeri[5] = double.Parse(altVeri[4]) <= 60 ? "Kaldı" : "Geçti";
+            //    veriler.Add(altVeri);
+            //}
+
+            //Console.WriteLine("Öğrenci Listesi");
+            //Console.WriteLine("".PadLeft(50, '-'));
+            //Console.WriteLine("{0,-10}{1,-10}{2,-10}{3,-10}{4,-10}{5,-10}",
+            //                    "Adı",
+            //                    "Soyadı",
+            //                    "Vize",
+            //                    "Final",
+            //                    "Ortalama",
+            //                    "Durum");
+            //for (int satirIndis = 0; satirIndis < veriler.Count; satirIndis++) // Satırlar icin
+            //{
+            //    for (int sutunIndis = 0; sutunIndis < veriler[satirIndis].Length; sutunIndis++) //Sütunlar için
+            //    {
+            //        if (sutunIndis >= 2 && sutunIndis <= 4)
+            //            Console.Write("{0,10}", veriler[satirIndis][sutunIndis]);
+            //        else
+            //            Console.Write("{0,-10}", veriler[satirIndis][sutunIndis]);
+            //    }
+            //    Console.WriteLine();
+            //}
+
+
+            #endregion
+
+            #region 15. Örnek - İlk 3'e giren öğrencilerin listesini veren prg
             List<string[]> veriler = new List<string[]>();
+            string[] isimler = { "Ahmet", "Mehmet", "Ayşe", "Tuba", "Hülya", "Cem", "Evren", "Muhammed", "Halim", "Yasin" };
             Random rnd = new Random();
-            while(true)
+            for (int i = 0; i < isimler.Length; i++)
             {
                 string[] altVeri = new string[6];
-                Console.Write("Adınız = ");
-                altVeri[0] = Console.ReadLine();
+                altVeri[0] = isimler[i];
                 if (altVeri[0] == "0")
                     break;
-
-                Console.Write("Soyadınız = ");
-                altVeri[1] = Console.ReadLine();
+                altVeri[1] = isimler[i];
                 altVeri[2] = rnd.Next(101).ToString();
                 altVeri[3] = rnd.Next(101).ToString();
                 altVeri[4] = (int.Parse(altVeri[2]) * 0.4 + int.Parse(altVeri[3]) * 0.6).ToString();
@@ -307,12 +348,59 @@ namespace Diziler
             {
                 for (int sutunIndis = 0; sutunIndis < veriler[satirIndis].Length; sutunIndis++) //Sütunlar için
                 {
-                    Console.Write("{0,-10}", veriler[satirIndis][sutunIndis]);
+                    if (sutunIndis >= 2 && sutunIndis <= 4)
+                        Console.Write("{0,10}", veriler[satirIndis][sutunIndis]);
+                    else
+                        Console.Write("{0,-10}", veriler[satirIndis][sutunIndis]);
                 }
                 Console.WriteLine();
             }
+
+            #region 1. Yol - Sıralama
+            for (int i = 0; i < veriler.Count; i++)
+            {
+                for (int j = 0; j < veriler.Count; j++)
+                {
+                    if (double.Parse(veriler[i][4]) > double.Parse(veriler[j][4]))
+                    {
+                        string[] gecici = new string[veriler[i].Length];
+                        veriler[i].CopyTo(gecici, 0);
+                        veriler[j].CopyTo(veriler[i], 0);
+                        gecici.CopyTo(veriler[j], 0);
+                    }
+                }
+            }
             #endregion
 
+            #region 2. Yol Sıralama
+            veriler = veriler.OrderByDescending(item => double.Parse(item[4])).Take(3).ToList();
+            #endregion
+
+
+            Console.WriteLine("".PadLeft(50, '-'));
+            Console.WriteLine("Öğrenci Sıralaması");
+            Console.WriteLine("".PadLeft(50, '-'));
+            Console.WriteLine("{0,-10}{1,-10}{2,-10}{3,-10}{4,-10}{5,-10}",
+                               "Adı",
+                               "Soyadı",
+                               "Vize",
+                               "Final",
+                               "Ortalama",
+                               "Durum");
+            for (int satirIndis = 0; satirIndis < 3; satirIndis++)
+            {
+                for (int sutunIndis = 0; sutunIndis < veriler[satirIndis].Length; sutunIndis++)
+                {
+                    if (sutunIndis >= 2 && sutunIndis <= 4)
+                        Console.Write("{0,10}", veriler[satirIndis][sutunIndis]);
+                    else
+                        Console.Write("{0,-10}", veriler[satirIndis][sutunIndis]);
+                }
+                Console.WriteLine();
+            }
+
+
+            #endregion
         }
     }
 }

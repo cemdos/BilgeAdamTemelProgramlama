@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -55,11 +56,6 @@ namespace Metotlar
         //    return ++sayi;
         //}
 
-        public static void BirArtir(ref int sayi)
-        {
-            ++sayi;
-        }
-
         public static void TarihVer()
         {
             Console.WriteLine(DateTime.Today);
@@ -83,7 +79,7 @@ namespace Metotlar
             return true;
         }
 
-        public static List<int> AradakiAsallar(int min,int max)
+        public static List<int> AradakiAsallar(int min, int max)
         {
             var dizi = new List<int>();
             for (int i = min; i <= max; i++)
@@ -97,7 +93,7 @@ namespace Metotlar
         public static bool MukemmelMi(int sayi)
         {
             int toplam = 0;
-            for (int i = 1; i <= sayi/2; i++)
+            for (int i = 1; i <= sayi / 2; i++)
             {
                 if (sayi % i == 0)
                     toplam += i;
@@ -105,7 +101,7 @@ namespace Metotlar
             return sayi == toplam;
         }
 
-        public static List<int> AradakiMukemmelSayilar(int min,int max)
+        public static List<int> AradakiMukemmelSayilar(int min, int max)
         {
             var dizi = new List<int>();
             for (int i = min; i <= max; i++)
@@ -114,12 +110,125 @@ namespace Metotlar
                     dizi.Add(i);
             }
             return dizi;
-        } 
+        }
+
+        public static void DiziYaz(List<int> dizi)
+        {
+            foreach (var item in dizi)
+                Console.WriteLine(item);
+        }
+        public static void DiziYaz(params object[] veriler)
+        {
+            foreach (var item in veriler)
+            {
+                Console.WriteLine(item);
+            }
+        }
+
+        public static bool DizideVarMi(object arananDeger, params object[] dizi)
+        {
+            return dizi.Contains(arananDeger);
+        }
+
+        public static bool DizideVarMi(object[] dizi, object arananDeger)
+        {
+            return dizi.Contains(arananDeger);
+        }
+
+        public static void BirArtir(int sayi)
+        {
+            sayi++;
+        }
+
+        public static void BirArtir(int[] sayi)
+        {
+            sayi[2]++;
+        }
+
+        public static bool CevirmeyiDene(string veri, out int sayi, out int sayi2)
+        {
+            sayi = 0;
+            sayi2 = 40;
+            bool cevrildimi;
+            try
+            {
+                sayi = int.Parse(veri);
+                cevrildimi = true;
+            }
+            catch (Exception)
+            {
+                cevrildimi = false;
+            }
+            return cevrildimi;
+        }
+
+        public static void MetotAdi(string a, int? b = null, int? c = null)
+        {
+            Console.WriteLine("Merhaba " + b);
+        }
+
+        #region Recursive Metotlar
+        #region 1. Yol
+        //static int toplam = 0;
+        //public static void VeriYaz()
+        //{
+        //    toplam++;
+        //    Console.WriteLine("BilgeAdam");
+        //    if (toplam == 10)
+        //        return;
+        //    VeriYaz();
+        //}
+        #endregion
+
+        #region 2.Yol
+        //public static void VeriYaz(int TekrarSayisi)
+        //{
+        //    if (TekrarSayisi == 0)
+        //        return;
+        //    Console.WriteLine("BilgeAdam");
+        //    VeriYaz(TekrarSayisi-1);
+        //}
+        #endregion
+
+        #endregion
+
+        #region 1. Yol
+        //public static int Topla(int sayac, int toplam = 0)
+        //{
+        //    if (sayac == 0)
+        //        return toplam;
+
+        //    toplam = sayac + toplam;
+        //    return Topla(sayac - 1, toplam);
+        //}
+        #endregion
+        #region 2. Yol
+        public static int Topla(int sayi)
+        {
+            if (sayi == 0)
+                return sayi;
+            return sayi + Topla(sayi - 1);
+        }
+        #endregion
+
 
         static void Main(string[] args)
         {
-            var datalar = AradakiMukemmelSayilar(10, 1000);
-            //Console.WriteLine(MukemmelMi(10));
+            #region Birartir referans metodu için kullanıldı
+            //int[] sayilar = { 1, 2, 3 };
+            //BirArtir(sayilar);
+            //Console.WriteLine(sayilar[2]);
+            #endregion
+
+            #region Out parametre olarak veri döndüren metotların çağırma şekli
+            //bool durum = CevirmeyiDene("50", out int veri, out int veri2);
+            //Console.WriteLine(veri2);
+            #endregion
+
+            int a = Topla(5);
+
         }
+
+
     }
 }

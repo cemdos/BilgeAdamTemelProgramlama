@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Diziler", "Diziler\Diziler.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Metotlar", "Metotlar\Metotlar.csproj", "{2E4D0103-D20E-4042-8010-D5C2A7B568C9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Classes", "Classes\Classes.csproj", "{584670B2-A961-4BFA-9708-38592784AB0B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{2E4D0103-D20E-4042-8010-D5C2A7B568C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2E4D0103-D20E-4042-8010-D5C2A7B568C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2E4D0103-D20E-4042-8010-D5C2A7B568C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{584670B2-A961-4BFA-9708-38592784AB0B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{584670B2-A961-4BFA-9708-38592784AB0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{584670B2-A961-4BFA-9708-38592784AB0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{584670B2-A961-4BFA-9708-38592784AB0B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

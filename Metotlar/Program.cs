@@ -192,6 +192,7 @@ namespace Metotlar
 
         #endregion
 
+        #region Recursive ÖRnek 2
         #region 1. Yol
         //public static int Topla(int sayac, int toplam = 0)
         //{
@@ -210,7 +211,24 @@ namespace Metotlar
             return sayi + Topla(sayi - 1);
         }
         #endregion
+        #endregion
 
+        public static string Donustur(string metin)
+        {
+            char[] turkceKrk = { 'ç', 'Ç', 'ş', 'Ş', 'ı', 'İ', 'ğ', 'Ğ', 'ü', 'Ü', 'ö', 'Ö', ' ' };
+            char[] ingKrk = { 'c', 'C', 's', 'S', 'i', 'I', 'g', 'G', 'u', 'U', 'o', 'O', '_' };
+            for (int i = 0; i < turkceKrk.Length; i++)
+                metin = metin.Replace(turkceKrk[i], ingKrk[i]);
+            return metin;
+        }
+
+        public static bool PalindromMu(string metin)
+        {
+            char[] karakterler = metin.ToCharArray();
+            char[] donusmusKarakterlerDizisi = karakterler.Reverse().ToArray();
+            string donusmusVeri = new string(karakterler);
+            return karakterler == donusmusKarakterlerDizisi;
+        }
 
         static void Main(string[] args)
         {
@@ -225,7 +243,7 @@ namespace Metotlar
             //Console.WriteLine(veri2);
             #endregion
 
-            int a = Topla(5);
+            //bool cevap = PalindromMu("madam");
 
         }
 

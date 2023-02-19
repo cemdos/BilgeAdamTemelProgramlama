@@ -41,8 +41,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Enumlar\Cinsiyet.cs" />
+    <Compile Include="Siniflarim\Insan.cs" />
     <Compile Include="Matematik.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Siniflarim\Ogrenci.cs" />
+    <Compile Include="Siniflarim\Ogretmen.cs" />
+    <Compile Include="Siniflarim\Temp1.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

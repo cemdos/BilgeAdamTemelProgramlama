@@ -44,5 +44,15 @@ namespace BenimKutuphanem.Siniflarim
             Console.WriteLine($"Yas: {Yas}\t Boy: {Boy} \t Cinsiyet: {Cinsiyeti}");
         }
 
+        public virtual void Yaz1()
+        {
+            Console.WriteLine($"Yas: {Yas}\t");
+        }
+
+        protected static void Yaz2()
+        {
+            Console.WriteLine($"Merhaba Dünya");
+        }
+
     }
 }

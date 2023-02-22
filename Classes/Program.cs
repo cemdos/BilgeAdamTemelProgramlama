@@ -11,7 +11,7 @@ using BenimKutuphanem.Enumlar;
 
 namespace Classes
 {
-    internal class Program
+    internal class Program:Ogrenci
     {
         static void Main(string[] args)
         {
@@ -29,7 +29,7 @@ namespace Classes
             Ogretmen d = new Ogretmen();
             Ogrenci e = new Ogrenci("0908199125",11,120);
 
-            Insan i1 = new Ogrenci();
+            //Ogrenci.
         }
     }
 }

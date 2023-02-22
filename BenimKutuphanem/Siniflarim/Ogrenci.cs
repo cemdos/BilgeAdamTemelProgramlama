@@ -17,10 +17,23 @@ namespace BenimKutuphanem.Siniflarim
             OgrenciNo = string.Empty;
         }
 
-        public Ogrenci(string OgrenciNo, int Yas, int Boy):base(Yas, Boy)
+        public Ogrenci(string OgrenciNo, int Yas, int Boy) : base(Yas, Boy)
         {
             AldigiDersler = new List<string>();
             this.OgrenciNo = OgrenciNo;
         }
+
+        public new void Yaz()
+        {
+            base.Yaz();
+            Console.WriteLine($"Öğrenci No:{OgrenciNo}");
+        }
+
+        public override void Yaz1()
+        {
+            Console.WriteLine($"ÖğrenciNo:{OgrenciNo}");
+        }
+
+
     }
 }

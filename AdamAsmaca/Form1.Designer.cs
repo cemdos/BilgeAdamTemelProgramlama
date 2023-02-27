@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.lblSecilenSehir = new System.Windows.Forms.Label();
+            this.pbResim = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pbResim)).BeginInit();
             this.SuspendLayout();
             // 
             // lblSecilenSehir
@@ -41,14 +43,26 @@
             this.lblSecilenSehir.TabIndex = 0;
             this.lblSecilenSehir.Text = "label1";
             // 
+            // pbResim
+            // 
+            this.pbResim.Location = new System.Drawing.Point(433, 0);
+            this.pbResim.Name = "pbResim";
+            this.pbResim.Size = new System.Drawing.Size(367, 450);
+            this.pbResim.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbResim.TabIndex = 1;
+            this.pbResim.TabStop = false;
+            // 
             // FormAnasayfa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.pbResim);
             this.Controls.Add(this.lblSecilenSehir);
             this.Name = "FormAnasayfa";
             this.Text = "Form Adam Asmaca";
+            ((System.ComponentModel.ISupportInitialize)(this.pbResim)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -57,6 +71,7 @@
         #endregion
 
         private System.Windows.Forms.Label lblSecilenSehir;
+        private System.Windows.Forms.PictureBox pbResim;
     }
 }
 

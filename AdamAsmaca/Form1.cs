@@ -24,8 +24,8 @@ namespace AdamAsmaca
 
             for (int i = 0; i < Butonlar.Length; i++)
             {
-                Butonlar[i].Click += HarfeBasildiginda;
-                Butonlar[i].KeyDown += HarfeBasildiginda;
+                Butonlar[i].Click += HarfMouseTik;
+                Butonlar[i].KeyDown += HarfKlavyeKeyDown;
             }
 
 
@@ -70,19 +70,15 @@ Devam Etmek ister misiniz?",
                         );
             if (cevap == DialogResult.Yes)
             {
-                Puan += 100; 
+                Puan += 100;
                 YeniOyun();
             }
             else
                 Application.Exit();
         }
 
-        private void HarfeBasildiginda(object sender, EventArgs e)
+        private void HarfKontrol(Button buton, char basilanHarf)
         {
-            var buton = ((Button)sender);
-            //char basilanHarf = buton.Text[0];
-            char basilanHarf = (char)((KeyEventArgs)e).KeyValue;
-
             string secilenSehir = AdamAsmacaMetotlari.SecilenSehir;
             string ekranMetni = AdamAsmacaMetotlari.EkranMetni;
 
@@ -112,12 +108,52 @@ Devam Etmek ister misiniz?",
                 buton.ForeColor = Color.White;
                 Hak--;
                 pbResim.Image = Resimler[Hak];
-                Puan -= 100f/Resimler.Length;
+                Puan -= 100f / Resimler.Length;
 
                 if (Hak == 0)
                     MesajVer(false);
 
             }
+        }
+
+        private void HarfMouseTik(object sender, EventArgs e)
+        {
+            var buton = ((Button)sender);
+            char basilanHarf = buton.Text[0];
+            //char basilanHarf = (char)((KeyEventArgs)e).KeyValue;
+            HarfKontrol(buton, basilanHarf);
+        }
+
+        private void HarfKlavyeKeyDown(object sender, EventArgs e)
+        {
+            Button buton = null;
+            Dictionary<Keys, char> turkceTuslar = new Dictionary<Keys, char>();
+            turkceTuslar.Add(Keys.Oem4, 'Ğ');
+            turkceTuslar.Add(Keys.Oem1, 'Ş');
+
+            char basilanHarf = (char)(((KeyEventArgs)e).KeyData);
+
+            if(basilanHarf < 'A' || basilanHarf > 'Z')
+            {
+                Keys basilanTus = ((KeyEventArgs)e).KeyCode;
+                bool cevrildimi = turkceTuslar.TryGetValue(basilanTus,out basilanHarf);
+                if( !cevrildimi ) {
+                    return;
+                }
+            }
+
+            buton = Butonlar.Where(x => x.Text == basilanHarf.ToString()).FirstOrDefault();
+
+            //foreach (var item in Butonlar)
+            //{
+            //    if (basilanHarf.ToString() == item.Text)
+            //    {
+            //        buton = item;
+            //        break;
+            //    }
+            //}
+
+            HarfKontrol(buton, basilanHarf);
         }
     }
 }

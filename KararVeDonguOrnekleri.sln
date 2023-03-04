@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IlkFormUygulamam", "IlkForm
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdamAsmaca", "AdamAsmaca\AdamAsmaca.csproj", "{08FC7D16-4896-4A82-9A73-ABCFAA0FB695}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SayiTahminOyunu", "SayiTahminOyunu\SayiTahminOyunu.csproj", "{C7F68FD9-404C-4BF7-AAFC-F8A50F0C8D38}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{08FC7D16-4896-4A82-9A73-ABCFAA0FB695}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{08FC7D16-4896-4A82-9A73-ABCFAA0FB695}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{08FC7D16-4896-4A82-9A73-ABCFAA0FB695}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C7F68FD9-404C-4BF7-AAFC-F8A50F0C8D38}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7F68FD9-404C-4BF7-AAFC-F8A50F0C8D38}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7F68FD9-404C-4BF7-AAFC-F8A50F0C8D38}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7F68FD9-404C-4BF7-AAFC-F8A50F0C8D38}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -30,6 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.btnKuponUret = new System.Windows.Forms.Button();
             this.imageListIcons = new System.Windows.Forms.ImageList(this.components);
             this.nudKuponSayisi = new System.Windows.Forms.NumericUpDown();
@@ -46,7 +49,10 @@
             this.lbl2Bilen = new System.Windows.Forms.Label();
             this.lbl0Bilen = new System.Windows.Forms.Label();
             this.lblCekilisSonucu = new System.Windows.Forms.Label();
+            this.chartPie = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.lblSizinKuponSonuc = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.nudKuponSayisi)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartPie)).BeginInit();
             this.SuspendLayout();
             // 
             // btnKuponUret
@@ -240,11 +246,42 @@
             this.lblCekilisSonucu.TabIndex = 14;
             this.lblCekilisSonucu.Text = "Çekiliş Sonucu";
             // 
+            // chartPie
+            // 
+            chartArea1.Name = "ChartArea1";
+            this.chartPie.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chartPie.Legends.Add(legend1);
+            this.chartPie.Location = new System.Drawing.Point(590, 99);
+            this.chartPie.Name = "chartPie";
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chartPie.Series.Add(series1);
+            this.chartPie.Size = new System.Drawing.Size(453, 300);
+            this.chartPie.TabIndex = 15;
+            this.chartPie.Text = "chart1";
+            // 
+            // lblSizinKuponSonuc
+            // 
+            this.lblSizinKuponSonuc.AutoSize = true;
+            this.lblSizinKuponSonuc.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblSizinKuponSonuc.ForeColor = System.Drawing.Color.Maroon;
+            this.lblSizinKuponSonuc.Location = new System.Drawing.Point(291, 303);
+            this.lblSizinKuponSonuc.Name = "lblSizinKuponSonuc";
+            this.lblSizinKuponSonuc.Size = new System.Drawing.Size(243, 18);
+            this.lblSizinKuponSonuc.TabIndex = 16;
+            this.lblSizinKuponSonuc.Text = "Sizin Kuponunuzun Sonucu";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1067, 460);
+            this.Controls.Add(this.lblSizinKuponSonuc);
+            this.Controls.Add(this.chartPie);
             this.Controls.Add(this.lblCekilisSonucu);
             this.Controls.Add(this.lbl0Bilen);
             this.Controls.Add(this.lbl1Bilen);
@@ -265,6 +302,7 @@
             this.Name = "Form1";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.nudKuponSayisi)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartPie)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -288,6 +326,8 @@
         private System.Windows.Forms.Label lbl2Bilen;
         private System.Windows.Forms.Label lbl0Bilen;
         private System.Windows.Forms.Label lblCekilisSonucu;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartPie;
+        private System.Windows.Forms.Label lblSizinKuponSonuc;
     }
 }
 

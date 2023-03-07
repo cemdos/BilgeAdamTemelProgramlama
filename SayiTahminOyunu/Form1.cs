@@ -19,7 +19,7 @@ namespace SayiTahminOyunu
             InitializeComponent();
         }
 
-        public Kupon[] KuponListesi { get; set; }
+        public List<Kupon> KuponListesi { get; set; }
         public Kupon CekilisSonucu { get; set; }
 
         private void btnKuponUret_Click(object sender, EventArgs e)
@@ -28,7 +28,7 @@ namespace SayiTahminOyunu
             lbKuponListesi.Items.Clear();
             KuponListesi = CekilisIslemleri.KuponUret((int)nudKuponSayisi.Value);
             //foreach (byte[] item in KuponListesi)
-            for (int i = 0; i < KuponListesi.Length; i++)
+            for (int i = 0; i < KuponListesi.Count; i++)
             {
                 lbKuponListesi.Items.Add($"{i + 1} - {KuponListesi[i].KuponString}");
                 pbZaman.Value = i + 1;
@@ -68,17 +68,40 @@ namespace SayiTahminOyunu
                 return false;
             }
 
-            if(KuponListesi == null || KuponListesi.Length == 0)
+            if(KuponListesi == null || KuponListesi.Count == 0)
             {
                 MessageBox.Show("Kupon listesi oluşturmadan çekiliş yapılamaz", "HATA", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
+
+            var sayilar = FullTrim(deger).Split(' ');
+            foreach (var item in sayilar)
+            {
+                if(sayilar.Count(x => x.PadLeft(2,'0') == item.PadLeft(2,'0')) > 1)
+                {
+                    MessageBox.Show("Kupon içerisinde tekrar eden sayılar mevcut kontrol ediniz","Hata",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                    return false;
+                }          
+            }
+            #region 1. Yöntem
+            Kupon benimKupon = new Kupon();
+            benimKupon.Veriler = sayilar.Select(x => byte.Parse(x)).ToArray();
+            Array.Sort(benimKupon.Veriler);
+            KuponListesi.Add(benimKupon);
+            #endregion
+            #region 2. Yöntem
+            //KuponListesi.Add(new Kupon()
+            //{
+            //    Veriler = sayilar.Select(x => byte.Parse(x)).ToArray()
+            //});
+            #endregion
 
             return true;
         }
 
         void CekilisYap()
         {
+            pbZaman.Value = 0;
             CekilisSonucu = CekilisIslemleri.KuponUret(1)[0];
             lblCekilisSonucu.Text = "Çekiliş Sonucu\n" + CekilisSonucu.KuponString;
             var cekilisSonucDurum = CekilisIslemleri.CekilisSonucuHesapla(KuponListesi, CekilisSonucu);
@@ -90,6 +113,8 @@ namespace SayiTahminOyunu
             lbl5Bilen.Text = $"5 Bilen Sayısı : {cekilisSonucDurum[5]}";
             lbl6Bilen.Text = $"6 Bilen Sayısı : {cekilisSonucDurum[6]}";
 
+            GrafigiYukle(cekilisSonucDurum);
+
             lbKuponListesi.Items.Clear();
             var siraliBilenler = KuponListesi.OrderByDescending(x => x.KacBildi).ToArray();
             for (int i = 0; i < siraliBilenler.Length; i++)
@@ -97,6 +122,15 @@ namespace SayiTahminOyunu
                 lbKuponListesi.Items.Add($"{i + 1} - {siraliBilenler[i].KuponString} - {siraliBilenler[i].KacBildi} tane bildi");
                 pbZaman.Value = i + 1;
             }
+
+            lblSizinKuponSonuc.Text = $"Sizin Kuponunuzun Sonucu\n{KuponListesi.Last().KacBildi} tane bildiniz";
+        }
+
+        void GrafigiYukle(int[] cekilisSonucu)
+        {
+            chartPie.Series[0].Points.Clear();
+            for (int i = 0; i < cekilisSonucu.Length; i++)
+                chartPie.Series[0].Points.AddXY(i, cekilisSonucu[i]);
         }
     }
 }

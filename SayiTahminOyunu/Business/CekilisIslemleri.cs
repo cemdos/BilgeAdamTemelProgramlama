@@ -29,20 +29,22 @@ namespace SayiTahminOyunu.Business
             return sayiListesi;
         }
 
-        public static Kupon[] KuponUret(int kuponAdedi)
+        public static List<Kupon> KuponUret(int kuponAdedi)
         {
             Random rnd = new Random();
-            Kupon[] kuponlar = new Kupon[kuponAdedi];
+            List<Kupon> kuponlar = new List<Kupon>();
+            kuponAdedi = kuponAdedi == 1 ? 1 : (kuponAdedi - 1);
             for (int i = 0; i < kuponAdedi; i++)
             {
-                kuponlar[i] = new Kupon();
-                kuponlar[i].Veriler = RastgeleSayiUret(rnd);
+                Kupon yeniKupon = new Kupon();
+                yeniKupon.Veriler = RastgeleSayiUret(rnd);
+                kuponlar.Add(yeniKupon);
             }
 
             return kuponlar;
         }
 
-        public static int[] CekilisSonucuHesapla(Kupon[] kuponListesi, Kupon cekilisSonucu)
+        public static int[] CekilisSonucuHesapla(List<Kupon> kuponListesi, Kupon cekilisSonucu)
         {
             int[] bilenler = new int[7];
             foreach (Kupon kupon in kuponListesi)

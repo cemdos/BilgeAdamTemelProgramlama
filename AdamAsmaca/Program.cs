@@ -16,7 +16,7 @@ namespace AdamAsmaca
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormAnasayfa());
+            Application.Run(new FormLogin());
         }
     }
 }

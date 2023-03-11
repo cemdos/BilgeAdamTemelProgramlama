@@ -155,5 +155,12 @@ Devam Etmek ister misiniz?",
 
             HarfKontrol(buton, basilanHarf);
         }
+
+        private void FormAnasayfa_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            string cevap = MessageBox.Show("Form kapatılsın mi?", "Soru", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2).ToString();
+            if (cevap == "No")
+                e.Cancel = true;
+        }
     }
 }

@@ -62,6 +62,7 @@
             this.Controls.Add(this.lblSecilenSehir);
             this.Name = "FormAnasayfa";
             this.Text = "Form Adam Asmaca";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormAnasayfa_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.pbResim)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

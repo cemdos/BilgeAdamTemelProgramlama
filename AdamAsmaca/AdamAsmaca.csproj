@@ -58,7 +58,15 @@
     <Compile Include="FormLogin.Designer.cs">
       <DependentUpon>FormLogin.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormPuanDurumu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormPuanDurumu.Designer.cs">
+      <DependentUpon>FormPuanDurumu.cs</DependentUpon>
+    </Compile>
     <Compile Include="Isler\AdamAsmacaMetotlari.cs" />
+    <Compile Include="Isler\Ortak.cs" />
+    <Compile Include="Model\Kullanici.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
@@ -66,6 +74,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormLogin.resx">
       <DependentUpon>FormLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormPuanDurumu.resx">
+      <DependentUpon>FormPuanDurumu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -22,6 +22,8 @@ namespace AdamAsmaca
         {
             InitializeComponent();
 
+            this.Text = $"Hoşgeldiniz {Ortak.AktifKullanici.KullaniciAdi}";
+
             for (int i = 0; i < Butonlar.Length; i++)
             {
                 Butonlar[i].Click += HarfMouseTik;
@@ -58,11 +60,22 @@ namespace AdamAsmaca
 
         void MesajVer(bool kazanildimi)
         {
-            string metin = kazanildimi ? "Tebrikler Kazandınız" : "Oyun Bitti Kaybettiniz";
-            var cevap = MessageBox.Show($@"{metin} 
-Aranan Şehir : {AdamAsmacaMetotlari.SecilenSehir}
-Puan : {Math.Ceiling(Puan)} 
-Devam Etmek ister misiniz?",
+            string metin;
+            if (kazanildimi)
+            {
+                Ortak.AktifKullanici.KazandigiOyunSayisi++;
+                metin = "Tebrikler Kazandınız";
+            }
+            else
+            {
+                Ortak.AktifKullanici.KaybettigiOyunSayisi++;
+                metin = "Oyun Bitti Kaybettiniz";
+            }
+
+            var cevap = MessageBox.Show($@"{metin}"
+                        +$"Aranan Şehir : {AdamAsmacaMetotlari.SecilenSehir}\n"
+                        +$"Puan : {Math.Ceiling(Puan)}\n"
+                        +$"Devam Etmek ister misiniz?",
                         "Oyun Durumu",
                         MessageBoxButtons.YesNo,
                         MessageBoxIcon.Question,
@@ -74,7 +87,8 @@ Devam Etmek ister misiniz?",
                 YeniOyun();
             }
             else
-                Application.Exit();
+                this.Close();
+
         }
 
         private void HarfKontrol(Button buton, char basilanHarf)
@@ -133,11 +147,12 @@ Devam Etmek ister misiniz?",
 
             char basilanHarf = (char)(((KeyEventArgs)e).KeyData);
 
-            if(basilanHarf < 'A' || basilanHarf > 'Z')
+            if (basilanHarf < 'A' || basilanHarf > 'Z')
             {
                 Keys basilanTus = ((KeyEventArgs)e).KeyCode;
-                bool cevrildimi = turkceTuslar.TryGetValue(basilanTus,out basilanHarf);
-                if( !cevrildimi ) {
+                bool cevrildimi = turkceTuslar.TryGetValue(basilanTus, out basilanHarf);
+                if (!cevrildimi)
+                {
                     return;
                 }
             }
@@ -161,6 +176,14 @@ Devam Etmek ister misiniz?",
             string cevap = MessageBox.Show("Form kapatılsın mi?", "Soru", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2).ToString();
             if (cevap == "No")
                 e.Cancel = true;
+
+            Ortak.AktifKullanici.Puan += (uint)Math.Ceiling(Puan) - 100;
+        }
+
+        private void tsmiPuanDurumu_Click(object sender, EventArgs e)
+        {
+            FormPuanDurumu frm = new FormPuanDurumu();
+            frm.ShowDialog();
         }
     }
 }

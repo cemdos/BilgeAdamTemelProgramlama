@@ -1,4 +1,6 @@
-﻿using System;
+﻿using AdamAsmaca.Isler;
+using AdamAsmaca.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,10 +17,23 @@ namespace AdamAsmaca
         public FormLogin()
         {
             InitializeComponent();
+            #if DEBUG
+                txtKullaniciAdi.Text = "cemdos";
+                txtSifre.Text = "1234";
+            #endif
         }
 
         private void btnGirisYap_Click(object sender, EventArgs e)
         {
+            Kullanici aktifKullanici = Ortak.Kullanicilar.Find(x => x.KullaniciAdi == txtKullaniciAdi.Text &&
+                                                                    x.Sifre == txtSifre.Text);
+            if (aktifKullanici == null)
+            {
+                MessageBox.Show("KullanıcıAdı yad şifre hatalı", "HATA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            Ortak.AktifKullanici = aktifKullanici;
             FormAnasayfa frm = new FormAnasayfa();
             this.Hide();
             frm.ShowDialog();

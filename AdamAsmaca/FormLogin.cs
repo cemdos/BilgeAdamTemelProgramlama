@@ -39,5 +39,11 @@ namespace AdamAsmaca
             frm.ShowDialog();
             this.Show();
         }
+
+        private void llYeniUye_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            FormYeniUye frm = new FormYeniUye();
+            frm.ShowDialog();
+        }
     }
 }

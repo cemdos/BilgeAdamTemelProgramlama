@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{08FC7D16-4896-4A82-9A73-ABCFAA0FB695}</ProjectGuid>
+    <ProjectGuid>{2B89C821-CB4B-4430-AA02-DA5B3A1D4BB6}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>AdamAsmaca</RootNamespace>
-    <AssemblyName>AdamAsmaca</AssemblyName>
+    <RootNamespace>DxBall</RootNamespace>
+    <AssemblyName>DxBall</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -52,40 +52,10 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormLogin.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormLogin.Designer.cs">
-      <DependentUpon>FormLogin.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormPuanDurumu.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormPuanDurumu.Designer.cs">
-      <DependentUpon>FormPuanDurumu.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormYeniUye.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormYeniUye.Designer.cs">
-      <DependentUpon>FormYeniUye.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Isler\AdamAsmacaMetotlari.cs" />
-    <Compile Include="Isler\Ortak.cs" />
-    <Compile Include="Model\Kullanici.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormLogin.resx">
-      <DependentUpon>FormLogin.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormPuanDurumu.resx">
-      <DependentUpon>FormPuanDurumu.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormYeniUye.resx">
-      <DependentUpon>FormYeniUye.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -95,7 +65,6 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -109,30 +78,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\8.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\3.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\4.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\5.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\6.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\7.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,5 +1,8 @@
-﻿using System;
+﻿using AdamAsmaca.Model;
+using System;
+using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace AdamAsmaca.Isler
@@ -43,7 +46,7 @@ namespace AdamAsmaca.Isler
         {
             string boslukluMetin = "";
             for (int i = 0; i < metin.Length; i++)
-                boslukluMetin += metin[i]+ " ";
+                boslukluMetin += metin[i] + " ";
             return boslukluMetin;
         }
 
@@ -73,6 +76,27 @@ namespace AdamAsmaca.Isler
 
             }
             return btnHarfler;
+        }
+
+        private static void YeniUyeKontrol(Kullanici model)
+        {
+            Kullanici aranacakKullanici = Ortak.Kullanicilar.Find(x => x.KullaniciAdi == model.KullaniciAdi);
+            if (aranacakKullanici != null)
+                throw new Exception("bu kullanıcı sistemde mevcut");
+
+            bool kucukKarakterVarmi = model.Sifre.ToList().Count(x => x >= 'a' && x <= 'z') >= 2;
+            if (!kucukKarakterVarmi)
+                throw new Exception("Sifre içerisinde en az 2 kücük harf olmak durumunda");
+
+            bool buyukKarakterVarmi = model.Sifre.ToList().Count(x => x >= 'A' && x <= 'Z') >= 2;
+            if (!buyukKarakterVarmi)
+                throw new Exception("Sifre içerisinde en az 2 büyük harf olmak durumunda");
+        }
+
+        public static void YeniUyeKaydet(Kullanici model)
+        {
+            YeniUyeKontrol(model);
+            Ortak.Kullanicilar.Add(model);
         }
     }
 }

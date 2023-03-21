@@ -36,6 +36,7 @@ namespace DxBall.Model
             this.Size = new Size(106, 19);
             this.TabIndex = 0;
             this.TabStop = false;
+            this.Name = "Tabla";
             BulunduguForm.Controls.Add(this);
         }
     }

@@ -15,13 +15,16 @@ namespace DxBall
     {
         private Tabla tabla { get; set; }
         private Top top { get; set; }
+        private List<Tugla> tuglalar { get; set; }
 
         public Form1()
         {
             InitializeComponent();
             tabla = new Tabla(this);
+            tuglalar = Tugla.TuglaGetir(50, this);
+            foreach (var tugla in tuglalar)
+                this.Controls.Add(tugla);
             top = new Top(this);
-
 
         }
 

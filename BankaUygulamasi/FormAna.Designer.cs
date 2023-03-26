@@ -30,16 +30,18 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabHesaplar = new System.Windows.Forms.TabPage();
+            this.lblKarsilama = new System.Windows.Forms.Label();
             this.tabOdemeler = new System.Windows.Forms.TabPage();
             this.tabParaTransfer = new System.Windows.Forms.TabPage();
             this.tabProfil = new System.Windows.Forms.TabPage();
             this.tabRaporlar = new System.Windows.Forms.TabPage();
-            this.tabPersonel = new System.Windows.Forms.TabPage();
             this.button1 = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
+            this.tabPersonel = new System.Windows.Forms.TabPage();
+            this.dgvMusteriHesaplari = new System.Windows.Forms.DataGridView();
             this.tabControl1.SuspendLayout();
             this.tabHesaplar.SuspendLayout();
             this.tabRaporlar.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMusteriHesaplari)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -59,7 +61,8 @@
             // 
             // tabHesaplar
             // 
-            this.tabHesaplar.Controls.Add(this.label1);
+            this.tabHesaplar.Controls.Add(this.dgvMusteriHesaplari);
+            this.tabHesaplar.Controls.Add(this.lblKarsilama);
             this.tabHesaplar.Location = new System.Drawing.Point(4, 22);
             this.tabHesaplar.Name = "tabHesaplar";
             this.tabHesaplar.Padding = new System.Windows.Forms.Padding(3);
@@ -67,6 +70,16 @@
             this.tabHesaplar.TabIndex = 0;
             this.tabHesaplar.Text = "HESAPLAR";
             this.tabHesaplar.UseVisualStyleBackColor = true;
+            // 
+            // lblKarsilama
+            // 
+            this.lblKarsilama.AutoSize = true;
+            this.lblKarsilama.Font = new System.Drawing.Font("Verdana", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblKarsilama.Location = new System.Drawing.Point(154, 19);
+            this.lblKarsilama.Name = "lblKarsilama";
+            this.lblKarsilama.Size = new System.Drawing.Size(137, 42);
+            this.lblKarsilama.TabIndex = 0;
+            this.lblKarsilama.Text = "label1";
             // 
             // tabOdemeler
             // 
@@ -108,15 +121,6 @@
             this.tabRaporlar.Text = "RAPORLAR";
             this.tabRaporlar.UseVisualStyleBackColor = true;
             // 
-            // tabPersonel
-            // 
-            this.tabPersonel.Location = new System.Drawing.Point(4, 22);
-            this.tabPersonel.Name = "tabPersonel";
-            this.tabPersonel.Size = new System.Drawing.Size(792, 424);
-            this.tabPersonel.TabIndex = 5;
-            this.tabPersonel.Text = "PERSONEL";
-            this.tabPersonel.UseVisualStyleBackColor = true;
-            // 
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(147, 138);
@@ -126,15 +130,27 @@
             this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = true;
             // 
-            // label1
+            // tabPersonel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Verdana", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label1.Location = new System.Drawing.Point(324, 22);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(137, 42);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "label1";
+            this.tabPersonel.Location = new System.Drawing.Point(4, 22);
+            this.tabPersonel.Name = "tabPersonel";
+            this.tabPersonel.Size = new System.Drawing.Size(792, 424);
+            this.tabPersonel.TabIndex = 5;
+            this.tabPersonel.Text = "PERSONEL";
+            this.tabPersonel.UseVisualStyleBackColor = true;
+            // 
+            // dgvMusteriHesaplari
+            // 
+            this.dgvMusteriHesaplari.AllowUserToAddRows = false;
+            this.dgvMusteriHesaplari.AllowUserToDeleteRows = false;
+            this.dgvMusteriHesaplari.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvMusteriHesaplari.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvMusteriHesaplari.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.dgvMusteriHesaplari.Location = new System.Drawing.Point(3, 93);
+            this.dgvMusteriHesaplari.Name = "dgvMusteriHesaplari";
+            this.dgvMusteriHesaplari.ReadOnly = true;
+            this.dgvMusteriHesaplari.Size = new System.Drawing.Size(786, 328);
+            this.dgvMusteriHesaplari.TabIndex = 1;
             // 
             // FormAna
             // 
@@ -144,10 +160,12 @@
             this.Controls.Add(this.tabControl1);
             this.Name = "FormAna";
             this.Text = "FormAna";
+            this.Load += new System.EventHandler(this.FormAna_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabHesaplar.ResumeLayout(false);
             this.tabHesaplar.PerformLayout();
             this.tabRaporlar.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMusteriHesaplari)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -162,6 +180,7 @@
         private System.Windows.Forms.TabPage tabRaporlar;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TabPage tabPersonel;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblKarsilama;
+        private System.Windows.Forms.DataGridView dgvMusteriHesaplari;
     }
 }

@@ -1,4 +1,5 @@
 ﻿using BankaUygulamasi.Controller;
+using BankaUygulamasi.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,6 +14,8 @@ namespace BankaUygulamasi
 {
     public partial class FormAna : Form
     {
+        private MusteriIslemleri musteriIslemleri { get; set;}
+
         public FormAna()
         {
             InitializeComponent();
@@ -26,6 +29,7 @@ namespace BankaUygulamasi
                 case Enum.Rol.Musteri:
                     tabPersonel.Dispose();
                     tabRaporlar.Dispose();
+                    MusteriIslemleri();
                     break;
                 case Enum.Rol.Personel:
                     tabRaporlar.Dispose();
@@ -40,6 +44,18 @@ namespace BankaUygulamasi
                     tabPersonel.Dispose();
                     break;
             }
+        }
+
+        private void MusteriIslemleri()
+        {
+            musteriIslemleri = new MusteriIslemleri(KullaniciIslemleri.AktifKullanici);
+            var AktifMusteri = musteriIslemleri.AktifMusteri;
+            dgvMusteriHesaplari.DataSource = AktifMusteri.Hesaplar;
+        }
+
+        private void FormAna_Load(object sender, EventArgs e)
+        {
+            lblKarsilama.Text = $"Hoşgeldiniz {KullaniciIslemleri.AktifKullanici.Ad} {KullaniciIslemleri.AktifKullanici.Soyad}";
         }
     }
 }

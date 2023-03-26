@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\MusteriIslemleri.cs" />
     <Compile Include="Controller\KullaniciIslemleri.cs" />
     <Compile Include="Database\Database.cs" />
     <Compile Include="Enum\Cinsiyet.cs" />

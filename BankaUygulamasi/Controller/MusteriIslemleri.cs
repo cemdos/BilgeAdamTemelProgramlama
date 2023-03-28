@@ -15,5 +15,16 @@ namespace BankaUygulamasi.Controller
         {
             AktifMusteri = Database.Database.Musteriler.Find(x => x.Tc == kullanici.Tc);
         }
+
+        public (Musteri gonderilecekMusteri, bool MusteriVarmi) MusteriAra(string HesapNo)
+        {
+            foreach (var item in Database.Database.Musteriler)
+            {
+                var hesap = item.Hesaplar.Find(x => x.HesapNo.ToString() == HesapNo);
+                if (hesap != null)
+                    return (item,true);
+            }
+            return (null,false);
+        }
     }
 }

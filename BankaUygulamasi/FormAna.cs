@@ -1,4 +1,5 @@
 ﻿using BankaUygulamasi.Controller;
+using BankaUygulamasi.Enum;
 using BankaUygulamasi.Model;
 using System;
 using System.Collections.Generic;
@@ -14,13 +15,32 @@ namespace BankaUygulamasi
 {
     public partial class FormAna : Form
     {
-        private MusteriIslemleri musteriIslemleri { get; set;}
+        private MusteriIslemleri musteriIslemleri { get; set; }
 
         public FormAna()
         {
             InitializeComponent();
             KullaniciYetkilerineGoreGoster();
+            OdemeTipiDoldur();
+            YasadigiSehirListesiDoldur();
         }
+
+        private void OdemeTipiDoldur()
+        {
+            var liste = new List<KeyValuePair<int, string>>();
+            liste.Add(new KeyValuePair<int, string>(0, "Seçiniz"));
+            liste.AddRange(Database.Database.OdemeTipListe.ToList());
+            cbOdemeTipi.DataSource = liste;
+        }
+
+        private void YasadigiSehirListesiDoldur()
+        {
+            cbYasadigiSehir.DataSource = Database.Database.Sehirler;
+            cbYasadigiSehir.DisplayMember = "SehirAdi";
+            cbYasadigiSehir.ValueMember = "SehirKodu";
+        }
+
+
 
         private void KullaniciYetkilerineGoreGoster()
         {
@@ -56,6 +76,54 @@ namespace BankaUygulamasi
         private void FormAna_Load(object sender, EventArgs e)
         {
             lblKarsilama.Text = $"Hoşgeldiniz {KullaniciIslemleri.AktifKullanici.Ad} {KullaniciIslemleri.AktifKullanici.Soyad}";
+        }
+
+        private HesapTipi SecilenHesapTipi()
+        {
+            if (radioTL.Checked)
+                return HesapTipi.Tl;
+            else if (radioUSD.Checked)
+                return HesapTipi.Usd;
+            else
+                return HesapTipi.Euro;
+        }
+
+        private void btnGonder_Click(object sender, EventArgs e)
+        {
+            var aktifHesap = musteriIslemleri.AktifMusteri.Hesaplar.Find(x => x.HesapTipi == SecilenHesapTipi());
+            if (aktifHesap.Bakiye < nudMiktar.Value)
+            {
+                MessageBox.Show("Bakiye Yetersiz");
+                return;
+            }
+
+            var gonderilekMusteri = musteriIslemleri.MusteriAra(txtHesapNo.Text).gonderilecekMusteri;
+            var Hesap = gonderilekMusteri.Hesaplar.Find(x => x.HesapNo.ToString() == txtHesapNo.Text);
+            Hesap.Bakiye += nudMiktar.Value;
+            aktifHesap.Bakiye -= nudMiktar.Value;
+            MessageBox.Show("Para Gönderme işlemi Başarılı");
+        }
+
+        private void btnOdemeGonder_Click(object sender, EventArgs e)
+        {
+            var secilenOdemeTipi = (KeyValuePair<int, string>)cbOdemeTipi.SelectedItem;
+            var aktifHesap = musteriIslemleri.AktifMusteri.Hesaplar.Find(x => x.HesapTipi == HesapTipi.Tl);
+            if(aktifHesap.Bakiye< secilenOdemeTipi.Key)
+            {
+                MessageBox.Show("Bakiyeniz Yetersiz");
+                return;
+            }
+
+            aktifHesap.Bakiye -= secilenOdemeTipi.Key;
+            MessageBox.Show("Ödemeniz Gerçekleşti");
+        }
+
+        private void cbYasadigiSehir_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var ilceListesi = Database.Database.Ilceler.Where(x => x.SehirKodu == ((Sehir)cbYasadigiSehir.SelectedItem).SehirKodu).ToList();
+            cbYasadigiIce.DataSource = ilceListesi;
+            cbYasadigiIce.DisplayMember = "Ilceadi";
+            cbYasadigiIce.ValueMember = "Ilceadi";
         }
     }
 }

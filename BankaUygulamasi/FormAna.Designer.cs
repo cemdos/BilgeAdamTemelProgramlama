@@ -30,18 +30,37 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabHesaplar = new System.Windows.Forms.TabPage();
+            this.dgvMusteriHesaplari = new System.Windows.Forms.DataGridView();
             this.lblKarsilama = new System.Windows.Forms.Label();
             this.tabOdemeler = new System.Windows.Forms.TabPage();
+            this.btnOdemeGonder = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.cbOdemeTipi = new System.Windows.Forms.ComboBox();
             this.tabParaTransfer = new System.Windows.Forms.TabPage();
+            this.radioEURO = new System.Windows.Forms.RadioButton();
+            this.radioUSD = new System.Windows.Forms.RadioButton();
+            this.radioTL = new System.Windows.Forms.RadioButton();
+            this.btnGonder = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.nudMiktar = new System.Windows.Forms.NumericUpDown();
+            this.txtHesapNo = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.tabProfil = new System.Windows.Forms.TabPage();
+            this.cbYasadigiIce = new System.Windows.Forms.ComboBox();
+            this.cbYasadigiSehir = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.tabRaporlar = new System.Windows.Forms.TabPage();
             this.button1 = new System.Windows.Forms.Button();
             this.tabPersonel = new System.Windows.Forms.TabPage();
-            this.dgvMusteriHesaplari = new System.Windows.Forms.DataGridView();
             this.tabControl1.SuspendLayout();
             this.tabHesaplar.SuspendLayout();
-            this.tabRaporlar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMusteriHesaplari)).BeginInit();
+            this.tabOdemeler.SuspendLayout();
+            this.tabParaTransfer.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudMiktar)).BeginInit();
+            this.tabProfil.SuspendLayout();
+            this.tabRaporlar.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -71,6 +90,19 @@
             this.tabHesaplar.Text = "HESAPLAR";
             this.tabHesaplar.UseVisualStyleBackColor = true;
             // 
+            // dgvMusteriHesaplari
+            // 
+            this.dgvMusteriHesaplari.AllowUserToAddRows = false;
+            this.dgvMusteriHesaplari.AllowUserToDeleteRows = false;
+            this.dgvMusteriHesaplari.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvMusteriHesaplari.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvMusteriHesaplari.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.dgvMusteriHesaplari.Location = new System.Drawing.Point(3, 93);
+            this.dgvMusteriHesaplari.Name = "dgvMusteriHesaplari";
+            this.dgvMusteriHesaplari.ReadOnly = true;
+            this.dgvMusteriHesaplari.Size = new System.Drawing.Size(786, 328);
+            this.dgvMusteriHesaplari.TabIndex = 1;
+            // 
             // lblKarsilama
             // 
             this.lblKarsilama.AutoSize = true;
@@ -83,6 +115,9 @@
             // 
             // tabOdemeler
             // 
+            this.tabOdemeler.Controls.Add(this.btnOdemeGonder);
+            this.tabOdemeler.Controls.Add(this.label3);
+            this.tabOdemeler.Controls.Add(this.cbOdemeTipi);
             this.tabOdemeler.Location = new System.Drawing.Point(4, 22);
             this.tabOdemeler.Name = "tabOdemeler";
             this.tabOdemeler.Padding = new System.Windows.Forms.Padding(3);
@@ -91,8 +126,43 @@
             this.tabOdemeler.Text = "ÖDEMELER";
             this.tabOdemeler.UseVisualStyleBackColor = true;
             // 
+            // btnOdemeGonder
+            // 
+            this.btnOdemeGonder.Location = new System.Drawing.Point(275, 55);
+            this.btnOdemeGonder.Name = "btnOdemeGonder";
+            this.btnOdemeGonder.Size = new System.Drawing.Size(75, 23);
+            this.btnOdemeGonder.TabIndex = 2;
+            this.btnOdemeGonder.Text = "Gönder";
+            this.btnOdemeGonder.UseVisualStyleBackColor = true;
+            this.btnOdemeGonder.Click += new System.EventHandler(this.btnOdemeGonder_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(23, 21);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(61, 13);
+            this.label3.TabIndex = 1;
+            this.label3.Text = "Ödeme Tipi";
+            // 
+            // cbOdemeTipi
+            // 
+            this.cbOdemeTipi.FormattingEnabled = true;
+            this.cbOdemeTipi.Location = new System.Drawing.Point(100, 18);
+            this.cbOdemeTipi.Name = "cbOdemeTipi";
+            this.cbOdemeTipi.Size = new System.Drawing.Size(250, 21);
+            this.cbOdemeTipi.TabIndex = 0;
+            // 
             // tabParaTransfer
             // 
+            this.tabParaTransfer.Controls.Add(this.radioEURO);
+            this.tabParaTransfer.Controls.Add(this.radioUSD);
+            this.tabParaTransfer.Controls.Add(this.radioTL);
+            this.tabParaTransfer.Controls.Add(this.btnGonder);
+            this.tabParaTransfer.Controls.Add(this.label2);
+            this.tabParaTransfer.Controls.Add(this.nudMiktar);
+            this.tabParaTransfer.Controls.Add(this.txtHesapNo);
+            this.tabParaTransfer.Controls.Add(this.label1);
             this.tabParaTransfer.Location = new System.Drawing.Point(4, 22);
             this.tabParaTransfer.Name = "tabParaTransfer";
             this.tabParaTransfer.Padding = new System.Windows.Forms.Padding(3);
@@ -101,8 +171,91 @@
             this.tabParaTransfer.Text = "PARA TRANSFERİ";
             this.tabParaTransfer.UseVisualStyleBackColor = true;
             // 
+            // radioEURO
+            // 
+            this.radioEURO.AutoSize = true;
+            this.radioEURO.Location = new System.Drawing.Point(250, 76);
+            this.radioEURO.Name = "radioEURO";
+            this.radioEURO.Size = new System.Drawing.Size(56, 17);
+            this.radioEURO.TabIndex = 7;
+            this.radioEURO.Text = "EURO";
+            this.radioEURO.UseVisualStyleBackColor = true;
+            // 
+            // radioUSD
+            // 
+            this.radioUSD.AutoSize = true;
+            this.radioUSD.Location = new System.Drawing.Point(196, 76);
+            this.radioUSD.Name = "radioUSD";
+            this.radioUSD.Size = new System.Drawing.Size(48, 17);
+            this.radioUSD.TabIndex = 6;
+            this.radioUSD.Text = "USD";
+            this.radioUSD.UseVisualStyleBackColor = true;
+            // 
+            // radioTL
+            // 
+            this.radioTL.AutoSize = true;
+            this.radioTL.Checked = true;
+            this.radioTL.Location = new System.Drawing.Point(152, 76);
+            this.radioTL.Name = "radioTL";
+            this.radioTL.Size = new System.Drawing.Size(38, 17);
+            this.radioTL.TabIndex = 5;
+            this.radioTL.TabStop = true;
+            this.radioTL.Text = "TL";
+            this.radioTL.UseVisualStyleBackColor = true;
+            // 
+            // btnGonder
+            // 
+            this.btnGonder.Location = new System.Drawing.Point(419, 76);
+            this.btnGonder.Name = "btnGonder";
+            this.btnGonder.Size = new System.Drawing.Size(75, 23);
+            this.btnGonder.TabIndex = 4;
+            this.btnGonder.Text = "Gönder";
+            this.btnGonder.UseVisualStyleBackColor = true;
+            this.btnGonder.Click += new System.EventHandler(this.btnGonder_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(89, 52);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(36, 13);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "Miktar";
+            // 
+            // nudMiktar
+            // 
+            this.nudMiktar.Location = new System.Drawing.Point(141, 50);
+            this.nudMiktar.Maximum = new decimal(new int[] {
+            99999,
+            0,
+            0,
+            0});
+            this.nudMiktar.Name = "nudMiktar";
+            this.nudMiktar.Size = new System.Drawing.Size(353, 20);
+            this.nudMiktar.TabIndex = 2;
+            // 
+            // txtHesapNo
+            // 
+            this.txtHesapNo.Location = new System.Drawing.Point(141, 24);
+            this.txtHesapNo.Name = "txtHesapNo";
+            this.txtHesapNo.Size = new System.Drawing.Size(353, 20);
+            this.txtHesapNo.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(32, 27);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(103, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Kullanıcı Hesap No :";
+            // 
             // tabProfil
             // 
+            this.tabProfil.Controls.Add(this.cbYasadigiIce);
+            this.tabProfil.Controls.Add(this.cbYasadigiSehir);
+            this.tabProfil.Controls.Add(this.label5);
+            this.tabProfil.Controls.Add(this.label4);
             this.tabProfil.Location = new System.Drawing.Point(4, 22);
             this.tabProfil.Name = "tabProfil";
             this.tabProfil.Padding = new System.Windows.Forms.Padding(3);
@@ -110,6 +263,43 @@
             this.tabProfil.TabIndex = 3;
             this.tabProfil.Text = "PROFİL AYARLARI";
             this.tabProfil.UseVisualStyleBackColor = true;
+            // 
+            // cbYasadigiIce
+            // 
+            this.cbYasadigiIce.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbYasadigiIce.FormattingEnabled = true;
+            this.cbYasadigiIce.Location = new System.Drawing.Point(109, 56);
+            this.cbYasadigiIce.Name = "cbYasadigiIce";
+            this.cbYasadigiIce.Size = new System.Drawing.Size(198, 21);
+            this.cbYasadigiIce.TabIndex = 3;
+            // 
+            // cbYasadigiSehir
+            // 
+            this.cbYasadigiSehir.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbYasadigiSehir.FormattingEnabled = true;
+            this.cbYasadigiSehir.Location = new System.Drawing.Point(109, 28);
+            this.cbYasadigiSehir.Name = "cbYasadigiSehir";
+            this.cbYasadigiSehir.Size = new System.Drawing.Size(198, 21);
+            this.cbYasadigiSehir.TabIndex = 2;
+            this.cbYasadigiSehir.SelectedIndexChanged += new System.EventHandler(this.cbYasadigiSehir_SelectedIndexChanged);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(30, 59);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(67, 13);
+            this.label5.TabIndex = 1;
+            this.label5.Text = "Yaşadığı İlçe";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(30, 31);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(55, 13);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "Yaşadığı İl";
             // 
             // tabRaporlar
             // 
@@ -139,19 +329,6 @@
             this.tabPersonel.Text = "PERSONEL";
             this.tabPersonel.UseVisualStyleBackColor = true;
             // 
-            // dgvMusteriHesaplari
-            // 
-            this.dgvMusteriHesaplari.AllowUserToAddRows = false;
-            this.dgvMusteriHesaplari.AllowUserToDeleteRows = false;
-            this.dgvMusteriHesaplari.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvMusteriHesaplari.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvMusteriHesaplari.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dgvMusteriHesaplari.Location = new System.Drawing.Point(3, 93);
-            this.dgvMusteriHesaplari.Name = "dgvMusteriHesaplari";
-            this.dgvMusteriHesaplari.ReadOnly = true;
-            this.dgvMusteriHesaplari.Size = new System.Drawing.Size(786, 328);
-            this.dgvMusteriHesaplari.TabIndex = 1;
-            // 
             // FormAna
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -164,8 +341,15 @@
             this.tabControl1.ResumeLayout(false);
             this.tabHesaplar.ResumeLayout(false);
             this.tabHesaplar.PerformLayout();
-            this.tabRaporlar.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvMusteriHesaplari)).EndInit();
+            this.tabOdemeler.ResumeLayout(false);
+            this.tabOdemeler.PerformLayout();
+            this.tabParaTransfer.ResumeLayout(false);
+            this.tabParaTransfer.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudMiktar)).EndInit();
+            this.tabProfil.ResumeLayout(false);
+            this.tabProfil.PerformLayout();
+            this.tabRaporlar.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -182,5 +366,20 @@
         private System.Windows.Forms.TabPage tabPersonel;
         private System.Windows.Forms.Label lblKarsilama;
         private System.Windows.Forms.DataGridView dgvMusteriHesaplari;
+        private System.Windows.Forms.Button btnGonder;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.NumericUpDown nudMiktar;
+        private System.Windows.Forms.TextBox txtHesapNo;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.RadioButton radioEURO;
+        private System.Windows.Forms.RadioButton radioUSD;
+        private System.Windows.Forms.RadioButton radioTL;
+        private System.Windows.Forms.Button btnOdemeGonder;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ComboBox cbOdemeTipi;
+        private System.Windows.Forms.ComboBox cbYasadigiIce;
+        private System.Windows.Forms.ComboBox cbYasadigiSehir;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label4;
     }
 }

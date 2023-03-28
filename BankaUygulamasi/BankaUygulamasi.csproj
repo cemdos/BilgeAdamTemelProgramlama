@@ -70,6 +70,8 @@
     <Compile Include="Model\Kullanici.cs" />
     <Compile Include="Model\Musteri.cs" />
     <Compile Include="Model\Personel.cs" />
+    <Compile Include="Model\Ilce.cs" />
+    <Compile Include="Model\Sehir.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FormAna.resx">

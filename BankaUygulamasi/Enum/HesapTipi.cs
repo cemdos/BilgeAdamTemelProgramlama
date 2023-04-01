@@ -12,6 +12,7 @@ namespace BankaUygulamasi.Enum
         Tl,
         Usd,
         Euro,
-        Altin
+        Altin,
+        VadesizHesap
     }
 }

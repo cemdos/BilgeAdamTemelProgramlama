@@ -1,4 +1,5 @@
-﻿using BankaUygulamasi.Model;
+﻿using BankaUygulamasi.Enum;
+using BankaUygulamasi.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,8 @@ namespace BankaUygulamasi.Controller
     {
         public Musteri AktifMusteri { get; private set; }
 
+        public int MyProperty { get; set; }
+
         public MusteriIslemleri(Kullanici kullanici)
         {
             AktifMusteri = Database.Database.Musteriler.Find(x => x.Tc == kullanici.Tc);
@@ -22,9 +25,15 @@ namespace BankaUygulamasi.Controller
             {
                 var hesap = item.Hesaplar.Find(x => x.HesapNo.ToString() == HesapNo);
                 if (hesap != null)
-                    return (item,true);
+                    return (item, true);
             }
-            return (null,false);
+            return (null, false);
+        }
+
+        public bool MusterideHesapTanimliMi(HesapTipi hesapTipi)
+        {
+            var donenHesap = AktifMusteri.Hesaplar.Find(x => x.HesapTipi == hesapTipi);
+            return donenHesap != null;
         }
     }
 }

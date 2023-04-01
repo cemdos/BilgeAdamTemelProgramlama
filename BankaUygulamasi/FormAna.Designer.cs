@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabHesaplar = new System.Windows.Forms.TabPage();
             this.dgvMusteriHesaplari = new System.Windows.Forms.DataGridView();
@@ -53,6 +54,24 @@
             this.tabRaporlar = new System.Windows.Forms.TabPage();
             this.button1 = new System.Windows.Forms.Button();
             this.tabPersonel = new System.Windows.Forms.TabPage();
+            this.cbHesapTipi = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.btnHesapEkle = new System.Windows.Forms.Button();
+            this.dgvHesaplar = new System.Windows.Forms.DataGridView();
+            this.contextMenuStripDgvHesaplar = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.silToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtAd = new System.Windows.Forms.TextBox();
+            this.txtSoyad = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.rbKadin = new System.Windows.Forms.RadioButton();
+            this.rbErkek = new System.Windows.Forms.RadioButton();
+            this.txtSifre = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.txtEmail = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.btnMusteriKaydet = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabHesaplar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMusteriHesaplari)).BeginInit();
@@ -61,6 +80,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudMiktar)).BeginInit();
             this.tabProfil.SuspendLayout();
             this.tabRaporlar.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvHesaplar)).BeginInit();
+            this.contextMenuStripDgvHesaplar.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -252,6 +273,22 @@
             // 
             // tabProfil
             // 
+            this.tabProfil.Controls.Add(this.btnMusteriKaydet);
+            this.tabProfil.Controls.Add(this.txtEmail);
+            this.tabProfil.Controls.Add(this.label11);
+            this.tabProfil.Controls.Add(this.txtSifre);
+            this.tabProfil.Controls.Add(this.label10);
+            this.tabProfil.Controls.Add(this.rbErkek);
+            this.tabProfil.Controls.Add(this.rbKadin);
+            this.tabProfil.Controls.Add(this.label9);
+            this.tabProfil.Controls.Add(this.txtSoyad);
+            this.tabProfil.Controls.Add(this.label8);
+            this.tabProfil.Controls.Add(this.txtAd);
+            this.tabProfil.Controls.Add(this.label7);
+            this.tabProfil.Controls.Add(this.dgvHesaplar);
+            this.tabProfil.Controls.Add(this.btnHesapEkle);
+            this.tabProfil.Controls.Add(this.label6);
+            this.tabProfil.Controls.Add(this.cbHesapTipi);
             this.tabProfil.Controls.Add(this.cbYasadigiIce);
             this.tabProfil.Controls.Add(this.cbYasadigiSehir);
             this.tabProfil.Controls.Add(this.label5);
@@ -268,7 +305,7 @@
             // 
             this.cbYasadigiIce.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbYasadigiIce.FormattingEnabled = true;
-            this.cbYasadigiIce.Location = new System.Drawing.Point(109, 56);
+            this.cbYasadigiIce.Location = new System.Drawing.Point(104, 193);
             this.cbYasadigiIce.Name = "cbYasadigiIce";
             this.cbYasadigiIce.Size = new System.Drawing.Size(198, 21);
             this.cbYasadigiIce.TabIndex = 3;
@@ -277,7 +314,7 @@
             // 
             this.cbYasadigiSehir.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbYasadigiSehir.FormattingEnabled = true;
-            this.cbYasadigiSehir.Location = new System.Drawing.Point(109, 28);
+            this.cbYasadigiSehir.Location = new System.Drawing.Point(104, 165);
             this.cbYasadigiSehir.Name = "cbYasadigiSehir";
             this.cbYasadigiSehir.Size = new System.Drawing.Size(198, 21);
             this.cbYasadigiSehir.TabIndex = 2;
@@ -286,7 +323,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(30, 59);
+            this.label5.Location = new System.Drawing.Point(25, 196);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(67, 13);
             this.label5.TabIndex = 1;
@@ -295,7 +332,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(30, 31);
+            this.label4.Location = new System.Drawing.Point(37, 168);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(55, 13);
             this.label4.TabIndex = 0;
@@ -329,6 +366,168 @@
             this.tabPersonel.Text = "PERSONEL";
             this.tabPersonel.UseVisualStyleBackColor = true;
             // 
+            // cbHesapTipi
+            // 
+            this.cbHesapTipi.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbHesapTipi.FormattingEnabled = true;
+            this.cbHesapTipi.Location = new System.Drawing.Point(494, 21);
+            this.cbHesapTipi.Name = "cbHesapTipi";
+            this.cbHesapTipi.Size = new System.Drawing.Size(199, 21);
+            this.cbHesapTipi.TabIndex = 4;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(430, 24);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(58, 13);
+            this.label6.TabIndex = 5;
+            this.label6.Text = "Hesap Tipi";
+            // 
+            // btnHesapEkle
+            // 
+            this.btnHesapEkle.Location = new System.Drawing.Point(699, 21);
+            this.btnHesapEkle.Name = "btnHesapEkle";
+            this.btnHesapEkle.Size = new System.Drawing.Size(75, 23);
+            this.btnHesapEkle.TabIndex = 6;
+            this.btnHesapEkle.Text = "Hesap Ekle";
+            this.btnHesapEkle.UseVisualStyleBackColor = true;
+            this.btnHesapEkle.Click += new System.EventHandler(this.btnHesapEkle_Click);
+            // 
+            // dgvHesaplar
+            // 
+            this.dgvHesaplar.AllowUserToAddRows = false;
+            this.dgvHesaplar.AllowUserToDeleteRows = false;
+            this.dgvHesaplar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvHesaplar.ContextMenuStrip = this.contextMenuStripDgvHesaplar;
+            this.dgvHesaplar.Location = new System.Drawing.Point(433, 62);
+            this.dgvHesaplar.Name = "dgvHesaplar";
+            this.dgvHesaplar.ReadOnly = true;
+            this.dgvHesaplar.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvHesaplar.Size = new System.Drawing.Size(341, 328);
+            this.dgvHesaplar.TabIndex = 7;
+            // 
+            // contextMenuStripDgvHesaplar
+            // 
+            this.contextMenuStripDgvHesaplar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.silToolStripMenuItem});
+            this.contextMenuStripDgvHesaplar.Name = "contextMenuStripDgvHesaplar";
+            this.contextMenuStripDgvHesaplar.Size = new System.Drawing.Size(128, 26);
+            // 
+            // silToolStripMenuItem
+            // 
+            this.silToolStripMenuItem.Name = "silToolStripMenuItem";
+            this.silToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
+            this.silToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
+            this.silToolStripMenuItem.Text = "Sil";
+            this.silToolStripMenuItem.Click += new System.EventHandler(this.silToolStripMenuItem_Click);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(67, 31);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(25, 13);
+            this.label7.TabIndex = 8;
+            this.label7.Text = "Adı ";
+            // 
+            // txtAd
+            // 
+            this.txtAd.Location = new System.Drawing.Point(104, 28);
+            this.txtAd.Name = "txtAd";
+            this.txtAd.Size = new System.Drawing.Size(198, 20);
+            this.txtAd.TabIndex = 9;
+            // 
+            // txtSoyad
+            // 
+            this.txtSoyad.Location = new System.Drawing.Point(104, 54);
+            this.txtSoyad.Name = "txtSoyad";
+            this.txtSoyad.Size = new System.Drawing.Size(198, 20);
+            this.txtSoyad.TabIndex = 11;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(55, 57);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(37, 13);
+            this.label8.TabIndex = 10;
+            this.label8.Text = "Soyad";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(49, 86);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(43, 13);
+            this.label9.TabIndex = 12;
+            this.label9.Text = "Cinsiyet";
+            // 
+            // rbKadin
+            // 
+            this.rbKadin.AutoSize = true;
+            this.rbKadin.Checked = true;
+            this.rbKadin.Location = new System.Drawing.Point(104, 86);
+            this.rbKadin.Name = "rbKadin";
+            this.rbKadin.Size = new System.Drawing.Size(52, 17);
+            this.rbKadin.TabIndex = 13;
+            this.rbKadin.TabStop = true;
+            this.rbKadin.Text = "Kadin";
+            this.rbKadin.UseVisualStyleBackColor = true;
+            // 
+            // rbErkek
+            // 
+            this.rbErkek.AutoSize = true;
+            this.rbErkek.Location = new System.Drawing.Point(162, 86);
+            this.rbErkek.Name = "rbErkek";
+            this.rbErkek.Size = new System.Drawing.Size(53, 17);
+            this.rbErkek.TabIndex = 14;
+            this.rbErkek.TabStop = true;
+            this.rbErkek.Text = "Erkek";
+            this.rbErkek.UseVisualStyleBackColor = true;
+            // 
+            // txtSifre
+            // 
+            this.txtSifre.Location = new System.Drawing.Point(104, 109);
+            this.txtSifre.Name = "txtSifre";
+            this.txtSifre.Size = new System.Drawing.Size(198, 20);
+            this.txtSifre.TabIndex = 16;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(64, 112);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(28, 13);
+            this.label10.TabIndex = 15;
+            this.label10.Text = "Şifre";
+            // 
+            // txtEmail
+            // 
+            this.txtEmail.Location = new System.Drawing.Point(104, 135);
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Size = new System.Drawing.Size(198, 20);
+            this.txtEmail.TabIndex = 18;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(34, 138);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(58, 13);
+            this.label11.TabIndex = 17;
+            this.label11.Text = "Mail Adresi";
+            // 
+            // btnMusteriKaydet
+            // 
+            this.btnMusteriKaydet.Location = new System.Drawing.Point(227, 229);
+            this.btnMusteriKaydet.Name = "btnMusteriKaydet";
+            this.btnMusteriKaydet.Size = new System.Drawing.Size(75, 23);
+            this.btnMusteriKaydet.TabIndex = 19;
+            this.btnMusteriKaydet.Text = "Kaydet";
+            this.btnMusteriKaydet.UseVisualStyleBackColor = true;
+            this.btnMusteriKaydet.Click += new System.EventHandler(this.btnMusteriKaydet_Click);
+            // 
             // FormAna
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -350,6 +549,8 @@
             this.tabProfil.ResumeLayout(false);
             this.tabProfil.PerformLayout();
             this.tabRaporlar.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvHesaplar)).EndInit();
+            this.contextMenuStripDgvHesaplar.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -381,5 +582,23 @@
         private System.Windows.Forms.ComboBox cbYasadigiSehir;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.DataGridView dgvHesaplar;
+        private System.Windows.Forms.Button btnHesapEkle;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ComboBox cbHesapTipi;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStripDgvHesaplar;
+        private System.Windows.Forms.ToolStripMenuItem silToolStripMenuItem;
+        private System.Windows.Forms.TextBox txtSoyad;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox txtAd;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.RadioButton rbErkek;
+        private System.Windows.Forms.RadioButton rbKadin;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox txtSifre;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox txtEmail;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Button btnMusteriKaydet;
     }
 }

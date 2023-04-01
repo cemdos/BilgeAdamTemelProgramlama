@@ -23,6 +23,8 @@ namespace BankaUygulamasi
             KullaniciYetkilerineGoreGoster();
             OdemeTipiDoldur();
             YasadigiSehirListesiDoldur();
+            HesaplTipleriDoldur();
+            FormuDoldur();
         }
 
         private void OdemeTipiDoldur()
@@ -40,7 +42,12 @@ namespace BankaUygulamasi
             cbYasadigiSehir.ValueMember = "SehirKodu";
         }
 
-
+        private void HesaplTipleriDoldur()
+        {
+            var data = System.Enum.GetValues(typeof(HesapTipi));
+            cbHesapTipi.DataSource = data;
+            dgvHesaplar.DataSource = musteriIslemleri.AktifMusteri.Hesaplar;
+        }
 
         private void KullaniciYetkilerineGoreGoster()
         {
@@ -120,10 +127,61 @@ namespace BankaUygulamasi
 
         private void cbYasadigiSehir_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var ilceListesi = Database.Database.Ilceler.Where(x => x.SehirKodu == ((Sehir)cbYasadigiSehir.SelectedItem).SehirKodu).ToList();
+            var ilceListesi = Database.Database.Ilceler.Where(x => x.SehirKodu == ((Sehir)cbYasadigiSehir.SelectedItem)?.SehirKodu).ToList();
             cbYasadigiIce.DataSource = ilceListesi;
             cbYasadigiIce.DisplayMember = "Ilceadi";
             cbYasadigiIce.ValueMember = "Ilceadi";
+        }
+
+        private void btnHesapEkle_Click(object sender, EventArgs e)
+        {
+            if(musteriIslemleri.MusterideHesapTanimliMi((HesapTipi)cbHesapTipi.SelectedItem))
+            {
+                MessageBox.Show("Hesap Daha önceden tanımlanmış");
+                return;
+            }
+
+            musteriIslemleri.AktifMusteri.Hesaplar.Add(new Hesap
+            {
+                Bakiye = 0,
+                HesapNo = Guid.NewGuid(),
+                HesapTipi = (HesapTipi)cbHesapTipi.SelectedItem
+            });
+            dgvHesaplar.DataSource = null;
+            dgvHesaplar.DataSource = musteriIslemleri.AktifMusteri.Hesaplar;
+        }
+
+        private void silToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var seciliHesapNo = dgvHesaplar.SelectedRows[0].Cells["HesapNo"].Value.ToString();
+            var seciliHesap = musteriIslemleri.AktifMusteri.Hesaplar.Find(x => x.HesapNo.ToString() == seciliHesapNo);
+            musteriIslemleri.AktifMusteri.Hesaplar.Remove(seciliHesap);
+            dgvHesaplar.DataSource = null;
+            dgvHesaplar.DataSource = musteriIslemleri.AktifMusteri.Hesaplar;
+        }
+
+        private void FormuDoldur()
+        {
+            txtAd.Text = musteriIslemleri.AktifMusteri.Ad;
+            txtSoyad.Text = musteriIslemleri.AktifMusteri.Soyad;
+            txtEmail.Text = musteriIslemleri.AktifMusteri.MailAdresi;
+            txtSifre.Text = musteriIslemleri.AktifMusteri.Sifre;
+            cbYasadigiSehir.SelectedItem = Database.Database.Sehirler.Find(x => x.SehirAdi == musteriIslemleri.AktifMusteri.YasadigiSehir);
+            cbYasadigiIce.SelectedItem = Database.Database.Ilceler.Find(x => x.Ilceadi == musteriIslemleri.AktifMusteri.YasadigiIlce);
+            rbErkek.Checked = musteriIslemleri.AktifMusteri.Cinsiyeti == Cinsiyet.Erkek;
+            rbKadin.Checked = !rbErkek.Checked;
+        }
+
+        private void btnMusteriKaydet_Click(object sender, EventArgs e)
+        {
+            musteriIslemleri.AktifMusteri.Ad = txtAd.Text;
+            musteriIslemleri.AktifMusteri.Soyad = txtSoyad.Text;
+            musteriIslemleri.AktifMusteri.Sifre = txtSifre.Text;
+            musteriIslemleri.AktifMusteri.MailAdresi = txtEmail.Text;
+            musteriIslemleri.AktifMusteri.Cinsiyeti = rbKadin.Checked ? Cinsiyet.Kadin : Cinsiyet.Erkek;
+            musteriIslemleri.AktifMusteri.YasadigiSehir = ((Sehir)cbYasadigiSehir.SelectedItem).SehirAdi;
+            musteriIslemleri.AktifMusteri.YasadigiIlce = ((Ilce)cbYasadigiIce.SelectedItem)?.Ilceadi ?? "Tanımsız";
+            MessageBox.Show("Değişiklikler Kaydedildi");
         }
     }
 }

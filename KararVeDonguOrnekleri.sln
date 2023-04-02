@@ -23,6 +23,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DxBall", "DxBall\DxBall.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankaUygulamasi", "BankaUygulamasi\BankaUygulamasi.csproj", "{C4FB458C-2DED-4653-8196-06CFEE3BA962}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SinemaBiletOtomasyonu", "SinemaBiletOtomasyonu\SinemaBiletOtomasyonu.csproj", "{3AAD0CB1-D8D4-4F71-95BB-0EB6FB857B1B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,6 +71,10 @@ Global
 		{C4FB458C-2DED-4653-8196-06CFEE3BA962}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C4FB458C-2DED-4653-8196-06CFEE3BA962}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C4FB458C-2DED-4653-8196-06CFEE3BA962}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3AAD0CB1-D8D4-4F71-95BB-0EB6FB857B1B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3AAD0CB1-D8D4-4F71-95BB-0EB6FB857B1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3AAD0CB1-D8D4-4F71-95BB-0EB6FB857B1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3AAD0CB1-D8D4-4F71-95BB-0EB6FB857B1B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace BankaUygulamasi.Model
 {
-    internal interface IBenimClass
+    public interface IBenimClass
     {
+        void Yaz(string veri);
+        string Oku();
+        Hesap HesapAra(string hesapNo);
     }
 }

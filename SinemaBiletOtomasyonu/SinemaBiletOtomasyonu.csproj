@@ -47,11 +47,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Business\GosterimIslemleri.cs" />
+    <Compile Include="Business\MusteriIslemleri.cs" />
     <Compile Include="Business\KullaniciIsLemleri.cs" />
     <Compile Include="Database.cs" />
     <Compile Include="Enum\FilmTuru.cs" />
+    <Compile Include="Enum\KoltukDurum.cs" />
     <Compile Include="Enum\Rol.cs" />
     <Compile Include="Enum\Seans.cs" />
+    <Compile Include="Exceptions\MusteriBulunamadiException.cs" />
     <Compile Include="Exceptions\SalonKapasiteException.cs" />
     <Compile Include="Exceptions\KullaniciBulunamadiException.cs" />
     <Compile Include="FormAna.cs">
@@ -66,6 +69,10 @@
     <Compile Include="FormGiris.Designer.cs">
       <DependentUpon>FormGiris.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormModel\Koltuk.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Model\Bilet.cs" />
     <Compile Include="Model\Film.cs" />
     <Compile Include="Model\GosterimTablo.cs" />
     <Compile Include="Model\Kullanici.cs" />

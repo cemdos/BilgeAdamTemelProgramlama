@@ -14,10 +14,11 @@ namespace SinemaBiletOtomasyonu
 
         public static Database Instance
         {
-            get {
+            get
+            {
                 if (instance is null)
                     instance = new Database();
-                return instance; 
+                return instance;
             }
         }
 
@@ -26,14 +27,28 @@ namespace SinemaBiletOtomasyonu
         public List<Film> Filmler { get; set; }
         public List<Salon> Salonlar { get; set; }
         public List<GosterimTablo> GosterimTablolari { get; set; }
+        public List<Bilet> Biletler { get; set; } = new List<Bilet>();
+
+        //private List<Bilet> biletler;
+
+        //public List<Bilet> Biletler
+        //{
+        //    get
+        //    {
+        //        if (biletler == null)
+        //            biletler = new List<Bilet>();
+        //        return biletler;
+        //    }
+        //}
 
         public List<Kullanici> Kullanicilar
         {
-            get {
+            get
+            {
                 var list = new List<Kullanici>();
                 list.AddRange(Musteriler);
                 list.AddRange(Personeller);
-                return list; 
+                return list;
             }
         }
 
@@ -130,7 +145,7 @@ namespace SinemaBiletOtomasyonu
                 #region 1.Film
                 {
                     var yeniSalon = new Salon();
-                    yeniSalon.SalonAdi= "Salon 1";
+                    yeniSalon.SalonAdi = "Salon 1";
                     yeniSalon.Kapasite = 200;
                     Salonlar.Add(yeniSalon);
                 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.cbFilmAdi = new System.Windows.Forms.ComboBox();
             this.cbSalonAdi = new System.Windows.Forms.ComboBox();
@@ -38,6 +39,11 @@
             this.label4 = new System.Windows.Forms.Label();
             this.btnSatinAl = new System.Windows.Forms.Button();
             this.btnRezervayonYap = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.contextMenuStripIslemler = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.satınAlToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.rezerveEtToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuStripIslemler.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -116,7 +122,7 @@
             // 
             // btnSatinAl
             // 
-            this.btnSatinAl.Location = new System.Drawing.Point(604, 7);
+            this.btnSatinAl.Location = new System.Drawing.Point(636, 10);
             this.btnSatinAl.Name = "btnSatinAl";
             this.btnSatinAl.Size = new System.Drawing.Size(75, 51);
             this.btnSatinAl.TabIndex = 8;
@@ -125,18 +131,50 @@
             // 
             // btnRezervayonYap
             // 
-            this.btnRezervayonYap.Location = new System.Drawing.Point(685, 8);
+            this.btnRezervayonYap.Location = new System.Drawing.Point(717, 11);
             this.btnRezervayonYap.Name = "btnRezervayonYap";
             this.btnRezervayonYap.Size = new System.Drawing.Size(103, 50);
             this.btnRezervayonYap.TabIndex = 9;
             this.btnRezervayonYap.Text = "Rezervasyon Yap";
             this.btnRezervayonYap.UseVisualStyleBackColor = true;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(309, 120);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 10;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // contextMenuStripIslemler
+            // 
+            this.contextMenuStripIslemler.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.satınAlToolStripMenuItem,
+            this.rezerveEtToolStripMenuItem});
+            this.contextMenuStripIslemler.Name = "contextMenuStripIslemler";
+            this.contextMenuStripIslemler.Size = new System.Drawing.Size(181, 70);
+            // 
+            // satınAlToolStripMenuItem
+            // 
+            this.satınAlToolStripMenuItem.Name = "satınAlToolStripMenuItem";
+            this.satınAlToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.satınAlToolStripMenuItem.Text = "Satın Al";
+            this.satınAlToolStripMenuItem.Click += new System.EventHandler(this.satınAlToolStripMenuItem_Click);
+            // 
+            // rezerveEtToolStripMenuItem
+            // 
+            this.rezerveEtToolStripMenuItem.Name = "rezerveEtToolStripMenuItem";
+            this.rezerveEtToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
+            this.rezerveEtToolStripMenuItem.Text = "Rezerve Et";
+            // 
             // FormAna
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(832, 450);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.btnRezervayonYap);
             this.Controls.Add(this.btnSatinAl);
             this.Controls.Add(this.label4);
@@ -150,6 +188,7 @@
             this.Name = "FormAna";
             this.Text = "FormAna";
             this.Load += new System.EventHandler(this.FormAna_Load);
+            this.contextMenuStripIslemler.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -167,5 +206,9 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnSatinAl;
         private System.Windows.Forms.Button btnRezervayonYap;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStripIslemler;
+        private System.Windows.Forms.ToolStripMenuItem satınAlToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem rezerveEtToolStripMenuItem;
     }
 }

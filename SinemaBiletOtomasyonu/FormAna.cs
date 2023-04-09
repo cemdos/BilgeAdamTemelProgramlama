@@ -28,6 +28,8 @@ namespace SinemaBiletOtomasyonu
             aktifKullanici = kullanici;
             gosteriServis = new GosterimIslemleri();
             musteriIslemleri = new MusteriIsLemleri(aktifKullanici);
+
+            dtpTarih.MinDate = DateTime.Now;
         }
 
         private void FormAna_Load(object sender, EventArgs e)
@@ -49,10 +51,14 @@ namespace SinemaBiletOtomasyonu
 
         private void cbFilmAdi_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (cbFilmAdi.SelectedItem == null)
+                return;
+
             var secilenFilm = (Film)cbFilmAdi.SelectedItem;
             cbSalonAdi.DataSource = gosteriServis.FilmeGoreSalonGetir(secilenFilm, dtpTarih.Value);
             cbSalonAdi.DisplayMember = nameof(Salon.SalonAdi);
             cbSeans.DataSource = null;
+            timerFilmBaslamaSuresi.Enabled = false;
         }
 
         private void cbSalonAdi_SelectedIndexChanged(object sender, EventArgs e)
@@ -60,7 +66,7 @@ namespace SinemaBiletOtomasyonu
             var secilenFilm = (Film)cbFilmAdi.SelectedItem;
             var secilenSalon = (Salon)cbSalonAdi.SelectedItem;
             cbSeans.DataSource = gosteriServis.SeansGetir(secilenFilm, secilenSalon, dtpTarih.Value);
-
+            timerFilmBaslamaSuresi.Enabled = false;
         }
 
         private void KoltuklariDiz(Salon salon)
@@ -71,8 +77,10 @@ namespace SinemaBiletOtomasyonu
             {
                 var yeniKoltuk = new Koltuk(x, y);
                 yeniKoltuk.ContextMenuStrip = contextMenuStripIslemler;
-                yeniKoltuk.Durumu = KoltukDurum.Bos;
                 yeniKoltuk.KoltukNumarasi = i + 1;
+                yeniKoltuk.Durumu = KoltukGetir(i+ 1)?.Durumu ?? KoltukDurum.Bos;
+                yeniKoltuk.Enabled = KoltukGetir(i + 1)?.Enabled?? true;
+                yeniKoltuk.BackColor = KoltukGetir(i + 1)?.BackColor ?? yeniKoltuk.BackColor;
                 Koltuklar.Add(yeniKoltuk);
                 x += yeniKoltuk.Width + 5;
                 if ((i + 1) % 18 == 0)
@@ -88,10 +96,25 @@ namespace SinemaBiletOtomasyonu
             this.Controls.AddRange(Koltuklar.ToArray());
         }
 
+        private Koltuk KoltukGetir(int KoltukNumarasi)
+        {
+            var salon = (Salon)cbSalonAdi.SelectedItem;
+            var tarih = DateTime.Parse(dtpTarih.Value.ToShortDateString());
+            var seans = (Seans)cbSeans.SelectedItem;
+
+            var koltuk = Database.Instance.Biletler.Find(x =>
+                                x.Tarih == tarih &&
+                                x.Salon == salon &&
+                                x.Seans == seans &&
+                                x.Koltuk.KoltukNumarasi == KoltukNumarasi)?.Koltuk;
+            return koltuk;
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
             KoltuklariDiz((Salon)cbSalonAdi.SelectedItem);
-            BiletleriGetir();
+            //BiletleriGetir();
+            timerFilmBaslamaSuresi.Enabled = true;
         }
 
         private void satınAlToolStripMenuItem_Click(object sender, EventArgs e)
@@ -104,7 +127,7 @@ namespace SinemaBiletOtomasyonu
             yeniBilet.Salon = (Salon)cbSalonAdi.SelectedItem;
             yeniBilet.Tarih = DateTime.Parse(dtpTarih.Value.ToShortDateString());
             yeniBilet.Seans = (Seans)cbSeans.SelectedItem;
-            yeniBilet.KoltukNumarasi = aktifKoltuk.KoltukNumarasi;
+            yeniBilet.Koltuk= aktifKoltuk;
             yeniBilet.Film = (Film)cbFilmAdi.SelectedItem;
             yeniBilet.SatinAlanMusteri = musteriIslemleri.aktifMusteri;
             Database.Instance.Biletler.Add(yeniBilet);
@@ -115,22 +138,50 @@ namespace SinemaBiletOtomasyonu
             aktifKoltuk.Enabled = false;
         }
 
-        private void BiletleriGetir()
+        //private void BiletleriGetir()
+        //{
+        //    var ilgiliBiletler = Database.Instance.Biletler.Where(x =>
+        //                    x.Film.Adi == ((Film)cbFilmAdi.SelectedItem).Adi &&
+        //                    x.Salon.SalonAdi == ((Salon)cbSalonAdi.SelectedItem).SalonAdi &&
+        //                    x.Tarih.ToShortDateString() == dtpTarih.Value.ToShortDateString() &&
+        //                    x.Seans == ((Seans)cbSeans.SelectedItem)).ToList();
+        //    foreach (var item in Koltuklar)
+        //    {
+        //        if (ilgiliBiletler.Find(x => x.Koltuk.KoltukNumarasi == item.KoltukNumarasi) != null)
+        //        {
+        //            item.Durumu = KoltukDurum.SatinAlinmis;
+        //            item.BackColor = Color.DarkRed;
+        //            item.Enabled = false;
+        //        }
+        //    }
+        //}
+
+        private void rezerveEtToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var ilgiliBiletler = Database.Instance.Biletler.Where(x =>
-                            x.Film.Adi == ((Film)cbFilmAdi.SelectedItem).Adi &&
-                            x.Salon.SalonAdi == ((Salon)cbSalonAdi.SelectedItem).SalonAdi &&
-                            x.Tarih.ToShortDateString() == dtpTarih.Value.ToShortDateString() &&
-                            x.Seans == ((Seans)cbSeans.SelectedItem)).ToList();
-            foreach (var item in Koltuklar)
-            {
-                if (ilgiliBiletler.Find(x => x.KoltukNumarasi == item.KoltukNumarasi) != null)
-                {
-                    item.Durumu = KoltukDurum.SatinAlinmis;
-                    item.BackColor = Color.DarkRed;
-                    item.Enabled = false;
-                }
-            }
+            ToolStripMenuItem clickedItem = (ToolStripMenuItem)sender;
+            ContextMenuStrip owner = (ContextMenuStrip)clickedItem.GetCurrentParent();
+            Koltuk aktifKoltuk = (Koltuk)owner.SourceControl;
+
+            var yeniBilet = new Bilet();
+            yeniBilet.Salon = (Salon)cbSalonAdi.SelectedItem;
+            yeniBilet.Tarih = DateTime.Parse(dtpTarih.Value.ToShortDateString());
+            yeniBilet.Seans = (Seans)cbSeans.SelectedItem;
+            yeniBilet.Koltuk = aktifKoltuk;
+            yeniBilet.Film = (Film)cbFilmAdi.SelectedItem;
+            yeniBilet.SatinAlanMusteri = musteriIslemleri.aktifMusteri;
+            Database.Instance.Biletler.Add(yeniBilet);
+
+            MessageBox.Show("Bilet Rezerve Edildi.");
+            aktifKoltuk.Durumu = KoltukDurum.Rezerve;
+            aktifKoltuk.BackColor = Color.DarkOrange;
+            aktifKoltuk.Enabled = false;
+        }
+
+        private void timerFilmBaslamaSuresi_Tick(object sender, EventArgs e)
+        {
+            var tarih = DateTime.Parse(dtpTarih.Value.ToShortDateString()).AddHours((int)cbSeans.SelectedItem);
+            double kalanSure = Math.Round((tarih - DateTime.Now).TotalSeconds, 0);
+            btnKalanSure.Text = kalanSure.ToString();
         }
     }
 }

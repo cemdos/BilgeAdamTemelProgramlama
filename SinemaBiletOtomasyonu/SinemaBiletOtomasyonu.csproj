@@ -63,6 +63,12 @@
     <Compile Include="FormAna.Designer.cs">
       <DependentUpon>FormAna.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormFilm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormFilm.Designer.cs">
+      <DependentUpon>FormFilm.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormGiris.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -71,6 +77,12 @@
     </Compile>
     <Compile Include="FormModel\Koltuk.cs">
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="FormPersonel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormPersonel.Designer.cs">
+      <DependentUpon>FormPersonel.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\Bilet.cs" />
     <Compile Include="Model\Film.cs" />
@@ -84,8 +96,14 @@
     <EmbeddedResource Include="FormAna.resx">
       <DependentUpon>FormAna.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormFilm.resx">
+      <DependentUpon>FormFilm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormGiris.resx">
       <DependentUpon>FormGiris.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormPersonel.resx">
+      <DependentUpon>FormPersonel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

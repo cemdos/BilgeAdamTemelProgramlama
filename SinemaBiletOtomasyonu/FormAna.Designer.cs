@@ -37,12 +37,13 @@
             this.label3 = new System.Windows.Forms.Label();
             this.dtpTarih = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
-            this.btnSatinAl = new System.Windows.Forms.Button();
-            this.btnRezervayonYap = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.contextMenuStripIslemler = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.satınAlToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.rezerveEtToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnKalanSure = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.timerFilmBaslamaSuresi = new System.Windows.Forms.Timer(this.components);
             this.contextMenuStripIslemler.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -120,31 +121,13 @@
             this.label4.TabIndex = 7;
             this.label4.Text = "Tarih";
             // 
-            // btnSatinAl
-            // 
-            this.btnSatinAl.Location = new System.Drawing.Point(636, 10);
-            this.btnSatinAl.Name = "btnSatinAl";
-            this.btnSatinAl.Size = new System.Drawing.Size(75, 51);
-            this.btnSatinAl.TabIndex = 8;
-            this.btnSatinAl.Text = "Satın Al";
-            this.btnSatinAl.UseVisualStyleBackColor = true;
-            // 
-            // btnRezervayonYap
-            // 
-            this.btnRezervayonYap.Location = new System.Drawing.Point(717, 11);
-            this.btnRezervayonYap.Name = "btnRezervayonYap";
-            this.btnRezervayonYap.Size = new System.Drawing.Size(103, 50);
-            this.btnRezervayonYap.TabIndex = 9;
-            this.btnRezervayonYap.Text = "Rezervasyon Yap";
-            this.btnRezervayonYap.UseVisualStyleBackColor = true;
-            // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(309, 120);
+            this.button1.Location = new System.Drawing.Point(284, 120);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(100, 23);
             this.button1.TabIndex = 10;
-            this.button1.Text = "button1";
+            this.button1.Text = "Koltuk Listele";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -154,12 +137,12 @@
             this.satınAlToolStripMenuItem,
             this.rezerveEtToolStripMenuItem});
             this.contextMenuStripIslemler.Name = "contextMenuStripIslemler";
-            this.contextMenuStripIslemler.Size = new System.Drawing.Size(181, 70);
+            this.contextMenuStripIslemler.Size = new System.Drawing.Size(128, 48);
             // 
             // satınAlToolStripMenuItem
             // 
             this.satınAlToolStripMenuItem.Name = "satınAlToolStripMenuItem";
-            this.satınAlToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.satınAlToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
             this.satınAlToolStripMenuItem.Text = "Satın Al";
             this.satınAlToolStripMenuItem.Click += new System.EventHandler(this.satınAlToolStripMenuItem_Click);
             // 
@@ -168,15 +151,43 @@
             this.rezerveEtToolStripMenuItem.Name = "rezerveEtToolStripMenuItem";
             this.rezerveEtToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
             this.rezerveEtToolStripMenuItem.Text = "Rezerve Et";
+            this.rezerveEtToolStripMenuItem.Click += new System.EventHandler(this.rezerveEtToolStripMenuItem_Click);
+            // 
+            // btnKalanSure
+            // 
+            this.btnKalanSure.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.btnKalanSure.FlatAppearance.BorderSize = 5;
+            this.btnKalanSure.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnKalanSure.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnKalanSure.Location = new System.Drawing.Point(461, 12);
+            this.btnKalanSure.Name = "btnKalanSure";
+            this.btnKalanSure.Size = new System.Drawing.Size(222, 77);
+            this.btnKalanSure.TabIndex = 11;
+            this.btnKalanSure.Text = "0";
+            this.btnKalanSure.UseVisualStyleBackColor = true;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(497, 96);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(150, 13);
+            this.label5.TabIndex = 12;
+            this.label5.Text = "Filmin Başlamasına Kalan Süre";
+            // 
+            // timerFilmBaslamaSuresi
+            // 
+            this.timerFilmBaslamaSuresi.Interval = 1000;
+            this.timerFilmBaslamaSuresi.Tick += new System.EventHandler(this.timerFilmBaslamaSuresi_Tick);
             // 
             // FormAna
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(832, 450);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.btnKalanSure);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.btnRezervayonYap);
-            this.Controls.Add(this.btnSatinAl);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.dtpTarih);
             this.Controls.Add(this.cbSeans);
@@ -204,11 +215,12 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DateTimePicker dtpTarih;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button btnSatinAl;
-        private System.Windows.Forms.Button btnRezervayonYap;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ContextMenuStrip contextMenuStripIslemler;
         private System.Windows.Forms.ToolStripMenuItem satınAlToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem rezerveEtToolStripMenuItem;
+        private System.Windows.Forms.Button btnKalanSure;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Timer timerFilmBaslamaSuresi;
     }
 }

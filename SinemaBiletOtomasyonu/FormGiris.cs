@@ -30,9 +30,20 @@ namespace SinemaBiletOtomasyonu
             try
             {
                 var aktifKullanici = kullaniciServis.Login(txtKullaniciAdi.Text, txtSifre.Text);
-                FormAna frm = new FormAna(aktifKullanici);
+                object frm = new Form();
+                switch (aktifKullanici.Rol)
+                {
+                    case Enum.KullaniciRol.Admin:
+                        break;
+                    case Enum.KullaniciRol.Personel:
+                        frm = new FormPersonel();
+                        break;
+                    case Enum.KullaniciRol.Musteri:
+                        frm = new FormAna(aktifKullanici);
+                        break;
+                }
                 this.Hide();
-                frm.ShowDialog();
+                ((Form)frm).ShowDialog();
                 this.Show();
             }
             catch (Exception ex)

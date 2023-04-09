@@ -1,7 +1,9 @@
 ﻿using SinemaBiletOtomasyonu.Enum;
+using SinemaBiletOtomasyonu.FormModel;
 using SinemaBiletOtomasyonu.Model;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -59,6 +61,7 @@ namespace SinemaBiletOtomasyonu
             IlkFilmleriYukle();
             IlkSalonlariYukle();
             IlkGosterimTablosunuYukle();
+            IlkBiletleriYukle();
         }
 
         private void IlkMusterileriYukle()
@@ -188,7 +191,70 @@ namespace SinemaBiletOtomasyonu
                     GosterimTablolari.Add(yeniGosterim);
                 }
                 #endregion
+
+                #region 3.Gosterim
+                {
+                    var yeniGosterim = new GosterimTablo();
+                    yeniGosterim.Salon = Salonlar[1];
+                    yeniGosterim.Film = Filmler[0];
+                    yeniGosterim.Seans = Seans.Seans_13_15;
+                    yeniGosterim.Tarih = new DateTime(2023, 4, 9);
+                    GosterimTablolari.Add(yeniGosterim);
+                }
+                #endregion
+
+                #region 4.Gosterim
+                {
+                    var yeniGosterim = new GosterimTablo();
+                    yeniGosterim.Salon = Salonlar[1];
+                    yeniGosterim.Film = Filmler[1];
+                    yeniGosterim.Seans = Seans.Seans_16_18;
+                    yeniGosterim.Tarih = new DateTime(2023, 4, 9);
+                    GosterimTablolari.Add(yeniGosterim);
+                }
+                #endregion
             }
+        }
+
+        private void IlkBiletleriYukle()
+        {
+            #region 1.Bilet
+            {
+                var yeniBilet = new Bilet();
+                yeniBilet.Film = Filmler[0];
+                yeniBilet.Tarih = new DateTime(2023, 4, 9);
+                yeniBilet.Seans = Seans.Seans_13_15;
+                yeniBilet.Salon = Salonlar[1];
+                yeniBilet.Koltuk = new Koltuk()
+                {
+                    KoltukNumarasi = 1,
+                    Durumu = KoltukDurum.Rezerve,
+                    BackColor = Color.DarkOrange,
+                    Enabled = false,
+                };
+                yeniBilet.SatinAlanMusteri = Musteriler[0];
+                Biletler.Add(yeniBilet);
+            }
+            #endregion
+
+            #region 2.Bilet
+            {
+                var yeniBilet = new Bilet();
+                yeniBilet.Film = Filmler[0];
+                yeniBilet.Tarih = new DateTime(2023, 4, 9);
+                yeniBilet.Seans = Seans.Seans_13_15;
+                yeniBilet.Salon = Salonlar[1];
+                yeniBilet.Koltuk = new Koltuk()
+                {
+                    KoltukNumarasi = 2,
+                    Durumu = KoltukDurum.SatinAlinmis,
+                    BackColor = Color.DarkRed,
+                    Enabled = false,
+                };
+                yeniBilet.SatinAlanMusteri = Musteriler[0];
+                Biletler.Add(yeniBilet);
+            }
+            #endregion
         }
     }
 }

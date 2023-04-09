@@ -13,6 +13,16 @@ namespace SinemaBiletOtomasyonu.FormModel
         public KoltukDurum Durumu { get; set; }
         public int KoltukNumarasi { get; set; }
 
+        public Koltuk()
+        {
+            this.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.FlatAppearance.BorderSize = 3;
+            this.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Name = "koltuk";
+            this.Size = new System.Drawing.Size(40, 40);
+            this.UseVisualStyleBackColor = false;
+        }
+
         public Koltuk(int x, int y)
         {
             this.BackColor = System.Drawing.SystemColors.AppWorkspace;

@@ -127,5 +127,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HS10Lib\HS10Lib.csproj">
+      <Project>{5fe513a0-b2aa-4080-a998-cc8df3b9ab80}</Project>
+      <Name>HS10Lib</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

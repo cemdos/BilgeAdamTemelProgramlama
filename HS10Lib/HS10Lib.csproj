@@ -43,6 +43,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Enums\ResponseCodes.cs" />
+    <Compile Include="Models\Bolum.cs" />
+    <Compile Include="Models\ResponseModel\ResponseListModel.cs" />
     <Compile Include="Models\ResponseModel\ResponseModel.cs" />
     <Compile Include="MSSQL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

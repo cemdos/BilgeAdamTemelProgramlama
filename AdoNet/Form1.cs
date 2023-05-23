@@ -1,4 +1,5 @@
 ﻿using HS10Lib;
+using HS10Lib.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -64,58 +65,70 @@ namespace AdoNet
             //}
             #endregion
 
-            MSSQL.Instance.FizikselKomutCalistir("insert into Bolum(Adi) values('Bolum3')");
+            var result = MSSQL.Instance.FizikselKomutCalistir("insert int Bolum(Adi) values('Bolum17')");
         }
 
         private void btnVeriGuncelle_Click(object sender, EventArgs e)
         {
-            try
-            {
-                SqlConnection baglanti = new SqlConnection("Data Source=DESKTOP-FH3V2M3\\SQLEXPRESS;Initial Catalog=Okul;Integrated Security=False;User Id=sa;Password=1234;");
-                SqlCommand komut = new SqlCommand();
-                komut.Connection = baglanti;
-                komut.CommandText = "update Bolum set Adi = 'Bolum10' where ID=6";
-                baglanti.Open();
-                komut.ExecuteNonQuery();
-                MessageBox.Show("Kaydedildi");
-                baglanti.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Kayıt işleminde sorun olustu");
-            }
+            #region Pasife aloındı cunku cok komut var
+            //try
+            //{
+            //    SqlConnection baglanti = new SqlConnection("Data Source=DESKTOP-FH3V2M3\\SQLEXPRESS;Initial Catalog=Okul;Integrated Security=False;User Id=sa;Password=1234;");
+            //    SqlCommand komut = new SqlCommand();
+            //    komut.Connection = baglanti;
+            //    komut.CommandText = "update Bolum set Adi = 'Bolum10' where ID=6";
+            //    baglanti.Open();
+            //    komut.ExecuteNonQuery();
+            //    MessageBox.Show("Kaydedildi");
+            //    baglanti.Close();
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show("Kayıt işleminde sorun olustu");
+            //}
+            #endregion
+
+            var result = MSSQL.Instance.FizikselKomutCalistir("update Bolum set Adi = 'Bolum10' where ID = 6");
         }
 
         private void btnVeriSil_Click(object sender, EventArgs e)
         {
-            try
-            {
-                SqlConnection baglanti = new SqlConnection("Data Source=DESKTOP-FH3V2M3\\SQLEXPRESS;Initial Catalog=Okul;Integrated Security=False;User Id=sa;Password=1234;");
-                SqlCommand komut = new SqlCommand();
-                komut.Connection = baglanti;
-                komut.CommandText = "delete from Bolum where ID=8 and ISNULL(Deleted,0)=0";
-                baglanti.Open();
-                int etkilenenSatir = komut.ExecuteNonQuery();
-                if (etkilenenSatir > 0)
-                    MessageBox.Show("Kaydedildi");
-                else
-                    MessageBox.Show("Degistirilecek kayıt bulunamadı");
-                baglanti.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Kayıt işleminde sorun olustu");
-            }
+            #region Pasife aloındı cunku cok komut var
+            //try
+            //{
+            //    SqlConnection baglanti = new SqlConnection("Data Source=DESKTOP-FH3V2M3\\SQLEXPRESS;Initial Catalog=Okul;Integrated Security=False;User Id=sa;Password=1234;");
+            //    SqlCommand komut = new SqlCommand();
+            //    komut.Connection = baglanti;
+            //    komut.CommandText = "delete from Bolum where ID=8 and ISNULL(Deleted,0)=0";
+            //    baglanti.Open();
+            //    int etkilenenSatir = komut.ExecuteNonQuery();
+            //    if (etkilenenSatir > 0)
+            //        MessageBox.Show("Kaydedildi");
+            //    else
+            //        MessageBox.Show("Degistirilecek kayıt bulunamadı");
+            //    baglanti.Close();
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show("Kayıt işleminde sorun olustu");
+            //}
+            #endregion
+            var result = MSSQL.Instance.FizikselKomutCalistir("delete from Bolum where ID=5 and ISNULL(Deleted,0)=0");
         }
 
         private void btnVeriCek_Click(object sender, EventArgs e)
         {
-            SqlConnection baglanti = new SqlConnection("Data Source=DESKTOP-FH3V2M3\\SQLEXPRESS;Initial Catalog=Okul;Integrated Security=False;User Id=sa;Password=1234;");
-            string sorgu = "select Adi from Bolum where ISNULL(Deleted,0)=0";
-            SqlDataAdapter adaptor = new SqlDataAdapter(sorgu, baglanti);
-            DataTable tablo = new DataTable();
-            adaptor.Fill(tablo);
-            dgvVeriListesi.DataSource = tablo;
+            #region Pasife aloındı cunku cok komut var
+            //SqlConnection baglanti = new SqlConnection("Data Source=DESKTOP-FH3V2M3\\SQLEXPRESS;Initial Catalog=Okul;Integrated Security=False;User Id=sa;Password=1234;");
+            //string sorgu = "select Adi from Bolum where ISNULL(Deleted,0)=0";
+            //SqlDataAdapter adaptor = new SqlDataAdapter(sorgu, baglanti);
+            //DataTable tablo = new DataTable();
+            //adaptor.Fill(tablo);
+            //dgvVeriListesi.DataSource = tablo;
+            #endregion
+
+            var result = MSSQL.Instance.SelectKomutu<Bolum>("select Adi,ID from Bolum where ISNULL(Deleted,0)=0");
+            dgvVeriListesi.DataSource = result.ListModel;
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using SinemaBiletOtomasyonu.Enum;
+﻿using HS10Lib;
+using SinemaBiletOtomasyonu.Enum;
 using SinemaBiletOtomasyonu.Model;
 using System;
 using System.Collections.Generic;
@@ -32,6 +33,13 @@ namespace SinemaBiletOtomasyonu
             yeniFilm.Adi = txtFilmAdi.Text;
             yeniFilm.Tur = (FilmTuru)cbTur.SelectedItem;
             Database.Instance.Filmler.Add(yeniFilm);
+            var result = MSSQL.Instance.FizikselKomutCalistir(string.Format("insert into Film(Adi,Yonetmen,CekilmeYili,Tur) values('{0}','{1}',{2},{3})",
+                                                                yeniFilm.Adi,
+                                                                yeniFilm.Yonetmen,
+                                                                yeniFilm.CekilmeYili,
+                                                                (int)yeniFilm.Tur));
+            if (result.ResponseCode != HS10Lib.Enums.ResponseCodes.Successfull)
+                throw new Exception(result.ResponseMessage);
             DialogResult = DialogResult.OK;
             Close();
         }

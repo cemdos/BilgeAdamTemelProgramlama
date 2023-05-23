@@ -2,8 +2,10 @@
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -12,6 +14,7 @@ namespace HS10Lib
     public class MSSQL
     {
         private static MSSQL instance;
+        private SqlConnection sqlCon { get; }
 
         public static MSSQL Instance
         {
@@ -23,7 +26,11 @@ namespace HS10Lib
             }
         }
 
-        private SqlConnection sqlCon => new SqlConnection(ConfigurationManager.ConnectionStrings["MsSqlConnection"].ConnectionString);
+        public MSSQL()
+        {
+            sqlCon = new SqlConnection(ConfigurationManager.ConnectionStrings["MsSqlConnection"].ConnectionString);
+        }
+
 
         public ResponseModel FizikselKomutCalistir(string sqlKomutu)
         {
@@ -48,6 +55,55 @@ namespace HS10Lib
                 response.ResponseMessage = ex.Message;
             }
             return response;
+        }
+
+        public ResponseListModel<TData> SelectKomutu<TData>(string sqlKomutu)  where TData : class
+        {
+            ResponseListModel<TData> response = new ResponseListModel<TData>();
+            try
+            {
+                DataTable tablo = new DataTable();
+                SqlDataAdapter adaptor = new SqlDataAdapter(sqlKomutu, sqlCon);
+                adaptor.Fill(tablo);
+                var list = ConvertDataTable<TData>(tablo);
+                response.ListModel = list;
+            }
+            catch (Exception ex)
+            {
+                sqlCon.Close();
+                response.ResponseCode = Enums.ResponseCodes.DataBaseError;
+                response.Stack = ex.StackTrace;
+                response.ResponseMessage = ex.Message;
+            }
+            return response;
+        }
+
+        private static List<T> ConvertDataTable<T>(DataTable dt)
+        {
+            List<T> data = new List<T>();
+            foreach (DataRow row in dt.Rows)
+            {
+                T item = GetItem<T>(row);
+                data.Add(item);
+            }
+            return data;
+        }
+        private static T GetItem<T>(DataRow dr)
+        {
+            Type temp = typeof(T);
+            T obj = Activator.CreateInstance<T>();
+
+            foreach (DataColumn column in dr.Table.Columns)
+            {
+                foreach (PropertyInfo pro in temp.GetProperties())
+                {
+                    if (pro.Name == column.ColumnName)
+                        pro.SetValue(obj, dr[column.ColumnName], null);
+                    else
+                        continue;
+                }
+            }
+            return obj;
         }
 
     }

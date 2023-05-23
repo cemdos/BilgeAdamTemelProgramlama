@@ -1,8 +1,10 @@
-﻿using SinemaBiletOtomasyonu.Enum;
+﻿using HS10Lib;
+using SinemaBiletOtomasyonu.Enum;
 using SinemaBiletOtomasyonu.FormModel;
 using SinemaBiletOtomasyonu.Model;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlTypes;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -47,9 +49,16 @@ namespace SinemaBiletOtomasyonu
         {
             get
             {
-                var list = new List<Kullanici>();
-                list.AddRange(Musteriler);
-                list.AddRange(Personeller);
+                #region Ramden yuklenecek ise
+                //var list = new List<Kullanici>();
+                //list.AddRange(Musteriler);
+                //list.AddRange(Personeller);
+                #endregion
+
+                #region Eger Sql den yüklenecekise
+                var result = MSSQL.Instance.SelectKomutu<Kullanici>("select * from Kullanici");
+                var list = result.ListModel;
+                #endregion
                 return list;
             }
         }
@@ -68,25 +77,35 @@ namespace SinemaBiletOtomasyonu
         {
             if (Musteriler is null)
             {
-                Musteriler = new List<Musteri>();
+                #region Ram üzerinde Calısacaksa
+                //Musteriler = new List<Musteri>();
+                //#region 1.Musteri
+                //{
+                //    var yeniMusteri = new Musteri();
+                //    yeniMusteri.KullaniciAdi = "cemdos";
+                //    yeniMusteri.Sifre = "1234";
+                //    Musteriler.Add(yeniMusteri);
+                //}
+                //#endregion
 
-                #region 1.Musteri
-                {
-                    var yeniMusteri = new Musteri();
-                    yeniMusteri.KullaniciAdi = "cemdos";
-                    yeniMusteri.Sifre = "1234";
-                    Musteriler.Add(yeniMusteri);
-                }
+                //#region 2.Musteri
+                //{
+                //    var yeniMusteri = new Musteri();
+                //    yeniMusteri.KullaniciAdi = "evren";
+                //    yeniMusteri.Sifre = "1234";
+                //    Musteriler.Add(yeniMusteri);
+                //}
+                //#endregion
+                #endregion
+                #region Sql üzerinden Cekilecekse
+                var result = MSSQL.Instance.SelectKomutu<Musteri>("select * from Kullanici where Rol=2");
+                if (result.ResponseCode != HS10Lib.Enums.ResponseCodes.Successfull)
+                    throw new Exception(result.ResponseMessage);
+
+                Musteriler = result.ListModel;
                 #endregion
 
-                #region 2.Musteri
-                {
-                    var yeniMusteri = new Musteri();
-                    yeniMusteri.KullaniciAdi = "evren";
-                    yeniMusteri.Sifre = "1234";
-                    Musteriler.Add(yeniMusteri);
-                }
-                #endregion
+
             }
         }
         private void IlkPersonelleriYukle()

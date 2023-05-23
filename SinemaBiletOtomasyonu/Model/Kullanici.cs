@@ -7,8 +7,9 @@ using System.Threading.Tasks;
 
 namespace SinemaBiletOtomasyonu.Model
 {
-    public abstract class Kullanici
+    public class Kullanici
     {
+        public int ID { get; set; }
         public string KullaniciAdi { get; set; }
         public string Sifre { get; set; }
         public KullaniciRol Rol { get; set; }

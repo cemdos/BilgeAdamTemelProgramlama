@@ -99,7 +99,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(212, 369);
+            this.ClientSize = new System.Drawing.Size(456, 369);
             this.Controls.Add(this.dgvVeriListesi);
             this.Controls.Add(this.btnVeriCek);
             this.Controls.Add(this.btnVeriSil);

@@ -9,17 +9,8 @@ namespace SinemaBiletOtomasyonu.Model
 {
     public class Salon
     {
-        public string SalonAdi { get; set; }
-
-        private int kapasite;
-        public int Kapasite
-        {
-            get { return kapasite; }
-            set {
-                if (value < 10 || value > 200)
-                    throw new SalonKapasiteException();
-                kapasite = value; 
-            }
-        }
+        public int ID { get; set; }
+        public string Adi { get; set; }
+        public int Kapasite { get; set; }
     }
 }

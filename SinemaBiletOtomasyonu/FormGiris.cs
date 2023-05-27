@@ -34,6 +34,7 @@ namespace SinemaBiletOtomasyonu
                 switch (aktifKullanici.Rol)
                 {
                     case Enum.KullaniciRol.Admin:
+                        frm = new FormAdmin();
                         break;
                     case Enum.KullaniciRol.Personel:
                         frm = new FormPersonel();

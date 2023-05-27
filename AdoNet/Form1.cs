@@ -65,7 +65,7 @@ namespace AdoNet
             //}
             #endregion
 
-            var result = MSSQL.Instance.FizikselKomutCalistir("insert int Bolum(Adi) values('Bolum17')");
+            var result = MSSQL.Instance.FizikselKomutCalistir("insert into Bolum(Adi) values('Bolum17')");
         }
 
         private void btnVeriGuncelle_Click(object sender, EventArgs e)

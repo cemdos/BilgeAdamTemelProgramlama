@@ -14,7 +14,7 @@ namespace SinemaBiletOtomasyonu.Business
         public MusteriIsLemleri(Kullanici kullanici)
         {
             //aktifMusteri = Database.Instance.Musteriler.Find(x => x.KullaniciAdi == kullanici.KullaniciAdi && x.Sifre == kullanici.Sifre);
-            aktifMusteri = Database.Instance.Musteriler.Find(x => x == (Musteri)kullanici);
+            aktifMusteri = Database.Instance.Musteriler.Find(x => x.ID==kullanici.ID);
             if (aktifMusteri == null)
                 throw new MusteriBulunamadiException();
         }

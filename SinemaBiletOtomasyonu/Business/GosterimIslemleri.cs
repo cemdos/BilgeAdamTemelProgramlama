@@ -25,7 +25,7 @@ namespace SinemaBiletOtomasyonu.Business
             var SeansListesi = Database.Instance.GosterimTablolari
                                             .Where(x =>
                                                 x.Film.Adi == film.Adi &&
-                                                x.Salon.SalonAdi == salon.SalonAdi &&
+                                                x.Salon.Adi == salon.Adi &&
                                                 x.Tarih.ToShortDateString() == tarih.ToShortDateString()
                                              ).ToList();
             return SeansListesi.Select(x => (Seans)x.Seans).ToList();

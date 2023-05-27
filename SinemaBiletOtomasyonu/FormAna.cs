@@ -56,7 +56,7 @@ namespace SinemaBiletOtomasyonu
 
             var secilenFilm = (Film)cbFilmAdi.SelectedItem;
             cbSalonAdi.DataSource = gosteriServis.FilmeGoreSalonGetir(secilenFilm, dtpTarih.Value);
-            cbSalonAdi.DisplayMember = nameof(Salon.SalonAdi);
+            cbSalonAdi.DisplayMember = nameof(Salon.Adi);
             cbSeans.DataSource = null;
             timerFilmBaslamaSuresi.Enabled = false;
         }

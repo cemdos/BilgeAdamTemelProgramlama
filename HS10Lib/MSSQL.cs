@@ -1,6 +1,7 @@
 ﻿using HS10Lib.Models.ResponseModel;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
@@ -56,6 +57,34 @@ namespace HS10Lib
             }
             return response;
         }
+        public ResponseModel FizikselKomutCalistir(string sqlKomutu,List<SqlParameter> parametreler)
+        {
+            ResponseModel response = new ResponseModel();
+            try
+            {
+                SqlCommand komut = new SqlCommand();
+                foreach (var parametre in parametreler)
+                    komut.Parameters.Add(parametre);
+
+                komut.Connection = sqlCon;
+                komut.CommandText = sqlKomutu;
+
+                if (sqlCon.State != System.Data.ConnectionState.Open)
+                    sqlCon.Open();
+                var etkilenenSatirSayisi = komut.ExecuteNonQuery();
+                response.affectedRows = etkilenenSatirSayisi;
+                response.ResponseMessage = "Kayıt başarılı";
+                sqlCon.Close();
+            }
+            catch (Exception ex)
+            {
+                sqlCon.Close();
+                response.ResponseCode = Enums.ResponseCodes.DataBaseError;
+                response.Stack = ex.StackTrace;
+                response.ResponseMessage = ex.Message;
+            }
+            return response;
+        }
 
         public ResponseListModel<TData> SelectKomutu<TData>(string sqlKomutu)  where TData : class
         {
@@ -77,6 +106,34 @@ namespace HS10Lib
             }
             return response;
         }
+        public ResponseListModel<TData> SelectKomutu<TData>(string sqlKomutu, List<SqlParameter> parametreler) where TData : class
+        {
+            ResponseListModel<TData> response = new ResponseListModel<TData>();
+            try
+            {
+                DataTable tablo = new DataTable();
+                SqlDataAdapter adaptor = new SqlDataAdapter();
+                adaptor.SelectCommand = new SqlCommand();
+                adaptor.SelectCommand.Connection = sqlCon;
+                adaptor.SelectCommand.CommandText = sqlKomutu;
+                foreach (var parametre in parametreler)
+                    adaptor.SelectCommand.Parameters.Add(parametre);
+
+                adaptor.Fill(tablo);
+                var list = ConvertDataTable<TData>(tablo);
+                response.ListModel = list;
+            }
+            catch (Exception ex)
+            {
+                sqlCon.Close();
+                response.ResponseCode = Enums.ResponseCodes.DataBaseError;
+                response.Stack = ex.StackTrace;
+                response.ResponseMessage = ex.Message;
+            }
+            return response;
+        }
+
+
 
         private static List<T> ConvertDataTable<T>(DataTable dt)
         {

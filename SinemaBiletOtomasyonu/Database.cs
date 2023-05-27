@@ -137,49 +137,68 @@ namespace SinemaBiletOtomasyonu
         {
             if (Filmler is null)
             {
-                Filmler = new List<Film>();
+                #region Ram üzerinde çalıcaksa
+                //Filmler = new List<Film>();
 
-                #region 1.Film
-                {
-                    var yeniFilm = new Film();
-                    yeniFilm.Adi = "Yıldızlar Arası";
-                    yeniFilm.Tur = FilmTuru.BilimKurgu;
-                    Filmler.Add(yeniFilm);
-                }
+                //#region 1.Film
+                //{
+                //    var yeniFilm = new Film();
+                //    yeniFilm.Adi = "Yıldızlar Arası";
+                //    yeniFilm.Tur = FilmTuru.BilimKurgu;
+                //    Filmler.Add(yeniFilm);
+                //}
+                //#endregion
+
+                //#region 2.Film
+                //{
+                //    var yeniFilm = new Film();
+                //    yeniFilm.Adi = "Wall-E";
+                //    yeniFilm.Tur = FilmTuru.BilimKurgu;
+                //    Filmler.Add(yeniFilm);
+                //}
+                //#endregion
+                #endregion
+                #region Sql üzerinde çalıcaksa
+                var result = MSSQL.Instance.SelectKomutu<Film>("select * from Film");
+                if (result.ResponseCode != HS10Lib.Enums.ResponseCodes.Successfull)
+                    throw new Exception(result.ResponseMessage);
+                Filmler = result.ListModel;
+
                 #endregion
 
-                #region 2.Film
-                {
-                    var yeniFilm = new Film();
-                    yeniFilm.Adi = "Wall-E";
-                    yeniFilm.Tur = FilmTuru.BilimKurgu;
-                    Filmler.Add(yeniFilm);
-                }
-                #endregion
             }
         }
         private void IlkSalonlariYukle()
         {
             if (Salonlar is null)
             {
-                Salonlar = new List<Salon>();
+                #region Eger Ramdan Çekilecekse
+                //Salonlar = new List<Salon>();
 
-                #region 1.Film
-                {
-                    var yeniSalon = new Salon();
-                    yeniSalon.SalonAdi = "Salon 1";
-                    yeniSalon.Kapasite = 200;
-                    Salonlar.Add(yeniSalon);
-                }
+                //#region 1.Film
+                //{
+                //    var yeniSalon = new Salon();
+                //    yeniSalon.SalonAdi = "Salon 1";
+                //    yeniSalon.Kapasite = 200;
+                //    Salonlar.Add(yeniSalon);
+                //}
+                //#endregion
+
+                //#region 2.Film
+                //{
+                //    var yeniSalon = new Salon();
+                //    yeniSalon.SalonAdi = "Salon 2";
+                //    yeniSalon.Kapasite = 70;
+                //    Salonlar.Add(yeniSalon);
+                //}
+                //#endregion
                 #endregion
 
-                #region 2.Film
-                {
-                    var yeniSalon = new Salon();
-                    yeniSalon.SalonAdi = "Salon 2";
-                    yeniSalon.Kapasite = 70;
-                    Salonlar.Add(yeniSalon);
-                }
+                #region Eger Sqlden cekilecekse
+                var result = MSSQL.Instance.SelectKomutu<Salon>("select * from Salon");
+                if (result.ResponseCode != HS10Lib.Enums.ResponseCodes.Successfull)
+                    throw new Exception(result.ResponseMessage);
+                Salonlar = result.ListModel;
                 #endregion
             }
         }
@@ -187,50 +206,59 @@ namespace SinemaBiletOtomasyonu
         {
             if (GosterimTablolari is null)
             {
-                GosterimTablolari = new List<GosterimTablo>();
+                #region Eger Ramdan Cekilecekse
+                //GosterimTablolari = new List<GosterimTablo>();
 
-                #region 1.Gosterim
-                {
-                    var yeniGosterim = new GosterimTablo();
-                    yeniGosterim.Salon = Salonlar[0];
-                    yeniGosterim.Film = Filmler[0];
-                    yeniGosterim.Seans = Seans.Seans_13_15;
-                    yeniGosterim.Tarih = new DateTime(2023, 4, 2);
-                    GosterimTablolari.Add(yeniGosterim);
-                }
+                //#region 1.Gosterim
+                //{
+                //    var yeniGosterim = new GosterimTablo();
+                //    yeniGosterim.Salon = Salonlar[0];
+                //    yeniGosterim.Film = Filmler[0];
+                //    yeniGosterim.Seans = Seans.Seans_13_15;
+                //    yeniGosterim.Tarih = new DateTime(2023, 4, 2);
+                //    GosterimTablolari.Add(yeniGosterim);
+                //}
+                //#endregion
+
+                //#region 2.Gosterim
+                //{
+                //    var yeniGosterim = new GosterimTablo();
+                //    yeniGosterim.Salon = Salonlar[1];
+                //    yeniGosterim.Film = Filmler[0];
+                //    yeniGosterim.Seans = Seans.Seans_19_21;
+                //    yeniGosterim.Tarih = new DateTime(2023, 4, 2);
+                //    GosterimTablolari.Add(yeniGosterim);
+                //}
+                //#endregion
+
+                //#region 3.Gosterim
+                //{
+                //    var yeniGosterim = new GosterimTablo();
+                //    yeniGosterim.Salon = Salonlar[1];
+                //    yeniGosterim.Film = Filmler[0];
+                //    yeniGosterim.Seans = Seans.Seans_13_15;
+                //    yeniGosterim.Tarih = new DateTime(2023, 4, 9);
+                //    GosterimTablolari.Add(yeniGosterim);
+                //}
+                //#endregion
+
+                //#region 4.Gosterim
+                //{
+                //    var yeniGosterim = new GosterimTablo();
+                //    yeniGosterim.Salon = Salonlar[1];
+                //    yeniGosterim.Film = Filmler[1];
+                //    yeniGosterim.Seans = Seans.Seans_16_18;
+                //    yeniGosterim.Tarih = new DateTime(2023, 4, 9);
+                //    GosterimTablolari.Add(yeniGosterim);
+                //}
+                //#endregion
                 #endregion
 
-                #region 2.Gosterim
-                {
-                    var yeniGosterim = new GosterimTablo();
-                    yeniGosterim.Salon = Salonlar[1];
-                    yeniGosterim.Film = Filmler[0];
-                    yeniGosterim.Seans = Seans.Seans_19_21;
-                    yeniGosterim.Tarih = new DateTime(2023, 4, 2);
-                    GosterimTablolari.Add(yeniGosterim);
-                }
-                #endregion
-
-                #region 3.Gosterim
-                {
-                    var yeniGosterim = new GosterimTablo();
-                    yeniGosterim.Salon = Salonlar[1];
-                    yeniGosterim.Film = Filmler[0];
-                    yeniGosterim.Seans = Seans.Seans_13_15;
-                    yeniGosterim.Tarih = new DateTime(2023, 4, 9);
-                    GosterimTablolari.Add(yeniGosterim);
-                }
-                #endregion
-
-                #region 4.Gosterim
-                {
-                    var yeniGosterim = new GosterimTablo();
-                    yeniGosterim.Salon = Salonlar[1];
-                    yeniGosterim.Film = Filmler[1];
-                    yeniGosterim.Seans = Seans.Seans_16_18;
-                    yeniGosterim.Tarih = new DateTime(2023, 4, 9);
-                    GosterimTablolari.Add(yeniGosterim);
-                }
+                #region Eger Sqlden cekilecekse
+                var result = MSSQL.Instance.SelectKomutu<GosterimTablo>("select * from Gosterim");
+                if (result.ResponseCode != HS10Lib.Enums.ResponseCodes.Successfull)
+                    throw new Exception(result.ResponseMessage);
+                GosterimTablolari = result.ListModel;
                 #endregion
             }
         }

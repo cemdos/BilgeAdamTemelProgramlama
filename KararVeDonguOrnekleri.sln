@@ -29,6 +29,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdoNet", "AdoNet\AdoNet.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HS10Lib", "HS10Lib\HS10Lib.csproj", "{5FE513A0-B2AA-4080-A998-CC8DF3B9AB80}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NorthwindOtomasyon", "NorthwindOtomasyon\NorthwindOtomasyon.csproj", "{214D3AFB-14F7-499D-8C59-E504E2559FE7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -87,6 +89,10 @@ Global
 		{5FE513A0-B2AA-4080-A998-CC8DF3B9AB80}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5FE513A0-B2AA-4080-A998-CC8DF3B9AB80}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5FE513A0-B2AA-4080-A998-CC8DF3B9AB80}.Release|Any CPU.Build.0 = Release|Any CPU
+		{214D3AFB-14F7-499D-8C59-E504E2559FE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{214D3AFB-14F7-499D-8C59-E504E2559FE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{214D3AFB-14F7-499D-8C59-E504E2559FE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{214D3AFB-14F7-499D-8C59-E504E2559FE7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

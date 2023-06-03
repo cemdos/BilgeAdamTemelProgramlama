@@ -31,6 +31,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HS10Lib", "HS10Lib\HS10Lib.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NorthwindOtomasyon", "NorthwindOtomasyon\NorthwindOtomasyon.csproj", "{214D3AFB-14F7-499D-8C59-E504E2559FE7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KullaniciOtomasyon", "KullaniciOtomasyon\KullaniciOtomasyon.csproj", "{627D4964-1884-44FB-B33B-BC8C6E55B9A5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KullaniciOtomasyon2", "KullaniciOtomasyon2\KullaniciOtomasyon2.csproj", "{16993DB8-D2C4-4E11-B82E-C9059EC785B2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -93,6 +97,14 @@ Global
 		{214D3AFB-14F7-499D-8C59-E504E2559FE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{214D3AFB-14F7-499D-8C59-E504E2559FE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{214D3AFB-14F7-499D-8C59-E504E2559FE7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{627D4964-1884-44FB-B33B-BC8C6E55B9A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{627D4964-1884-44FB-B33B-BC8C6E55B9A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{627D4964-1884-44FB-B33B-BC8C6E55B9A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{627D4964-1884-44FB-B33B-BC8C6E55B9A5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{16993DB8-D2C4-4E11-B82E-C9059EC785B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{16993DB8-D2C4-4E11-B82E-C9059EC785B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{16993DB8-D2C4-4E11-B82E-C9059EC785B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16993DB8-D2C4-4E11-B82E-C9059EC785B2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

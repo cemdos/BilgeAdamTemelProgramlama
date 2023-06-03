@@ -1,5 +1,6 @@
 ﻿using NorthwindOtomasyon.AltFormlar;
 using NorthwindOtomasyon.Model;
+using NorthwindOtomasyon.Model.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -22,7 +23,10 @@ namespace NorthwindOtomasyon
         private void Form1_Load(object sender, EventArgs e)
         {
             //NORTHWNDEntities db = new NORTHWNDEntities();
-            dgvCategory.DataSource = Database.DB.Categories.ToList();
+            dgvCategory.DataSource = Database.DB.Categories.Select(x=>new CategoryList(){
+                KategoriAdi = x.CategoryName,
+                Aciklama = x.Description
+            }).ToList();
         }
 
         private void ekleToolStripMenuItem_Click(object sender, EventArgs e)

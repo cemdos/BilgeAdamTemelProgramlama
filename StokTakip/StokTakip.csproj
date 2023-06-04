@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net7.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Configurations>Debug;Release;DEV;TEST;PROD</Configurations>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="EntityFramework" Version="6.4.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.5">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+</Project>

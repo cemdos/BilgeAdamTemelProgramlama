@@ -1,0 +1,22 @@
+{
+  "profiles": {
+    "StokTakip.Dev": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "Ortam": "Dev"
+      }
+    },
+    "StokTakip.Test": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "Ortam": "Test"
+      }
+    },
+    "StokTakip.Prod": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "Ortam": "Prod"
+      }
+    }
+  }
+}

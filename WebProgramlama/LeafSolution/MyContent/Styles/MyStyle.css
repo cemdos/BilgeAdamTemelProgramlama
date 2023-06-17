@@ -1,0 +1,31 @@
+﻿body {
+    background-image: url("/MyContent/Images/background.png");
+}
+
+.container {
+    margin-top: 20px;
+    border-radius: 26px 26px;
+    background-color: white;
+    box-shadow: gray 0 0 10px;
+    padding-top: 14px;
+    padding-left: 14px;
+    padding-right: 14px;
+}
+
+.socialMediaItem {
+    float: right;
+    margin-left: 5px;
+    transition: all .5s
+}
+
+    .socialMediaItem:hover {
+        border-radius: 0 30px;
+        box-shadow: gray 0 0 5px;
+    }
+
+.searchArea {
+    margin-top: 10px;
+    border: 1px solid gray;
+    border-radius: 0 15px;
+    padding:8px;
+}

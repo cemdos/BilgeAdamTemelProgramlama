@@ -27,5 +27,85 @@
     margin-top: 10px;
     border: 1px solid gray;
     border-radius: 0 15px;
-    padding:8px;
+    padding: 8px;
+}
+
+/*navbar Stilleri*/
+.nav {
+    background: #0d6636;
+    border-radius: 0px 21px;
+    box-shadow: 0 0 4px #1c3564;
+}
+
+.nav-tabs > li > a {
+    color: #ffffff;
+}
+
+    .nav-tabs > li > a:hover {
+        background: #0d6636;
+        border-color: #08391F #08391F #08391F;
+    }
+
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover {
+    box-shadow: 0 0 12px #08391F inset;
+}
+
+.nav > li > a:focus, .nav > li > a:hover {
+    text-decoration: none;
+    background-color: #08391F;
+}
+
+.nav .open > a, .nav .open > a:focus, .nav .open > a:hover {
+    background-color: #08391F;
+}
+
+.dropdown-menu > li > a:focus, .dropdown-menu > li > a:hover {
+    background-color: #08391F;
+    color: white;
+    line-height: 35px;
+}
+
+.nav-tabs .dropdown-menu {
+    background: #0d6636;
+}
+
+.dropdown-menu > li > a {
+    color: white;
+}
+
+.dropdown-menu > li {
+    height: 50px;
+}
+/*Navbar Stilleri*/
+
+.content {
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.jumbotronSlider {
+    width: 75%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom:0;
+}
+
+
+.footer {
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    box-shadow: 0 0 4px #1c3564;
+    border-radius: 0px 0px 12px 12px;
+    background: #0d6636;
+    color: #fff;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.img-left {
+    width: 180px;
+    position: relative;
+    float: left;
+    margin: 0 15px 15px 0;
 }

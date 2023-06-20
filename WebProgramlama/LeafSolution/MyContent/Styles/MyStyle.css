@@ -84,10 +84,16 @@
 }
 
 .jumbotronSlider {
-    width: 75%;
+    width: 100%;
     margin-left: auto;
     margin-right: auto;
-    margin-bottom:0;
+    margin-bottom: 0;
+    padding-left: 150px !important;
+    padding-right: 150px !important;
+    border-radius: 30px !important;
+}
+.carousel-control{
+    border-radius:30px;
 }
 
 
@@ -109,3 +115,12 @@
     float: left;
     margin: 0 15px 15px 0;
 }
+
+.slider-right {
+    width: 250px;
+    position: relative;
+    float: right;
+    margin-left:15px;
+    margin-bottom:15px;
+}
+

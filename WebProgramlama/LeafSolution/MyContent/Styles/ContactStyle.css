@@ -1,0 +1,7 @@
+﻿.mapArea{
+    width:600px;
+    border: 1px solid black;
+    box-shadow:gray 0 0 10px;
+    margin-left:auto;
+    margin-right:auto;
+}

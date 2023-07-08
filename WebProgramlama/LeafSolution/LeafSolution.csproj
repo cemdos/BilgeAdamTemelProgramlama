@@ -81,6 +81,16 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="MyContent\AngularScripts\BaseCtrl.js" />
+    <Content Include="MyContent\AngularScripts\SepetCtrl.js" />
+    <Content Include="MyContent\AngularScripts\UrunlerCtrl.js" />
+    <Content Include="MyContent\AngularScripts\IletisimCtrl.js" />
+    <Content Include="Pages\Sepet.aspx" />
+    <Content Include="Pages\Urunler.aspx" />
+    <Content Include="Scripts\angular-mocks.js" />
+    <Content Include="Scripts\angular.js" />
+    <Content Include="Scripts\angular.min.js" />
+    <Content Include="Scripts\angular.min.js.map" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="MyContent\Images\background.png" />
     <Content Include="MyContent\Images\leaf-solutions-logo.png" />
@@ -89,6 +99,7 @@
     <Content Include="MyContent\Images\SocialMedia\share.png" />
     <Content Include="MyContent\Images\SocialMedia\twitter.png" />
     <Content Include="MyContent\Images\SocialMedia\youtube.png" />
+    <Content Include="MyContent\Styles\ContactStyle.css" />
     <Content Include="MyContent\Styles\MyStyle.css" />
     <Content Include="MyContent\Styles\Plugins\CubeSlider.css" />
     <Content Include="Pages\BizeDair.aspx" />
@@ -148,6 +159,20 @@
     </Compile>
     <Compile Include="Pages\Referanslar.aspx.designer.cs">
       <DependentUpon>Referanslar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Sepet.aspx.cs">
+      <DependentUpon>Sepet.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Sepet.aspx.designer.cs">
+      <DependentUpon>Sepet.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Urunler.aspx.cs">
+      <DependentUpon>Urunler.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Urunler.aspx.designer.cs">
+      <DependentUpon>Urunler.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Shared\_Layout.Master.cs">

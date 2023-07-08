@@ -8,10 +8,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="/Content/bootstrap.min.css" rel="stylesheet" />
     <link href="/MyContent/Styles/MyStyle.css" rel="stylesheet" />
-    <asp:ContentPlaceHolder ID="CPHHead" runat="server">       
+    <script src="/Scripts/angular.min.js"></script>
+    <asp:ContentPlaceHolder ID="CPHHead" runat="server">
     </asp:ContentPlaceHolder>
 </head>
-<body>
+<body ng-app="leafApp" ng-controller="baseCtrl">
     <div class="container">
         <!--Header Alanı-->
         <div class="row" style="padding-bottom: 20px;">
@@ -54,6 +55,7 @@
                     <li role="presentation" class=""><a href="/Pages/Default.aspx">Anasayfa</a></li>
                     <li role="presentation"><a href="/Pages/BizeDair.aspx">Bize Dair</a></li>
                     <li role="presentation"><a href="/Pages/Referanslar.aspx">Referanslar</a></li>
+                    <li role="presentation"><a href="/Pages/Urunler.aspx">Ürünler</a></li>
                     <li role="presentation" class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Çözümler <span class="caret"></span>
                         </a>
@@ -63,6 +65,12 @@
                         </ul>
                     </li>
                     <li role="presentation"><a href="/Pages/Iletisim.aspx">İletişim</a></li>
+                    <li class="navbar-right" style="margin-right: 10px;" role="presentation">
+                        <a href="/Pages/Sepet.aspx">
+                            <span class="glyphicon glyphicon-shopping-cart"></span>
+                            <span class="badge">{{Sepet.length}}</span>
+                        </a>
+                    </li>
                 </ul>
 
             </div>
@@ -91,6 +99,7 @@
 
     <script src="/Scripts/jquery-1.9.1.min.js"></script>
     <script src="/Scripts/bootstrap.min.js"></script>
+    <script src="/MyContent/AngularScripts/BaseCtrl.js"></script>
     <asp:ContentPlaceHolder ID="CPHScript" runat="server">
     </asp:ContentPlaceHolder>
 </body>

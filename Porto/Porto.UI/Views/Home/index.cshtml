@@ -1,3 +1,12 @@
-﻿<div>
-    <h1>Hello World from a view</h1>
+﻿
+<div class="text-center" ng-controller="IndexCtrl">
+    <h1 class="display-4">
+        @ViewBag.SayfaAdi
+    </h1>
+    <h1>{{PersonelAdi}}</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
+
+@section AngularScripts {
+    <script src="/content/angularjs/home/indexctrl.js"></script>
+}

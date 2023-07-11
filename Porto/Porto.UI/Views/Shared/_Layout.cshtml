@@ -42,7 +42,7 @@
     <link rel="stylesheet" type="text/css" href="/vendor/simple-line-icons/css/simple-line-icons.min.css">
 </head>
 
-<body>
+<body ng-app="PortoApp" ng-controller="BaseCtrl">
     <div class="page-wrapper">
         <div class="top-notice text-white bg-dark">
             <div class="container text-center">
@@ -329,10 +329,11 @@
                 </div>
 
                 <div class="row">
-
                     <div class="col-lg-9">
+                        {{carname}}
                         @RenderBody()
                     </div>
+                    <!-- End .col-lg-9 -->
 
                     <div class="sidebar-overlay"></div>
                     <div class="sidebar-toggle custom-sidebar-toggle"><i class="fas fa-sliders-h"></i></div>
@@ -509,7 +510,7 @@
                                             <li><a href="cart.html">Shopping Cart</a></li>
                                             <li><a href="checkout.html">Checkout</a></li>
                                             <li><a href="dashboard.html">Dashboard</a></li>
-                                            <li><a href="demo1-about.html">About Us</a></li>
+                                            <li><a href="/Home/About">About Us</a></li>
                                             <li>
                                                 <a href="#">Blog</a>
                                                 <ul>
@@ -523,7 +524,7 @@
                                         </ul>
                                     </li>
                                     <li><a href="blog.html"><i class="sicon-book-open"></i>Blog</a></li>
-                                    <li><a href="demo1-about.html"><i class="sicon-users"></i>About Us</a></li>
+                                    <li><a href="/Home/About"><i class="sicon-users"></i>About Us</a></li>
                                     <li><a href="#"><i class="icon-cat-gift"></i>Special Offer!</a></li>
                                     <li>
                                         <a href="https://1.envato.market/DdLk5" target="_blank">
@@ -864,7 +865,7 @@
                                     <li><a href="#">Advanced Search</a></li>
                                     <li><a href="dashboard.html">My Account</a></li>
                                     <li><a href="#">Careers</a></li>
-                                    <li><a href="demo1-about.html">About Us</a></li>
+                                    <li><a href="/Home/About">About Us</a></li>
                                     <li><a href="#">Corporate Sales</a></li>
                                     <li><a href="#">Privacy</a></li>
                                 </ul>
@@ -1021,7 +1022,7 @@
                         </ul>
                     </li>
                     <li><a href="blog.html"><i class="sicon-book-open"></i>Blog</a></li>
-                    <li><a href="demo1-about.html"><i class="sicon-users"></i>About Us</a></li>
+                    <li><a href="/Home/About"><i class="sicon-users"></i>About Us</a></li>
                 </ul>
 
                 <ul class="mobile-menu menu-with-icon mt-2 mb-2">
@@ -1123,9 +1124,13 @@
     </div>
     <!-- End .newsletter-popup -->
 
-    <a id="scroll-top" href="#top" title="Top" role="button"><i class="icon-angle-up"></i></a>
 
+    <a id="scroll-top" href="#top" title="Top" role="button"><i class="icon-angle-up"></i></a>
+    
     <!-- Plugins JS File -->
+    <script src="/plugin/angular/angular.min_1.8.2.js"></script>
+    <script src="/content/angularjs/basectrl.js"></script>
+    @RenderSection("AngularScripts",false)
     <script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
     <script src="/js/jquery.min.js"></script>
     <script src="/js/plugins.min.js"></script>

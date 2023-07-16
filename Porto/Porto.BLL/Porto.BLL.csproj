@@ -1,13 +1,13 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
-    <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Porto.BLL\Porto.BLL.csproj" />
+    <ProjectReference Include="..\Porto.DAL\Porto.DAL.csproj" />
     <ProjectReference Include="..\Porto.MODEL\Porto.MODEL.csproj" />
   </ItemGroup>
 

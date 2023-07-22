@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Porto.MODEL;
 using Porto.UI.Models;
 using System.Diagnostics;
 
@@ -16,7 +17,7 @@ namespace Porto.UI.Controllers
 		public IActionResult Index()
 		{
 			ViewBag.SayfaAdi = "Anasayfaya hoşgeldiniz";
-			return View();
+            return View();
 		}
 
 		public IActionResult Privacy()

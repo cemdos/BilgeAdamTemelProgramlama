@@ -1,5 +1,27 @@
 ﻿var app = angular.module('PortoApp', []);
 
-app.controller('BaseCtrl', function ($scope) {
-    $scope.carname = "Volvo";
+app.controller('BaseCtrl', function ($scope, $http) {
+    $scope.AllCategoryList = [];
+
+    $scope.PageLoad = function () {
+        $scope.GetCategory();
+    }
+
+    $scope.GetCategory = function () {
+        $http.get("/Category/GetCategory")
+            .then(function (response) {
+                $scope.AllCategoryList = response.data;
+                $scope.ParentCategoryList = $scope.AllCategoryList.filter(x => x.ParentID ==null);
+            })
+            .catch(function (response) {
+                alert(response.message);
+            })
+    }
+
+    $scope.GetSubCategory = function (ParentID) {
+        var subCategories = $scope.AllCategoryList.filter(x => x.ParentID == ParentID);
+        return subCategories;
+    }
+
+    $scope.PageLoad();
 });

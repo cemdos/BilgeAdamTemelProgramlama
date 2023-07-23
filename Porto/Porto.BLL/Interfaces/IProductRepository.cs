@@ -11,6 +11,6 @@ namespace Porto.BLL.Interfaces
 {
     public interface IProductRepository : IBaseRepository<Product>
     {
-        IList<ProductViewModel> GetProductOfCategory(int Category);
+        IList<ProductViewModel>? GetProductOfCategory(int Category);
     }
 }

@@ -9,25 +9,32 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using StoredProcedureEFCore;
 
 namespace Porto.BLL.Concrete
 {
     public class ProductRepository : BaseRepository<Product>, IProductRepository
     {
-        public IList<ProductViewModel> GetProductOfCategory(int CategoryId)
+        public IList<ProductViewModel>? GetProductOfCategory(int CategoryId)
         {
-            var parameters = new SqlParameter("@CategoryId", CategoryId);
-            //var productList = Database.Context.Database.SqlQueryRaw<ProductViewModel>("sp_ProductWithCategory", parameters, CommandType.StoredProcedure).ToList();
-            var productList = Database.Context.Product.FromSqlRaw<Product>($"exec sp_ProductWithCategory {CategoryId}")
-                .AsEnumerable()
-                .Select(x => new ProductViewModel
-                {
-                    Name = x.Name,
-                    Description = x.Description,
-                }).ToList();
+            //var parameters = new SqlParameter("@CategoryId", CategoryId);
+            ////var productList = Database.Context.Database.SqlQueryRaw<ProductViewModel>("sp_ProductWithCategory", parameters, CommandType.StoredProcedure).ToList();
+            //var productList = Database.Context.Product.FromSqlRaw<Product>($"exec sp_ProductWithCategory {CategoryId}")
+            //    .AsEnumerable()
+            //    .Select(x => new ProductViewModel
+            //    {
+            //        Name = x.Name,
+            //        Description = x.Description,
+            //    }).ToList();
 
 
-            return productList;
+            //return productList;
+
+            List<ProductViewModel>? rows = null;
+            Database.Context.LoadStoredProc("sp_ProductWithCategory")
+                .AddParam("CategoryId", CategoryId)
+                .Exec(r => rows = r.ToList<ProductViewModel>());
+            return rows;
         }
 
         public class ProductViewModel

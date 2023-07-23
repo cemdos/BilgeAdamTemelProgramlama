@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="StoredProcedureEFCore" Version="1.0.5" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Porto.DAL\Porto.DAL.csproj" />
     <ProjectReference Include="..\Porto.MODEL\Porto.MODEL.csproj" />
   </ItemGroup>

@@ -40,6 +40,7 @@
     <link rel="stylesheet" href="/css/demo1.min.css">
     <link rel="stylesheet" type="text/css" href="/vendor/fontawesome-free/css/all.min.css">
     <link rel="stylesheet" type="text/css" href="/vendor/simple-line-icons/css/simple-line-icons.min.css">
+    <link href="/content/styles/porto.css" rel="stylesheet" />
 </head>
 
 <body ng-app="PortoApp" ng-controller="BaseCtrl">
@@ -344,7 +345,7 @@
                                 <ul class="menu menu-vertical sf-arrows">
                                     <li class="active"><a href="/Home/Index"><i class="icon-home"></i>Home</a></li>
                                     <li ng-repeat="category in ParentCategoryList">
-                                        <a href="demo1-shop.html" class="sf-with-ul">
+                                        <a href="#" class="sf-with-ul">
                                             <i class="sicon-badge"></i>{{category.Name}}
                                         </a>
                                         <div class="megamenu megamenu-fixed-width megamenu-3cols">
@@ -353,7 +354,7 @@
                                                     <a href="#" class="nolink pl-0">Alt Kategori</a>
                                                     <ul class="submenu">
                                                         <li ng-repeat="subCategory in GetSubCategory(category.ID)">
-                                                            <a href="category.html">{{subCategory.Name}}</a>
+                                                            <a href="/Home/Product/{{subCategory.ID}}">{{subCategory.Name}}</a>
                                                         </li>
                                                     </ul>
                                                 </div>
@@ -773,7 +774,7 @@
     </div>
     <!-- End .page-wrapper -->
 
-    <div class="loading-overlay">
+    <div class="loading-overlay" ng-class="{'loading-overlay-show':showSpinner}">
         <div class="bounce-loader">
             <div class="bounce1"></div>
             <div class="bounce2"></div>
@@ -940,7 +941,7 @@
         </div>
     </div>
 
-    <div class="newsletter-popup mfp-hide bg-img" id="newsletter-popup-form" style="background: #f1f1f1 no-repeat center/cover url(/images/newsletter_popup_bg.jpg)">
+@*    <div class="newsletter-popup mfp-show bg-img" id="newsletter-popup-form" style="background: #f1f1f1 no-repeat center/cover url(/images/newsletter_popup_bg.jpg)">
         <div class="newsletter-popup-content">
             <img src="/images/logo.png" width="111" height="44" alt="Logo" class="logo-newsletter">
             <h2>Subscribe to newsletter</h2>
@@ -969,7 +970,7 @@
         <button title="Close (Esc)" type="button" class="mfp-close">
             ×
         </button>
-    </div>
+    </div>*@
     <!-- End .newsletter-popup -->
 
 

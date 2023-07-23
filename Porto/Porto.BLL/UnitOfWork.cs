@@ -23,6 +23,7 @@ namespace Porto.BLL
         }
 
         public ICategoryRepository Category => new CategoryRepository();
+        public IProductRepository Product => new ProductRepository();
 
     }
 }

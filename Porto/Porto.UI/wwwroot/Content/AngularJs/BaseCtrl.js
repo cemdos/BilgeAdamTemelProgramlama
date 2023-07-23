@@ -8,14 +8,15 @@ app.controller('BaseCtrl', function ($scope, $http) {
     }
 
     $scope.GetCategory = function () {
-        //spinner'ı baslat
+        $scope.showSpinner = true;
         $http.get("/Category/GetCategory")
             .then(function (response) {
                 $scope.AllCategoryList = response.data;
                 $scope.ParentCategoryList = $scope.AllCategoryList.filter(x => x.ParentID == null);
-                //spinner'ı kapat
+                $scope.showSpinner = false;
             })
             .catch(function (response) {
+                $scope.showSpinner = false;
                 alert(response.message);
             })
     }

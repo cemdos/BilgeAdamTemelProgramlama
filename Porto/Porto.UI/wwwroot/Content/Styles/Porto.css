@@ -1,0 +1,9 @@
+﻿.loading-overlay-show {
+    opacity: .7 !important;
+    visibility: inherit !important;
+}
+
+.loading-overlay-hide {
+    opacity: 0 !important;
+    visibility: hidden !important;
+}

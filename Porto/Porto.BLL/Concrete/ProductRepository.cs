@@ -10,37 +10,31 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using StoredProcedureEFCore;
+using Porto.MODEL.ViewModel;
+using Porto.BLL.Common;
 
 namespace Porto.BLL.Concrete
 {
     public class ProductRepository : BaseRepository<Product>, IProductRepository
     {
-        public IList<ProductViewModel>? GetProductOfCategory(int CategoryId)
+        public BaseResponseList<ProductViewModel>? GetProductOfCategory(int CategoryId)
         {
-            //var parameters = new SqlParameter("@CategoryId", CategoryId);
-            ////var productList = Database.Context.Database.SqlQueryRaw<ProductViewModel>("sp_ProductWithCategory", parameters, CommandType.StoredProcedure).ToList();
-            //var productList = Database.Context.Product.FromSqlRaw<Product>($"exec sp_ProductWithCategory {CategoryId}")
-            //    .AsEnumerable()
-            //    .Select(x => new ProductViewModel
-            //    {
-            //        Name = x.Name,
-            //        Description = x.Description,
-            //    }).ToList();
-
-
-            //return productList;
-
-            List<ProductViewModel>? rows = null;
-            Database.Context.LoadStoredProc("sp_ProductWithCategory")
-                .AddParam("CategoryId", CategoryId)
-                .Exec(r => rows = r.ToList<ProductViewModel>());
-            return rows;
-        }
-
-        public class ProductViewModel
-        {
-            public string Name { get; set; }
-            public string? Description { get; set; }
+            var result = new BaseResponseList<ProductViewModel>();
+            try
+            {
+                Database.Context.LoadStoredProc("sp_ProductWithCategory")
+                    .AddParam("CategoryId", CategoryId)
+                    .Exec(r => result.ModelList = r.ToList<ProductViewModel>());
+                throw new Exception("Database tarafoında hata aldı");
+            }
+            catch (Exception ex)
+            {
+                result.IsSuccess = false;
+                result.ResponseType = ResponseType.DbError;
+                result.ResponseMessage = ex.Message;
+            }
+            
+            return result;
         }
     }
 }

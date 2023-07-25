@@ -1,4 +1,5 @@
-﻿using Porto.MODEL;
+﻿using Porto.BLL.Common;
+using Porto.MODEL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,10 +10,10 @@ namespace Porto.BLL.Interfaces
 {
     public interface IBaseRepository<T> where T : BaseModel
     {
-        List<T> GetAll();
-        T? Get(int Id);
-        int Add(T model);
-        int Remove(int Id);
-        int Update(T model);
+        BaseResponseList<T> GetAll();
+        BaseResponseModel<T>? Get(int Id);
+        BaseResponse Add(T model);
+        BaseResponse Remove(int Id);
+        BaseResponse Update(T model);
     }
 }

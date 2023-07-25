@@ -11,7 +11,9 @@ namespace Porto.UI.Controllers
         [Route("Product/GetProductOfCategory/{CategoryId}")]
         public string GetProductOfCategory(int CategoryId)
         {
-            var result = UnitOfWork.Instance.Product.GetProductOfCategory(CategoryId).ToList();
+            var result = UnitOfWork.Instance.Product.GetProductOfCategory(CategoryId);
+            if (result == null)
+                return "";
             var resultString = JsonConvert.SerializeObject(result);
             return resultString;
         }

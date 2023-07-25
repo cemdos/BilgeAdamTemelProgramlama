@@ -1,5 +1,7 @@
-﻿using Porto.BLL.Concrete;
+﻿using Porto.BLL.Common;
+using Porto.BLL.Concrete;
 using Porto.MODEL;
+using Porto.MODEL.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +13,6 @@ namespace Porto.BLL.Interfaces
 {
     public interface IProductRepository : IBaseRepository<Product>
     {
-        IList<ProductViewModel>? GetProductOfCategory(int Category);
+        BaseResponseList<ProductViewModel> GetProductOfCategory(int Category);
     }
 }

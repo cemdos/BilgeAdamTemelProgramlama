@@ -11,7 +11,14 @@ app.controller('BaseCtrl', function ($scope, $http) {
         $scope.showSpinner = true;
         $http.get("/Category/GetCategory")
             .then(function (response) {
-                $scope.AllCategoryList = response.data;
+                var result = response.data;
+                if (!result.IsSuccess) {
+                    alert(result.ResponseMessage);
+                    $scope.showSpinner = false;
+                    return;
+                }
+
+                $scope.AllCategoryList = result.ModelList;
                 $scope.ParentCategoryList = $scope.AllCategoryList.filter(x => x.ParentID == null);
                 $scope.showSpinner = false;
             })

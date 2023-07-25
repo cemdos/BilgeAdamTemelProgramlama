@@ -6,12 +6,11 @@ using System.Threading.Tasks;
 
 namespace Porto.MODEL.ViewModel
 {
-    public class ProductViewModel
+    public class CategoryViewModel
     {
+        public int ID { get; set; }
         public string Name { get; set; }
         public string? Description { get; set; }
-        public decimal UnitPrice { get; set; }
-        public float Discount { get; set; }
-        public decimal DiscountedPrice => UnitPrice *  (decimal)(1 - Discount);
+        public int? ParentID { get; set; }
     }
 }

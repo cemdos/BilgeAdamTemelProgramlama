@@ -1,12 +1,12 @@
-﻿app.controller('ProductCtrl', function ($scope, $http, toaster) {
+﻿app.controller('ProductDetailCtrl', function ($scope, $http, toaster) {
     $scope.PageLoad = function () {
         var url = window.location.href;
-        var categoryId = url.split('/')[url.split('/').length - 1];
-        $scope.GetProductList(categoryId);
+        var productId = url.split('/')[url.split('/').length - 1];
+        $scope.GetProductDetail(productId);
     }
 
-    $scope.GetProductList = function (categoryId) {
-        $http.get(`/Product/GetProductOfCategory/${categoryId}`)
+    $scope.GetProductDetail = function (ProductId) {
+        $http.get(`/Product/GetProduct/${ProductId}`)
             .then(function (response) {
                 var result = response.data;
                 if (!result.IsSuccess) {
@@ -14,7 +14,7 @@
                     return;
                 }
 
-                $scope.productList = result.ModelList;
+                $scope.productDetail = result.Model;
             });
     }
 

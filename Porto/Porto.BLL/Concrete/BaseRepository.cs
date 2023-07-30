@@ -2,6 +2,7 @@
 using Porto.BLL.Common;
 using Porto.BLL.Interfaces;
 using Porto.MODEL;
+using StoredProcedureEFCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -104,6 +105,55 @@ namespace Porto.BLL.Concrete
                 result.ResponseMessage = ex.Message;
             }
             return result;
+        }
+
+        public BaseResponseList<TViewModel> ExecProc<TViewModel>(string procName, Dictionary<string, dynamic> parameters)
+            where TViewModel : class, new()
+        {
+            BaseResponseList<TViewModel> response = new BaseResponseList<TViewModel>();
+            try
+            {
+                if (Database.Context.Database.CanConnect())
+                    Database.Context.Database.CloseConnection();
+
+                var builder = Database.Context.LoadStoredProc(procName);
+                foreach (var param in parameters)
+                    builder.AddParam(param.Key, param.Value);
+
+                builder.Exec(r => response.ModelList = r.ToList<TViewModel>());
+
+                if (Database.Context.Database.CanConnect())
+                    Database.Context.Database.CloseConnection();
+
+                response.IsSuccess = true;
+            }
+            catch (Exception ex)
+            {
+                response.IsSuccess = false;
+                response.ResponseType = ResponseType.DbError;
+                response.ResponseMessage = ex.Message;
+            }
+            return response;
+        }
+
+        public BaseResponseModel<TViewModel> ExecProcModel<TViewModel>(string procName, Dictionary<string, dynamic> parameters)
+           where TViewModel : class, new()
+        {
+            BaseResponseModel<TViewModel> response = new BaseResponseModel<TViewModel>();
+            try
+            {
+                var result = ExecProc<TViewModel>(procName, parameters);
+                response.IsSuccess = result.IsSuccess;
+                response.Model = result.ModelList?.FirstOrDefault();
+                response.ResponseType = result.ResponseType;
+            }
+            catch (Exception ex)
+            {
+                response.IsSuccess = false;
+                response.ResponseType = ResponseType.DbError;
+                response.ResponseMessage = ex.Message;
+            }
+            return response;
         }
     }
 }

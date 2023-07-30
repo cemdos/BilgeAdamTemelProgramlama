@@ -11,9 +11,7 @@ using static Porto.BLL.Concrete.ProductRepository;
 
 namespace Porto.BLL.Interfaces
 {
-    public interface IProductRepository : IBaseRepository<Product>
+    public interface IPictureRepository : IBaseRepository<Picture>
     {
-        BaseResponseList<ProductViewModel> GetProductOfCategory(int Category);
-        BaseResponseModel<ProductDetailViewModel>? GetProductDetail(int ProductId);
     }
 }

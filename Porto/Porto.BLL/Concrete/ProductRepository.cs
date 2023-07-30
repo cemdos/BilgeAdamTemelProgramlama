@@ -19,22 +19,21 @@ namespace Porto.BLL.Concrete
     {
         public BaseResponseList<ProductViewModel>? GetProductOfCategory(int CategoryId)
         {
-            var result = new BaseResponseList<ProductViewModel>();
-            try
-            {
-                Database.Context.LoadStoredProc("sp_ProductWithCategory")
-                    .AddParam("CategoryId", CategoryId)
-                    .Exec(r => result.ModelList = r.ToList<ProductViewModel>());
-                throw new Exception("Database tarafoında hata aldı");
-            }
-            catch (Exception ex)
-            {
-                result.IsSuccess = false;
-                result.ResponseType = ResponseType.DbError;
-                result.ResponseMessage = ex.Message;
-            }
-            
-            return result;
+            var parameters = new Dictionary<string, object>();
+            parameters.Add("CategoryId", CategoryId);
+            var response = ExecProc<ProductViewModel>("sp_ProductWithCategory", parameters);
+
+            return response;
+        }
+
+        public BaseResponseModel<ProductDetailViewModel>? GetProductDetail(int ProductId)
+        {
+            var parameters = new Dictionary<string, object>();
+            parameters.Add("ProductId", ProductId);
+            var response = ExecProcModel<ProductDetailViewModel>("sp_GetProductDetail", parameters);
+            if (response.Model != null)
+                response.Model.Images = UnitOfWork.Instance.Picture.GetAll().ModelList?.Where(x => x.ID_Product == ProductId).ToList();
+            return response;
         }
     }
 }

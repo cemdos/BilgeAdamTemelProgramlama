@@ -40,10 +40,12 @@
     <link rel="stylesheet" href="/css/demo1.min.css">
     <link rel="stylesheet" type="text/css" href="/vendor/fontawesome-free/css/all.min.css">
     <link rel="stylesheet" type="text/css" href="/vendor/simple-line-icons/css/simple-line-icons.min.css">
+    <link href="/plugin/toaster/toaster.css" rel="stylesheet" />
     <link href="/content/styles/porto.css" rel="stylesheet" />
 </head>
 
 <body ng-app="PortoApp" ng-controller="BaseCtrl">
+    <toaster-container toaster-options="{'time-out': 5000}"></toaster-container>
     <div class="page-wrapper">
         <div class="top-notice text-white bg-dark">
             <div class="container text-center">
@@ -978,6 +980,7 @@
 
     <!-- Plugins JS File -->
     <script src="/plugin/angular/angular.min_1.8.2.js"></script>
+    <script src="/plugin/toaster/toaster.js"></script>
     <script src="/content/angularjs/basectrl.js"></script>
     @RenderSection("AngularScripts",false)
     <script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>

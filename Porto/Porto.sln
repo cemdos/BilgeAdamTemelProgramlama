@@ -3,13 +3,18 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Porto.UI", "Porto.UI\Porto.UI.csproj", "{5A99F16B-09D8-43D1-AAA4-2B599AE59E23}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Porto.UI", "Porto.UI\Porto.UI.csproj", "{5A99F16B-09D8-43D1-AAA4-2B599AE59E23}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Porto.MODEL", "Porto.MODEL\Porto.MODEL.csproj", "{622E97DF-3CDF-4462-84B4-401FCF426B2A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Porto.MODEL", "Porto.MODEL\Porto.MODEL.csproj", "{622E97DF-3CDF-4462-84B4-401FCF426B2A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Porto.DAL", "Porto.DAL\Porto.DAL.csproj", "{6E80A7C2-10E7-466C-B49E-F0B6E0A5E66F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Porto.DAL", "Porto.DAL\Porto.DAL.csproj", "{6E80A7C2-10E7-466C-B49E-F0B6E0A5E66F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Porto.BLL", "Porto.BLL\Porto.BLL.csproj", "{AE6EDA94-ED57-4012-9FA1-B169600D1F1B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Porto.BLL", "Porto.BLL\Porto.BLL.csproj", "{AE6EDA94-ED57-4012-9FA1-B169600D1F1B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{6CF0553A-3E71-4201-ABD0-0D9B1B1772D0}"
+	ProjectSection(SolutionItems) = preProject
+		20230730.sql = 20230730.sql
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -13,6 +13,7 @@ namespace Porto.DAL.EntityFramework
     {
         public DbSet<Category> Category { get; set; }
         public DbSet<Product> Product { get; set; }
+        public DbSet<Picture> Picture { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -26,6 +27,12 @@ namespace Porto.DAL.EntityFramework
                 .HasMany(e => e.SubCategories)
                 .WithOne(e => e.SubCategory)
                 .HasForeignKey(e => e.ParentID)
+                .HasPrincipalKey(e => e.ID);
+
+            modelBuilder.Entity<Product>()
+                .HasMany(e => e.Pictures)
+                .WithOne(e => e.Product)
+                .HasForeignKey(e => e.ID_Product)
                 .HasPrincipalKey(e => e.ID);
 
             base.OnModelCreating(modelBuilder);

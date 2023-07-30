@@ -25,7 +25,17 @@ namespace Porto.UI.Controllers
 			return View();
 		}
 
-		public IActionResult Privacy()
+        public IActionResult Product2()
+        {
+            return View();
+        }
+
+		public IActionResult ProductDetail()
+		{
+			return View();
+		}
+
+        public IActionResult Privacy()
 		{
 			return View();
 		}

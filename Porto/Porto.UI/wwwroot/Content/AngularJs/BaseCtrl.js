@@ -1,6 +1,6 @@
-﻿var app = angular.module('PortoApp', []);
+﻿var app = angular.module('PortoApp', ['toaster']);
 
-app.controller('BaseCtrl', function ($scope, $http) {
+app.controller('BaseCtrl', function ($scope, $http, toaster) {
     $scope.AllCategoryList = [];
 
     $scope.PageLoad = function () {
@@ -19,12 +19,12 @@ app.controller('BaseCtrl', function ($scope, $http) {
                 }
 
                 $scope.AllCategoryList = result.ModelList;
-                $scope.ParentCategoryList = $scope.AllCategoryList.filter(x => x.ParentID == null);
+                $scope.ParentCategoryList = $scope.AllCategoryList?.filter(x => x.ParentID == null) ?? [];
                 $scope.showSpinner = false;
             })
             .catch(function (response) {
                 $scope.showSpinner = false;
-                alert(response.message);
+                toaster.pop("error", "Hata", response.message)
             })
     }
 

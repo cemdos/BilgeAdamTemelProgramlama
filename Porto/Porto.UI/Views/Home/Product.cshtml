@@ -74,13 +74,13 @@
             <div class="product-default">
                 <figure>
                     <a href="product.html">
-                        <img src="/images/products/product-1.jpg" width="280" height="280" alt="product" />
-                        <img src="/images/products/product-1-2.jpg" width="280" height="280" alt="product" />
+                        <img src="{{product.MasterPic==null ? '/images/products/no-product.png':product.MasterPic}}" width="280" height="280" alt="product" />
+                        <img src="{{product.SlavePic==null ? '/images/products/no-product.png':product.SlavePic}}" width="280" height="280" alt="product" />
                     </a>
 
                     <div class="label-group">
                         <div class="product-label label-hot">HOT</div>
-                        <div class="product-label label-sale">-20%</div>
+                        <div ng-show="product.Discount!=0" class="product-label label-sale">-{{product.Discount*100}}%</div>
                     </div>
                 </figure>
 
@@ -108,8 +108,8 @@
                     <!-- End .product-container -->
 
                     <div class="price-box">
-                        <span class="old-price">$90.00</span>
-                        <span class="product-price">$70.00</span>
+                        <span ng-show="product.Discount!=0" class="old-price">${{product.UnitPrice}}</span>
+                        <span class="product-price">${{product.DiscountedPrice}}</span>
                     </div>
                     <!-- End .price-box -->
 

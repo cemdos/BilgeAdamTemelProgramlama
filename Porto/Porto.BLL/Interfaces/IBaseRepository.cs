@@ -15,5 +15,9 @@ namespace Porto.BLL.Interfaces
         BaseResponse Add(T model);
         BaseResponse Remove(int Id);
         BaseResponse Update(T model);
+        BaseResponseList<TViewModel> ExecProc<TViewModel>(string procName, Dictionary<string, dynamic> parameters)
+            where TViewModel : class, new();
+        BaseResponseModel<TViewModel> ExecProcModel<TViewModel>(string procName, Dictionary<string, dynamic> parameters)
+           where TViewModel : class, new();
     }
 }

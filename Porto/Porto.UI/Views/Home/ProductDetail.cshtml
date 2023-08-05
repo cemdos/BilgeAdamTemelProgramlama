@@ -24,8 +24,20 @@
                     </div>
 
                     <div class="product-single-carousel owl-carousel owl-theme show-nav-hover">
-                        <div class="product-item" ng-repeat="image in productDetail.Images">
-                            <img class="product-single-image" src="{{image.ImageUrl}}" data-zoom-image="{{image.ImageUrl}}" width="468" height="468" alt="product" />
+                        <div class="product-item">
+                            <img class="product-single-image" src="/images/products/zoom/product-1-big.jpg" data-zoom-image="/images/products/zoom/product-1-big.jpg" width="468" height="468" alt="product" />
+                        </div>
+                        <div class="product-item">
+                            <img class="product-single-image" src="/images/products/zoom/product-2-big.jpg" data-zoom-image="/images/products/zoom/product-2-big.jpg" width="468" height="468" alt="product" />
+                        </div>
+                        <div class="product-item">
+                            <img class="product-single-image" src="/images/products/zoom/product-3-big.jpg" data-zoom-image="/images/products/zoom/product-3-big.jpg" width="468" height="468" alt="product" />
+                        </div>
+                        <div class="product-item">
+                            <img class="product-single-image" src="/images/products/zoom/product-4-big.jpg" data-zoom-image="/images/products/zoom/product-4-big.jpg" width="468" height="468" alt="product" />
+                        </div>
+                        <div class="product-item">
+                            <img class="product-single-image" src="/images/products/zoom/product-5-big.jpg" data-zoom-image="/images/products/zoom/product-5-big.jpg" width="468" height="468" alt="product" />
                         </div>
                     </div>
                     <!-- End .product-single-carousel -->
@@ -35,8 +47,20 @@
                 </div>
 
                 <div class="prod-thumbnail owl-dots">
-                    <div ng-repeat="image in productDetail.Images" class="owl-dot">
-                        <img src="{{image.ImageUrl}}" width="110" height="110" alt="product-thumbnail" />
+                    <div class="owl-dot">
+                        <img src="/images/products/zoom/product-1.jpg" width="110" height="110" alt="product-thumbnail" />
+                    </div>
+                    <div class="owl-dot">
+                        <img src="/images/products/zoom/product-2.jpg" width="110" height="110" alt="product-thumbnail" />
+                    </div>
+                    <div class="owl-dot">
+                        <img src="/images/products/zoom/product-3.jpg" width="110" height="110" alt="product-thumbnail" />
+                    </div>
+                    <div class="owl-dot">
+                        <img src="/images/products/zoom/product-4.jpg" width="110" height="110" alt="product-thumbnail" />
+                    </div>
+                    <div class="owl-dot">
+                        <img src="/images/products/zoom/product-5.jpg" width="110" height="110" alt="product-thumbnail" />
                     </div>
                 </div>
             </div>
@@ -123,11 +147,11 @@
 
                 <div class="product-action">
                     <div class="product-single-qty">
-                        <input class="horizontal-quantity form-control" type="text">
+                        <input ng-model="txtCount" class="form-control" type="number">
                     </div>
                     <!-- End .product-single-qty -->
 
-                    <a href="javascript:;" class="btn btn-dark add-cart mr-2" title="Add to Cart">
+                    <a href="javascript:;" ng-click="AddToCart(productDetail,txtCount)" class="btn btn-dark add-cart mr-2" title="Add to Cart">
                         Add to
                         Cart
                     </a>

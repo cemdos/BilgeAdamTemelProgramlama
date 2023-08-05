@@ -38,6 +38,7 @@
 
     <!-- Main CSS File -->
     <link rel="stylesheet" href="/css/demo4.min.css">
+    @RenderSection("Styles",false)
     <link rel="stylesheet" type="text/css" href="/vendor/fontawesome-free/css/all.min.css">
     <link href="/plugin/toaster/toaster.css" rel="stylesheet" />
     <link href="/content/styles/porto.css" rel="stylesheet" />
@@ -185,7 +186,7 @@
                         <div class="dropdown cart-dropdown">
                             <a href="#" title="Cart" class="dropdown-toggle dropdown-arrow cart-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static">
                                 <i class="minicart-icon"></i>
-                                <span class="cart-count badge-circle">3</span>
+                                <span ng-show="Cart.length!=0" class="cart-count badge-circle">{{Cart.length}}</span>
                             </a>
 
                             <div class="cart-overlay"></div>
@@ -198,67 +199,24 @@
                                     <!-- End .dropdown-cart-header -->
 
                                     <div class="dropdown-cart-products">
-                                        <div class="product">
+                                        <div ng-repeat="item in Cart" class="product">
                                             <div class="product-details">
                                                 <h4 class="product-title">
-                                                    <a href="product.html">Ultimate 3D Bluetooth Speaker</a>
+                                                    <a href="#">{{item.Product.Name}}</a>
                                                 </h4>
 
                                                 <span class="cart-product-info">
-                                                    <span class="cart-product-qty">1</span> × $99.00
+                                                    <span class="cart-product-qty">{{item.Count}}</span> × $ {{item.Product.UnitPrice * (1-item.Product.Discount)}}
                                                 </span>
                                             </div>
                                             <!-- End .product-details -->
 
                                             <figure class="product-image-container">
                                                 <a href="product.html" class="product-image">
-                                                    <img src="/images/products/product-1.jpg" alt="product" width="80" height="80">
+                                                    <img src="{{item.Product.Images[0].ImageUrl}}" alt="product" width="80" height="80">
                                                 </a>
 
-                                                <a href="#" class="btn-remove" title="Remove Product"><span>×</span></a>
-                                            </figure>
-                                        </div>
-                                        <!-- End .product -->
-
-                                        <div class="product">
-                                            <div class="product-details">
-                                                <h4 class="product-title">
-                                                    <a href="product.html">Brown Women Casual HandBag</a>
-                                                </h4>
-
-                                                <span class="cart-product-info">
-                                                    <span class="cart-product-qty">1</span> × $35.00
-                                                </span>
-                                            </div>
-                                            <!-- End .product-details -->
-
-                                            <figure class="product-image-container">
-                                                <a href="product.html" class="product-image">
-                                                    <img src="/images/products/product-2.jpg" alt="product" width="80" height="80">
-                                                </a>
-
-                                                <a href="#" class="btn-remove" title="Remove Product"><span>×</span></a>
-                                            </figure>
-                                        </div>
-                                        <!-- End .product -->
-
-                                        <div class="product">
-                                            <div class="product-details">
-                                                <h4 class="product-title">
-                                                    <a href="product.html">Circled Ultimate 3D Speaker</a>
-                                                </h4>
-
-                                                <span class="cart-product-info">
-                                                    <span class="cart-product-qty">1</span> × $35.00
-                                                </span>
-                                            </div>
-                                            <!-- End .product-details -->
-
-                                            <figure class="product-image-container">
-                                                <a href="product.html" class="product-image">
-                                                    <img src="/images/products/product-3.jpg" alt="product" width="80" height="80">
-                                                </a>
-                                                <a href="#" class="btn-remove" title="Remove Product"><span>×</span></a>
+                                                <a href="#" ng-click="RemoveToCart(item)" class="btn-remove" title="Remove Product"><span>×</span></a>
                                             </figure>
                                         </div>
                                         <!-- End .product -->
@@ -268,12 +226,12 @@
                                     <div class="dropdown-cart-total">
                                         <span>SUBTOTAL:</span>
 
-                                        <span class="cart-total-price float-right">$134.00</span>
+                                        <span class="cart-total-price float-right">${{GetSubTotal()}}</span>
                                     </div>
                                     <!-- End .dropdown-cart-total -->
 
                                     <div class="dropdown-cart-action">
-                                        <a href="cart.html" class="btn btn-gray btn-block view-cart">
+                                        <a href="/Home/ViewCart" class="btn btn-gray btn-block view-cart">
                                             View
                                             Cart
                                         </a>

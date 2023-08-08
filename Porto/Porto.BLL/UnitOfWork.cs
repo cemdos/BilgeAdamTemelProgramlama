@@ -25,5 +25,6 @@ namespace Porto.BLL
         public ICategoryRepository Category => new CategoryRepository();
         public IProductRepository Product => new ProductRepository();
         public IPictureRepository Picture => new PictureRepository();
+        public IInvoiceRepository Invoice => new InvoiceRepository();
     }
 }

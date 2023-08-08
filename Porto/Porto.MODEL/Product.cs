@@ -25,5 +25,6 @@ namespace Porto.MODEL
         //NavigationProperty
         public virtual Category? Category { get; set; }
         public virtual ICollection<Picture>? Pictures { get; set; }
+        public virtual ICollection<InvoiceDetail>? InvoiceDetailList { get; set; }
     }
 }

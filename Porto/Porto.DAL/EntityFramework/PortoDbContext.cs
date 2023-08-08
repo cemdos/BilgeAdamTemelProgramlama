@@ -14,6 +14,9 @@ namespace Porto.DAL.EntityFramework
         public DbSet<Category> Category { get; set; }
         public DbSet<Product> Product { get; set; }
         public DbSet<Picture> Picture { get; set; }
+        public DbSet<InvoiceDetail> InvoiceDetail { get; set; }
+        public DbSet<Invoice> Invoice { get; set; }
+        public DbSet<Customer> Customer { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -33,6 +36,24 @@ namespace Porto.DAL.EntityFramework
                 .HasMany(e => e.Pictures)
                 .WithOne(e => e.Product)
                 .HasForeignKey(e => e.ID_Product)
+                .HasPrincipalKey(e => e.ID);
+
+            modelBuilder.Entity<Product>()
+                .HasMany(e => e.InvoiceDetailList)
+                .WithOne(e => e.Product)
+                .HasForeignKey(e => e.ID_Product)
+                .HasPrincipalKey(e => e.ID);
+
+            modelBuilder.Entity<Invoice>()
+                .HasMany(e => e.InvoiceDetailList)
+                .WithOne(e => e.Invoice)
+                .HasForeignKey(e => e.ID_Invoice)
+                .HasPrincipalKey(e => e.ID);
+
+            modelBuilder.Entity<Customer>()
+                .HasMany(e => e.InvoiceList)
+                .WithOne(e => e.Customer)
+                .HasForeignKey(e => e.CustomerId)
                 .HasPrincipalKey(e => e.ID);
 
             base.OnModelCreating(modelBuilder);

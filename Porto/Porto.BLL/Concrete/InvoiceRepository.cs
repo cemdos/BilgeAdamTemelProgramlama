@@ -28,6 +28,7 @@ namespace Porto.BLL.Concrete
             parameters.Add("Address", model.Customer.Address);
             parameters.Add("Phone", model.Customer.Phone);
             var response = ExecProcModel<BaseResponse>("sp_AddInvoice", parameters);
+            //model.Cart
             return response;
         }
     }

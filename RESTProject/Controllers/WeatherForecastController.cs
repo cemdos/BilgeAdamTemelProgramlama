@@ -1,33 +1,50 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using RESTProject.Model;
+using System.Text.Json.Serialization;
 
 namespace RESTProject.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Authorize]
     public class WeatherForecastController : ControllerBase
     {
-        private static readonly string[] Summaries = new[]
+        [HttpGet]
+        [Route("api/Test/Topla")]
+        public IActionResult Topla(int x, int y)
         {
-        "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-    };
-
-        private readonly ILogger<WeatherForecastController> _logger;
-
-        public WeatherForecastController(ILogger<WeatherForecastController> logger)
-        {
-            _logger = logger;
+            return Ok(x + y);
         }
 
         [HttpGet]
-        public IEnumerable<WeatherForecast> Get()
+        [Route("api/Test/PersonelGetir")]
+        public Personel PersonelGetir()
         {
-            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
+            var personel = new Personel
             {
-                Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-                TemperatureC = Random.Shared.Next(-20, 55),
-                Summary = Summaries[Random.Shared.Next(Summaries.Length)]
-            })
-            .ToArray();
+                Adi = "Cem",
+                Soyadi = "DOS",
+                Yas = 32
+            };
+            return personel;
+        }
+
+        [HttpGet]
+        [Route("api/Test/PersonelListesiGetir")]
+        public List<Personel> PersonelListesiGetir()
+        {
+            var personelListesi = new List<Personel>();
+            for (int i = 0; i < 30; i++)
+            {
+                personelListesi.Add(new Personel
+                {
+                    Adi = "Cem",
+                    Soyadi = "DOS",
+                    Yas = 32
+                });
+            }
+
+            return personelListesi;
         }
     }
 }

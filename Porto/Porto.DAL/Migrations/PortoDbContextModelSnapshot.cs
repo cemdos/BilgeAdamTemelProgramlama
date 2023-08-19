@@ -298,6 +298,48 @@ namespace Porto.DAL.Migrations
                     b.ToTable("Product");
                 });
 
+            modelBuilder.Entity("Porto.MODEL.User", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+
+                    b.Property<int?>("CreUser")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("DelDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("DelUser")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("Deleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("ModDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("ModUser")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("User");
+                });
+
             modelBuilder.Entity("Porto.MODEL.Category", b =>
                 {
                     b.HasOne("Porto.MODEL.Category", "SubCategory")

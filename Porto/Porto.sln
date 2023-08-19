@@ -11,10 +11,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Porto.DAL", "Porto.DAL\Port
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Porto.BLL", "Porto.BLL\Porto.BLL.csproj", "{AE6EDA94-ED57-4012-9FA1-B169600D1F1B}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{6CF0553A-3E71-4201-ABD0-0D9B1B1772D0}"
-	ProjectSection(SolutionItems) = preProject
-		20230730.sql = 20230730.sql
-	EndProjectSection
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Porto.API", "Porto.API\Porto.API.csproj", "{8500ECDE-B5FD-42FA-B72F-0D7E20243958}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{11D3D24A-F227-4947-92A1-1A5A32DFE568}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Porto.AdminUI", "Porto.AdminUI\Porto.AdminUI.csproj", "{AD49C499-1C5C-4240-BEF7-8A472FE5AA3D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -38,9 +39,21 @@ Global
 		{AE6EDA94-ED57-4012-9FA1-B169600D1F1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AE6EDA94-ED57-4012-9FA1-B169600D1F1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AE6EDA94-ED57-4012-9FA1-B169600D1F1B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8500ECDE-B5FD-42FA-B72F-0D7E20243958}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8500ECDE-B5FD-42FA-B72F-0D7E20243958}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8500ECDE-B5FD-42FA-B72F-0D7E20243958}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8500ECDE-B5FD-42FA-B72F-0D7E20243958}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD49C499-1C5C-4240-BEF7-8A472FE5AA3D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD49C499-1C5C-4240-BEF7-8A472FE5AA3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD49C499-1C5C-4240-BEF7-8A472FE5AA3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD49C499-1C5C-4240-BEF7-8A472FE5AA3D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{5A99F16B-09D8-43D1-AAA4-2B599AE59E23} = {11D3D24A-F227-4947-92A1-1A5A32DFE568}
+		{AD49C499-1C5C-4240-BEF7-8A472FE5AA3D} = {11D3D24A-F227-4947-92A1-1A5A32DFE568}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7BACD637-D4D3-40DC-B914-CF3C7A2F4220}

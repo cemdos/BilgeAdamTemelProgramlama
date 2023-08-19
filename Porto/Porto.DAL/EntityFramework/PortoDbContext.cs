@@ -17,6 +17,7 @@ namespace Porto.DAL.EntityFramework
         public DbSet<InvoiceDetail> InvoiceDetail { get; set; }
         public DbSet<Invoice> Invoice { get; set; }
         public DbSet<Customer> Customer { get; set; }
+        public DbSet<User> User { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

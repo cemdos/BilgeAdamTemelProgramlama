@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using Porto.BLL;
 using Porto.BLL.Common;
+using Porto.MODEL.Enums;
 using Porto.MODEL.ViewModel;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
@@ -60,6 +61,7 @@ namespace Porto.API.Controllers
                 Subject = new ClaimsIdentity(new Claim[]
                 {
                     new Claim("UserID", UserID.ToString()),
+                    new Claim("Role", RoleType.Admin.ToString())
                 }),
                 Expires = DateTime.UtcNow.AddMinutes(tokenExpireMinutes),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)

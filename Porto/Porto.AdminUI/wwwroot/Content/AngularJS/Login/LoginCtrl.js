@@ -9,7 +9,8 @@ app.controller('LoginCtrl', function ($scope, $http) {
         $http.get(APIService + `Account/Login/${Username}/${Password}`)
             .then(function (response) {
                 var result = response.data;
-                alert(JSON.stringify(result))
+                localStorage.setItem("Token", result);
+                window.location.href = "/Home/index";
             })
             .catch(function (response) {
                 if (response.data.ResponseMessage != null || response.data.ResponseMessage != "")

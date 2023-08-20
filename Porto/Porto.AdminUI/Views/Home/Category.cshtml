@@ -1,0 +1,33 @@
+﻿@{
+    ViewData["Title"] = "Category Actions";
+}
+
+<div class="card" ng-controller="CategoryCtrl">
+    <div class="card-header">
+        <h4 class="card-title mb-0">Category List</h4>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-striped mb-0">
+                <thead>
+                    <tr>
+                        <th>Category Name</th>
+                        <th>Description</th>
+                        <th>ParentID</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="category in CategoryList">
+                        <td>{{category.Name}}</td>
+                        <td>{{category.Description}}</td>
+                        <td>{{category.ParentID}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section AngularScripts {
+    <script src="/content/angularjs/category/categoryctrl.js"></script>
+}

@@ -1,4 +1,4 @@
-﻿var app = angular.module('PortoUIAdmin', []);
+﻿var app = angular.module('PortoUIAdmin', ['ui.bootstrap']);
 var APIService = "http://localhost:5119/api/";
 
 app.controller('BaseCtrl', function ($scope, $http) {

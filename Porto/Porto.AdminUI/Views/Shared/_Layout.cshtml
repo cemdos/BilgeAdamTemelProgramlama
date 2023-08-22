@@ -9,9 +9,11 @@
 <meta name="author" content="Dreamguys - Bootstrap Admin Template">
 <title>@ViewData["Title"] - Porto.AdminUI</title>
 
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
 <link rel="shortcut icon" type="image/x-icon" href="/TemplateFiles/img/favicon.png">
 
-<link rel="stylesheet" href="/TemplateFiles/css/bootstrap.min.css">
+@*<link rel="stylesheet" href="/TemplateFiles/css/bootstrap.min.css">*@
+ 
 
 <link rel="stylesheet" href="/TemplateFiles/plugins/fontawesome/css/fontawesome.min.css">
 <link rel="stylesheet" href="/TemplateFiles/plugins/fontawesome/css/all.min.css">
@@ -22,6 +24,7 @@
 <link rel="stylesheet" href="/TemplateFiles/plugins/morris/morris.css">
 
 <link rel="stylesheet" href="/TemplateFiles/css/style.css">
+    @*<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">*@
 </head>
 <body ng-app="PortoUIAdmin" ng-controller="BaseCtrl">
 
@@ -1442,6 +1445,9 @@ library_add_check
 <script src="/TemplateFiles/js/theme-settings.js"></script>
 <script src="/TemplateFiles/js/app.js"></script>
 <script src="/plugins/angularjs/angular.1.8.2.min.js"></script>
+<script data-require="angular-animate@1.6.*" data-semver="1.6.5" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular-animate.min.js"></script>
+<script data-semver="1.6.2" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular-touch.js"></script>
+<script data-semver="2.5.0" src="https://cdn.rawgit.com/angular-ui/bootstrap/gh-pages/ui-bootstrap-tpls-2.5.0.js"></script>
 <script src="/content/angularjs/base/basectrl.js"></script>
 @RenderSection("AngularScripts",false)
 </body>

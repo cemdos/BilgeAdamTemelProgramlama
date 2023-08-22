@@ -33,5 +33,11 @@ namespace Porto.API.Controllers
                 return BadRequest(response);
             }
         }
+
+        [HttpPost]
+        public IActionResult AddCategory([FromBody]CategoryViewModel model)
+        {
+            return Ok();
+        }
     }
 }

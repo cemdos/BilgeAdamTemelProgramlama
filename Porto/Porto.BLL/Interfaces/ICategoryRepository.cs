@@ -12,5 +12,6 @@ namespace Porto.BLL.Interfaces
     public interface ICategoryRepository:IBaseRepository<Category>
     {
         BaseResponseList<CategoryViewModel> GetCategoryList();
+        BaseResponse AddCategory(CategoryViewModel model);
     }
 }

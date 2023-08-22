@@ -12,6 +12,15 @@ namespace Porto.BLL.Concrete
 {
     public class CategoryRepository : BaseRepository<Category>, ICategoryRepository
     {
+        public BaseResponse AddCategory(CategoryViewModel model)
+        {
+            var parameters = new Dictionary<string, object>();
+            parameters.Add("Name", model.Name);
+            parameters.Add("Description", model.Description??string.Empty);
+            var response = ExecProc<CategoryViewModel>("sp_CategoryCtrl_AddCategory", parameters);
+            return response;
+        }
+
         public BaseResponseList<CategoryViewModel> GetCategoryList()
         {
             var parameters = new Dictionary<string, object>();

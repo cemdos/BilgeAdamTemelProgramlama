@@ -63,6 +63,9 @@
                                     <span class="fa-solid fa-eye-slash" id="toggle-password"></span>
                                 </div>
                             </div>
+                            <div class="input-block mb-4">
+                                <div id="html_element"></div>
+                            </div>
                             <div class="input-block mb-4 text-center">
                                 <button class="btn btn-primary account-btn" ng-click="Login()">Login</button>
                             </div>
@@ -81,6 +84,21 @@
     <script src="/TemplateFiles/js/jquery-3.7.0.min.js"></script>
     <script src="/TemplateFiles/js/bootstrap.bundle.min.js"></script>
     <script src="/TemplateFiles/js/app.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer></script>
+    <script type="text/javascript">
+        var IsValidReCaptcha = false;
+        var verifyCallback = function (response) {
+            IsValidReCaptcha = true;
+        };
+
+        var onloadCallback = function () {
+            grecaptcha.render('html_element', {
+                'sitekey': '6LeMYcgnAAAAAD0Lc4AQ4mcNo2I9VSULtiHGatTF',
+                'callback': verifyCallback,
+                'theme': 'light'
+            });
+        };
+    </script>
     <script src="/plugins/angularjs/angular.1.8.2.min.js"></script>
     <script src="/content/angularjs/login/loginctrl.js"></script>
 </body>

@@ -7,24 +7,37 @@
         <h4 class="card-title mb-0">Category List</h4>
     </div>
     <div class="card-body">
-        <div class="table-responsive">
-            <table class="table table-striped mb-0">
-                <thead>
-                    <tr>
-                        <th>Category Name</th>
-                        <th>Description</th>
-                        <th>ParentID</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr ng-repeat="category in CategoryList">
-                        <td>{{category.Name}}</td>
-                        <td>{{category.Description}}</td>
-                        <td>{{category.ParentID}}</td>
-                    </tr>
-                </tbody>
-            </table>
+        <div class="row">
+            <div class="col-md-12 mb-4">
+                <button ng-click="OpenNewCategoryModal()" class="btn btn-sm btn-success float-end">
+                    <i class="fa fa-plus"></i>
+                    New Category
+                </button>
+            </div>
         </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="table-responsive">
+                    <table class="table table-striped mb-0">
+                        <thead>
+                            <tr>
+                                <th>Category Name</th>
+                                <th>Description</th>
+                                <th>ParentID</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="category in CategoryList">
+                                <td>{{category.Name}}</td>
+                                <td>{{category.Description}}</td>
+                                <td>{{category.ParentID}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
     </div>
 </div>
 

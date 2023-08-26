@@ -16,7 +16,8 @@ namespace Porto.BLL.Concrete
         {
             var parameters = new Dictionary<string, object>();
             parameters.Add("Name", model.Name);
-            parameters.Add("Description", model.Description??string.Empty);
+            parameters.Add("Description", model.Description ?? string.Empty);
+            parameters.Add("ParentId", model.ParentID);
             var response = ExecProc<CategoryViewModel>("sp_CategoryCtrl_AddCategory", parameters);
             return response;
         }

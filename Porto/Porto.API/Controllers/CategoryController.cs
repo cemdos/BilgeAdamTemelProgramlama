@@ -4,8 +4,10 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
+using Porto.API.Helper;
 using Porto.BLL;
 using Porto.BLL.Common;
+using Porto.MODEL;
 using Porto.MODEL.Enums;
 using Porto.MODEL.ViewModel;
 using System.IdentityModel.Tokens.Jwt;
@@ -35,9 +37,43 @@ namespace Porto.API.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddCategory([FromBody]CategoryViewModel model)
+        public IActionResult AddCategory([FromBody] CategoryViewModel model)
         {
-            return Ok();
+            var result = UnitOfWork.Instance.Category.AddCategory(model);
+            if (result.IsSuccess)
+            {
+                result.ResponseMessage = "Başarılı";
+                return Ok(result);
+            }
+            return BadRequest(result);
         }
+
+        [HttpGet("{Id}")]
+        public IActionResult RemoveCategory(int Id)
+        {
+            var userInfo = AccountHelper.GetUserInfo(Request);
+            var result = UnitOfWork.Instance.Category.Remove(Id,userInfo.ID);
+            if (result.IsSuccess)
+            {
+                result.ResponseMessage = "Başarılı";
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
+        [HttpPost]
+        public IActionResult EditCategory([FromBody] Category model)
+        {
+            var userInfo = AccountHelper.GetUserInfo(Request);
+            model.ModUser = userInfo.ID;
+            var result = UnitOfWork.Instance.Category.Update(model);
+            if (result.IsSuccess)
+            {
+                result.ResponseMessage = "Başarılı";
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+        
     }
 }

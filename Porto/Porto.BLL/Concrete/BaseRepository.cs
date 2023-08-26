@@ -64,7 +64,7 @@ namespace Porto.BLL.Concrete
             return result;
         }
 
-        public BaseResponse Remove(int Id)
+        public BaseResponse Remove(int Id,int UserId)
         {
             var result = new BaseResponse();
             try
@@ -74,6 +74,7 @@ namespace Porto.BLL.Concrete
                     throw new Exception("Silinecek kayıt bulunamadı");
 
                 removingData.DelDate = DateTime.Now;
+                removingData.DelUser = UserId;
                 removingData.Deleted = true;
                 Database.Context.Entry<T>(removingData).State = EntityState.Modified;
                 Database.Context.Set<T>().Update(removingData);

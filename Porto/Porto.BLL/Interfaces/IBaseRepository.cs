@@ -13,7 +13,7 @@ namespace Porto.BLL.Interfaces
         BaseResponseList<T> GetAll();
         BaseResponseModel<T>? Get(int Id);
         BaseResponse Add(T model);
-        BaseResponse Remove(int Id);
+        BaseResponse Remove(int Id,int UserId);
         BaseResponse Update(T model);
         BaseResponseList<TViewModel> ExecProc<TViewModel>(string procName, Dictionary<string, dynamic> parameters)
             where TViewModel : class, new();

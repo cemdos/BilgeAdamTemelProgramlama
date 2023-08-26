@@ -24,6 +24,7 @@
                                 <th>Category Name</th>
                                 <th>Description</th>
                                 <th>ParentID</th>
+                                <th style="width: 80px"></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -31,6 +32,10 @@
                                 <td>{{category.Name}}</td>
                                 <td>{{category.Description}}</td>
                                 <td>{{category.ParentID}}</td>
+                                <td>
+                                    <button ng-click="OpenEditCategoryModal(category)" class="btn btn-sm btn-warning">Düzenle</button>
+                                    <button ng-click="RemoveCategory(category.ID)" class="btn btn-sm btn-danger">Sil</button>
+                                </td>
                             </tr>
                         </tbody>
                     </table>

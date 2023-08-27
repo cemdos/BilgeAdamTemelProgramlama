@@ -1,0 +1,57 @@
+﻿@{
+    ViewData["Title"] = "Product Actions";
+}
+
+<div class="card" ng-controller="ProductCtrl">
+    <div class="card-header">
+        <h4 class="card-title mb-0">Product List</h4>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-12 mb-4">
+                <button ng-click="OpenNewProductModal()" class="btn btn-sm btn-success float-end">
+                    <i class="fa fa-plus"></i>
+                    New Product
+                </button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="table-responsive">
+                    <table class="table table-striped mb-0">
+                        <thead>
+                            <tr>
+                                <th>Product Name</th>
+                                <th>Description</th>
+                                <th>Unit Price</th>
+                                <th>Category Name</th>
+                                <th>Discount</th>
+                                <th>UnitPriceInStock</th>
+                                <th style="width: 80px"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="product in  ProductList ">
+                                <td>{{product.name}}</td>
+                                <td>{{product.description}}</td>
+                                <td>{{product.unitPrice}}</td>
+                                <td>{{product.categoryName}}</td>
+                                <td>{{product.discount}}</td>
+                                <td>{{product.unitPriceInStock}}</td>
+                                <td>
+                                    <button ng-click="" class="btn btn-sm btn-warning">Düzenle</button>
+                                    <button ng-click="" class="btn btn-sm btn-danger">Sil</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+@section AngularScripts {
+    <script src="/content/angularjs/product/productctrl.js"></script>
+}

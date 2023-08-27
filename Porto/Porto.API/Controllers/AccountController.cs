@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using Porto.BLL;
 using Porto.BLL.Common;
+using Porto.MODEL;
 using Porto.MODEL.Enums;
 using Porto.MODEL.ViewModel;
 using System.IdentityModel.Tokens.Jwt;
@@ -47,6 +48,31 @@ namespace Porto.API.Controllers
             {
                 return BadRequest(response);
             }
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        public IActionResult Register([FromBody] User model)
+        {
+            var response = new BaseResponse();
+            #region User Control 
+            var findUser = UnitOfWork.Instance.User.GetAll().ModelList?.Where(x => x.UserName == model.UserName).FirstOrDefault();
+            if (findUser != null)
+            {
+                response.ResponseMessage = "Bu kullanıcı daha önceden sisteme kaydedildi.";
+                response.IsSuccess = false;
+                return BadRequest(response);
+            }
+            #endregion
+
+
+            response = UnitOfWork.Instance.User.Add(model);
+            if (response.IsSuccess)
+            {
+                response.ResponseMessage = "Başarılı";
+                return Ok(response);
+            }
+            return BadRequest(response);
         }
 
         private string CreateToken(int UserID)

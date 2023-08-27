@@ -15,5 +15,6 @@ namespace Porto.BLL.Interfaces
     {
         BaseResponseList<ProductViewModel> GetProductOfCategory(int Category);
         BaseResponseModel<ProductDetailViewModel>? GetProductDetail(int ProductId);
+        BaseResponseList<ProductViewModel>? GetAllProduct();
     }
 }

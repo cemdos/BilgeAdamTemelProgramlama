@@ -1,0 +1,78 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en" data-layout="vertical" data-topbar="light" data-sidebar="dark" data-sidebar-size="lg" data-sidebar-image="none">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Smarthr - Bootstrap Admin Template">
+    <meta name="keywords" content="admin, estimates, bootstrap, business, corporate, creative, management, minimal, modern, accounts, invoice, html5, responsive, CRM, Projects">
+    <meta name="author" content="Dreamguys - Bootstrap Admin Template">
+    <title>Register - HRMS admin template</title>
+
+    <link rel="shortcut icon" type="image/x-icon" href="/TemplateFiles/img/favicon.png">
+
+    <link rel="stylesheet" href="/TemplateFiles/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="/TemplateFiles/css/style.css">
+</head>
+<body class="account-page" ng-app="PortoUIAdmin" ng-controller="RegisterCtrl">
+
+    <div class="main-wrapper">
+        <div class="account-content">
+            <div class="container">
+
+                <div class="account-logo">
+                    <a href="admin-dashboard.html"><img src="/TemplateFiles/img/logo2.png" alt="Dreamguy's Technologies"></a>
+                </div>
+
+                <div class="account-box">
+                    <div class="account-wrapper">
+                        <h3 class="account-title">Register</h3>
+                        <p class="account-subtitle">Access to our dashboard</p>
+
+                        <form name="registerForm">
+                            <div class="input-block mb-4">
+                                <label class="col-form-label">Username<span class="mandatory">*</span></label>
+                                <input ng-model="RegisterModel.UserName" class="form-control" type="text" required>
+                            </div>
+                            <div class="input-block mb-4">
+                                <label class="col-form-label">Email<span class="mandatory">*</span></label>
+                                <input ng-model="RegisterModel.Email" class="form-control" type="email" required>
+                            </div>
+                            <div class="input-block mb-4">
+                                <label class="col-form-label">Password<span class="mandatory">*</span></label>
+                                <input ng-model="RegisterModel.Password" class="form-control" type="password" required>
+                            </div>
+                            <div class="input-block mb-4">
+                                <label class="col-form-label">Repeat Password<span class="mandatory">*</span></label>
+                                <input ng-model="RegisterModel.RepeatPassword" class="form-control" type="password" required>
+                            </div>
+                            <div class="input-block mb-4 text-center">
+                                <button class="btn btn-primary account-btn" ng-disabled="registerForm.$invalid || RegisterModel.Password!=RegisterModel.RepeatPassword" ng-click="Register()">Register</button>
+                            </div>
+                            <div class="account-footer">
+                                <p>Already have an account? <a href="/Home/Login">Login</a></p>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="/TemplateFiles/js/jquery-3.7.0.min.js"></script>
+
+    <script src="/TemplateFiles/js/bootstrap.bundle.min.js"></script>
+
+    <script src="/TemplateFiles/js/app.js"></script>
+    <script src="/plugins/angularjs/angular.1.8.2.min.js"></script>
+    <script src="/content/angularjs/login/registerctrl.js"></script>
+</body>
+
+</html>

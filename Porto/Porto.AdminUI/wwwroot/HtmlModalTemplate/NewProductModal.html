@@ -1,0 +1,41 @@
+﻿<div class="modal-header">
+    <h3>New Product</h3>
+</div>
+<div class="modal-body">
+    <form name="formNewProduct">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <input name="productName" ng-model="ProductModel.Name" class="form-control" type="text" placeholder="Product Name" required/>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <select name="category" class="form-control" ng-model="ProductModel.ID_Category" placeholder="Seçiniz.." required>
+                        <option value="">Seçiniz..</option>
+                        <option ng-repeat="category in CategoryList" value="{{category.ID}}">{{category.Name}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <input name="discount" ng-model="ProductModel.Discount" min="0" max="100" class="form-control" type="number" placeholder="Discount" />
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <input name="unitInStock" ng-model="ProductModel.UnitPriceInStock" class="form-control" type="number" placeholder="Unit In Stock" />
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="form-group">
+                    <textarea name="description" ng-model="ProductModel.Description" maxlength="100" class="form-control" rows="5" placeholder="Product Description"></textarea>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-success" ng-disabled="formNewProduct.$invalid" ng-click="Save()">Save</button>
+    <button class="btn btn-danger" ng-click="cancel()">Cancel</button>
+</div>

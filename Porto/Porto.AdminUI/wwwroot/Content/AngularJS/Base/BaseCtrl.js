@@ -42,7 +42,12 @@ app.controller('BaseCtrl', function ($scope, $http) {
         localStorage.removeItem("Token");
         window.location.href = "/Home/Login";
     }
-
-
     $scope.PageLoad();
+
+    $scope.ErrorMessage = function (response) {
+        if (response.data.ResponseMessage != null || response.data.ResponseMessage != "")
+            alert(response.data.ResponseMessage)
+        else
+            alert(response.message)
+    }
 });

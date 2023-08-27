@@ -17,6 +17,13 @@ namespace Porto.BLL.Concrete
 {
     public class ProductRepository : BaseRepository<Product>, IProductRepository
     {
+        public BaseResponseList<ProductViewModel>? GetAllProduct()
+        {
+            var parameters = new Dictionary<string, object>();
+            var response = ExecProc<ProductViewModel>("sp_ProductCtrl_GetProductList", parameters);
+            return response;
+        }
+
         public BaseResponseList<ProductViewModel>? GetProductOfCategory(int CategoryId)
         {
             var parameters = new Dictionary<string, object>();

@@ -62,7 +62,7 @@ namespace Porto.DAL.EntityFramework
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            string sqlConn = "Server=DESKTOP-FH3V2M3\\SQLEXPRESS;Initial Catalog = PortoDb;Integrated Security=True;TrustServerCertificate=True";
+            string sqlConn = "Server=portoDB.mssql.somee.com;Initial Catalog = portoDB;Integrated Security=False;User ID=humanifalya_SQLLogin_1;Password=1f2yf246rs;TrustServerCertificate=True";
 
             //ConfigurationBuilder configurationBuilder = new();
             //IConfigurationRoot configurationRoot = configurationBuilder.Build();
